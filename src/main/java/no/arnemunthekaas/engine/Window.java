@@ -1,15 +1,17 @@
-package jade;
+package no.arnemunthekaas.engine;
 
+import no.arnemunthekaas.engine.listener.MouseListener;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-/*
-    https://www.youtube.com/watch?v=_UYxTtJQuuw&list=PLtrSb4XxIVbp8AKuEAlwNXDxr99e3woGE&index=2
+/**
+ *  https://www.lwjgl.org/guide
  */
 public class Window {
     private int width, height;
@@ -30,9 +32,8 @@ public class Window {
      * @return Window object
      */
     public static Window get() {
-        if (Window.window == null) {
+        if (Window.window == null)
             Window.window = new Window();
-        }
 
         return Window.window;
     }
@@ -46,6 +47,13 @@ public class Window {
         init();
         loop();
 
+        // Free memory
+        glfwFreeCallbacks(glfwWindow);
+        glfwDestroyWindow(glfwWindow);
+
+        // Terminate GLFW and free the error callback
+        glfwTerminate();
+        glfwSetErrorCallback(null).free();
     }
 
     private void init() {
@@ -66,6 +74,10 @@ public class Window {
         glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
         if (glfwWindow == NULL)
             throw new IllegalStateException("Failed to create GLFW window.");
+
+        glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+        glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
+        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
