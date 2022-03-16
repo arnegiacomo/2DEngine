@@ -1,7 +1,11 @@
 package no.arnemunthekaas.engine;
 
-import no.arnemunthekaas.engine.listeners.KeyListener;
-import no.arnemunthekaas.engine.listeners.MouseListener;
+import no.arnemunthekaas.engine.eventlisteners.KeyListener;
+import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.scenes.LevelEditorScene;
+import no.arnemunthekaas.engine.scenes.LevelScene;
+import no.arnemunthekaas.engine.scenes.Scene;
+import no.arnemunthekaas.engine.utils.Time;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -19,18 +23,45 @@ public class Window {
     private String title;
     private long glfwWindow;
 
-    private float r, g, b, a;
+    public float r;
+    public float g;
+    public float b;
+    private float a;
 
     private static Window window = null;
+    private boolean fadeToBlack = false;
+
+    private static Scene currentScene;
 
     private Window() {
         this.width = 1920;
         this.height = 1080;
         this.title = "Window";
-        this.r = 0;
-        this.g = 0;
-        this.b = 0;
-        this.a = 0;
+        this.r = 1;
+        this.g = 1;
+        this.b = 1;
+        this.a = 1;
+    }
+
+    /**
+     * Changes the scene, based on the Scene Index. 0 = LevelEditorScene. 1 = LevelScene.
+     *
+     * @param newScene SceneIndex
+     */
+    public static void changeScene(int newScene) {
+        switch (newScene) {
+            case 0:
+                currentScene = new LevelEditorScene();
+                //currentScene.init();
+                break;
+            case 1:
+                currentScene = new LevelScene();
+                //currentScene.init();
+                break;
+            default:
+                assert false : "Unknown scene '" + newScene + "'";
+                break;
+        }
     }
 
     /**
@@ -101,16 +132,30 @@ public class Window {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        Window.changeScene(0);
     }
 
     private void loop() {
+        float beginTime = Time.getTime();
+        float endTime = Time.getTime();
+        float dt = - 1.0f;
+
         while (!glfwWindowShouldClose(glfwWindow)) {
             // Poll events
             glfwPollEvents();
 
-            glClearColor(1.0f, 0.0f,0.0f,1.0f);
+            glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            if(dt >= 0)
+                currentScene.update(dt);
+
             glfwSwapBuffers(glfwWindow);
+
+            endTime = Time.getTime();
+            dt = endTime - beginTime;
+            beginTime = endTime;
         }
 
     }

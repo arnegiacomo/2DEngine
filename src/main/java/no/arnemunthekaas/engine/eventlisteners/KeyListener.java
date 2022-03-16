@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.listeners;
+package no.arnemunthekaas.engine.eventlisteners;
 
 import static org.lwjgl.glfw.GLFW.*;
 
