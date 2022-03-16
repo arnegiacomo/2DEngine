@@ -1,6 +1,7 @@
 package no.arnemunthekaas.engine;
 
-import no.arnemunthekaas.engine.listener.MouseListener;
+import no.arnemunthekaas.engine.listeners.KeyListener;
+import no.arnemunthekaas.engine.listeners.MouseListener;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -18,12 +19,18 @@ public class Window {
     private String title;
     private long glfwWindow;
 
+    private float r, g, b, a;
+
     private static Window window = null;
 
     private Window() {
         this.width = 1920;
         this.height = 1080;
         this.title = "Window";
+        this.r = 0;
+        this.g = 0;
+        this.b = 0;
+        this.a = 0;
     }
 
     /**
@@ -78,6 +85,7 @@ public class Window {
         glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+        glfwSetKeyCallback(glfwWindow, KeyListener::keyCallBack);
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
@@ -102,7 +110,6 @@ public class Window {
 
             glClearColor(1.0f, 0.0f,0.0f,1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
-
             glfwSwapBuffers(glfwWindow);
         }
 

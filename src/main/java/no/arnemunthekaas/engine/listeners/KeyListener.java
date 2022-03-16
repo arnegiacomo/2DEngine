@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.listener;
+package no.arnemunthekaas.engine.listeners;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -45,5 +45,15 @@ public class KeyListener {
     }
 
     // Static getters and setters for single KeyListener Instance
+
+    /**
+     * Check if a key is pressed
+     *
+     * @param keyCode keyCode to check
+     * @return if pressed
+     */
+    public static boolean isKeyPressed(int keyCode) {
+        return get().keyPressed[keyCode]; // Could check for IndexOutOfBoundsException, but won't for possible debugging scenarios
+    }
 
 }

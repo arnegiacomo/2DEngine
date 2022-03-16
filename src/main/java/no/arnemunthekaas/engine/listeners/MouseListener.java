@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.listener;
+package no.arnemunthekaas.engine.listeners;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -157,9 +157,7 @@ public class MouseListener {
      * @return true if pressed
      */
     public static boolean mouseButtonDown(int button) {
-        if(button < get().mouseButtonPressed.length)
-            return get().mouseButtonPressed[button];
-        else return false;
+        return get().mouseButtonPressed[button]; // Could check for IndexOutOfBoundsException, but won't for possible debugging scenarios
     }
 
 }
