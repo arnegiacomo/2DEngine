@@ -1,6 +1,10 @@
 package no.arnemunthekaas.engine.scenes;
 
+import no.arnemunthekaas.engine.camera.Camera;
+
 public abstract class Scene {
+
+    protected Camera camera;
 
     public Scene() {
 
