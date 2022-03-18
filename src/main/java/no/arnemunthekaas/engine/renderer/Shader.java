@@ -203,10 +203,27 @@ public class Shader {
         glUniform1f(varLocation, val);
     }
 
+    /**
+     *
+     * @param varName
+     * @param val
+     */
     public void uploadInt(String varName, int val) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1i(varLocation, val);
+    }
+
+    /**
+     * Upload texture
+     *
+     * @param varName
+     * @param slot
+     */
+    public void uploadTexture(String varName, int slot) {
+        int varLocation = glGetUniformLocation(shaderProgramID, varName);
+        use();
+        glUniform1i(varLocation, slot);
     }
 
 }

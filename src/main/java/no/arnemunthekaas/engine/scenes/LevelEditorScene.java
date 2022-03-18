@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.scenes;
 
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.renderer.Shader;
+import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.utils.Time;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
@@ -18,11 +19,11 @@ public class LevelEditorScene extends Scene {
     private int vertexID, fragmentID, shaderProgram;
 
     private float[] vertexArray = {
-            // position               // color
-            100.5f, 0.5f, 0.0f,       1.0f, 0.0f, 0.0f, 1.0f, // Bottom right 0
-            0.5f,  100.5f, 0.0f,       0.0f, 1.0f, 0.0f, 1.0f, // Top left     1
-            100.5f,  100.5f, 0.0f ,      1.0f, 0.0f, 1.0f, 1.0f, // Top right    2
-            0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 0.0f, 1.0f, // Bottom left  3
+            // position             // color                        // UV cords
+            100f, 0f, 0.0f,         1.0f, 0.0f, 0.0f, 1.0f,         1, 1,            // Bottom right 0
+            0f,  100f, 0.0f,        0.0f, 1.0f, 0.0f, 1.0f,         0, 0,            // Top left     1
+            100f,  100f, 0.0f,      1.0f, 0.0f, 1.0f, 1.0f,         1, 0,            // Top right    2
+            0f, 0f, 0.0f,           1.0f, 1.0f, 0.0f, 1.0f,         0, 1            // Bottom left  3
     };
 
     // IMPORTANT: Must be in counter-clockwise order
@@ -34,6 +35,7 @@ public class LevelEditorScene extends Scene {
     private int vaoID, vboID, eboID;
 
     private Shader defaultShader;
+    private Texture testTexture;
 
     public LevelEditorScene() {
 
@@ -44,6 +46,7 @@ public class LevelEditorScene extends Scene {
         this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compile();
+        this.testTexture = new Texture("assets/images/Untitled.png");
 
 
         // =========================================
@@ -75,21 +78,27 @@ public class LevelEditorScene extends Scene {
         // Add the vertex attribute pointers
         int positionsSize = 3;
         int colorSize = 4;
-        int floatSizeBytes = Float.BYTES;
-        int vertexSizeBytes = (positionsSize + colorSize) * floatSizeBytes;
+        int UVsize = 2;
+        int vertexSizeBytes = (positionsSize + colorSize + UVsize) * Float.BYTES;
         glVertexAttribPointer(0, positionsSize, GL_FLOAT, false, vertexSizeBytes, 0);
         glEnableVertexAttribArray(0);
 
-        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * floatSizeBytes);
+        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * Float.BYTES);
         glEnableVertexAttribArray(1);
+
+        glVertexAttribPointer(2, UVsize, GL_FLOAT, false, vertexSizeBytes, (positionsSize + colorSize) * Float.BYTES);
+        glEnableVertexAttribArray(2);
     }
 
     @Override
     public void update(float dt) {
-        camera.position.x -= dt * 50.0f;
-        camera.position.y -= dt * 20.0f;
-
         defaultShader.use();
+
+        // Upload texture to shader
+        defaultShader.uploadTexture("TEX_SAMPLER", 0);
+        glActiveTexture(GL_TEXTURE0);
+        testTexture.bind();
+
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMat());
         defaultShader.uploadMat4f("uView", camera.getViewMat());
         defaultShader.uploadFloat("uTime", Time.getTime());
