@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.scenes;
 
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.renderer.Shader;
+import no.arnemunthekaas.engine.utils.Time;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
@@ -85,10 +86,13 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
+        camera.position.x -= dt * 50.0f;
+        camera.position.y -= dt * 20.0f;
 
         defaultShader.use();
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMat());
         defaultShader.uploadMat4f("uView", camera.getViewMat());
+        defaultShader.uploadFloat("uTime", Time.getTime());
 
         // Bind the VAO
         glBindVertexArray(vaoID);
