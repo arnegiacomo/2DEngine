@@ -1,6 +1,9 @@
 package no.arnemunthekaas.engine.scenes;
 
 import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.components.FontRenderer;
+import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.renderer.Shader;
 import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.utils.Time;
@@ -37,12 +40,21 @@ public class LevelEditorScene extends Scene {
     private Shader defaultShader;
     private Texture testTexture;
 
+    GameObject testObj;
+    private boolean firstTime = false;
+
     public LevelEditorScene() {
 
     }
 
     @Override
     public void init() {
+        System.out.println("Creating test obj");
+        this.testObj = new GameObject("Test obj");
+        this.testObj.addComponent(new SpriteRenderer());
+        this.testObj.addComponent(new FontRenderer());
+        this.addGameObject(this.testObj);
+
         this.camera = new Camera(new Vector2f());
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compile();
@@ -121,5 +133,15 @@ public class LevelEditorScene extends Scene {
         glUseProgram(0);
 
         defaultShader.detach();
+
+        if(!firstTime) {
+            System.out.println("Creating gameobj 2");
+            GameObject go = new GameObject("test 2");
+            go.addComponent(new SpriteRenderer());
+            this.addGameObject(go);
+            firstTime = true;
+        }
+
+        gameObjects.forEach(c -> c.update(dt));
     }
 }
