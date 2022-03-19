@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.renderer;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
+import no.arnemunthekaas.engine.utils.AssetPool;
 import org.joml.Vector4f;
 
 import static org.lwjgl.opengl.GL15.*;
@@ -40,8 +41,7 @@ public class RenderBatch {
      * @param maxBatchSize Max quad (sprite) amount
      */
     public RenderBatch(int maxBatchSize) {
-        shader = new Shader("assets/shaders/default.glsl");
-        shader.compile();
+        shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
 

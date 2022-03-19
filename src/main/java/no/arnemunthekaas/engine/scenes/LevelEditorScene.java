@@ -4,6 +4,7 @@ import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.renderer.Transform;
+import no.arnemunthekaas.engine.utils.AssetPool;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -35,6 +36,13 @@ public class LevelEditorScene extends Scene {
                 this.addGameObject(go);
             }
         }
+
+        loadResources();
+
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
 
     }
 
