@@ -79,6 +79,15 @@ public class Window {
     }
 
     /**
+     * Get current window Scene.
+     *
+     * @return Scene object
+     */
+    public static Scene getScene() {
+        return currentScene;
+    }
+
+    /**
      * Runs the LWJGL window
      */
     public void run() {

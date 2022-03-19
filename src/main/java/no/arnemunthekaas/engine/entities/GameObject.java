@@ -1,5 +1,7 @@
 package no.arnemunthekaas.engine.entities;
 
+import no.arnemunthekaas.engine.renderer.Transform;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,14 +9,29 @@ public class GameObject {
 
     private String name;
     private List<Component> components;
+    public Transform transform;
 
     /**
+     * Create new Game Object with given name
      *
-     * @param name
+     * @param name Game Object name
      */
     public GameObject(String name) {
         this.name = name;
         this.components = new ArrayList<>();
+        this.transform = new Transform();
+    }
+
+    /**
+     * Create new Game Object with given name and transform
+     *
+     * @param name Game Object name
+     * @param transform Game Object Transform
+     */
+    public GameObject(String name, Transform transform) {
+        this.name = name;
+        this.components = new ArrayList<>();
+        this.transform = transform;
     }
 
     /**
