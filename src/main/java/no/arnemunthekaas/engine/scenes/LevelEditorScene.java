@@ -60,7 +60,6 @@ public class LevelEditorScene extends Scene {
         defaultShader.compile();
         this.testTexture = new Texture("assets/images/Untitled.png");
 
-
         // =========================================
         // Generate VAO, VBO and EBO and send to GPU
         // =========================================
