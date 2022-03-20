@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.utils;
 
+import no.arnemunthekaas.engine.entities.components.Spritesheet;
 import no.arnemunthekaas.engine.renderer.Shader;
 import no.arnemunthekaas.engine.renderer.Texture;
 
@@ -11,6 +12,7 @@ public class AssetPool {
 
     private static Map<String, Shader> shaders = new HashMap<>();
     private static Map<String, Texture> textures = new HashMap<>();
+    private static Map<String, Spritesheet> spritesheets = new HashMap<>();
 
     /**
      *
@@ -45,6 +47,30 @@ public class AssetPool {
             textures.put(file.getAbsolutePath(), texture);
             return texture;
         }
+    }
+
+    /**
+     *
+     * @param spritesheet
+     */
+    public static void addSpriteSheet(String resourceName, Spritesheet spritesheet) {
+        File file = new File(resourceName);
+        if(!spritesheets.containsKey(file.getAbsolutePath()))
+            spritesheets.put(file.getAbsolutePath(), spritesheet);
+
+    }
+
+    /**
+     *
+     * @param resourceName
+     * @return
+     */
+    public static Spritesheet getSpriteSheet(String resourceName) {
+        File file = new File(resourceName);
+        if(!spritesheets.containsKey(file.getAbsolutePath()))
+            assert false : "Error: Tried to access spritesheed '" + resourceName + "' and it has not been added to assetpool";
+
+        return spritesheets.getOrDefault(file.getAbsolutePath(), null); // TODO Default null texture instead of null value? Like minecraft pink texture?
     }
 
 }

@@ -33,8 +33,9 @@ out vec4 color;
 
 void main()
 {
-    if (fTexID > 0) {
-        int id = int(fTexID);
+
+    if (fTexID > 0) {         // TODO maybe remake this shader with if statements instead of casting for mac?
+        int id = int(fTexID); // Apparently Mac M1 bug here lol cant cast from float to int.
         color = fColor * texture(uTextures[id], fTexCoords);
     } else {
         color = fColor;

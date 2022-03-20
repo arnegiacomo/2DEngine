@@ -34,9 +34,12 @@ public class Renderer {
 
         for (RenderBatch batch: batches) {
             if(batch.hasSpace()) {
-                batch.addSprite(spr);
-                added = true;
-                break;
+                Texture tex = spr.getTexture();
+                if(tex == null || (batch.containsTexture(tex) || batch.hasTextureSpace())) {
+                    batch.addSprite(spr);
+                    added = true;
+                    break;
+                }
             }
         }
 

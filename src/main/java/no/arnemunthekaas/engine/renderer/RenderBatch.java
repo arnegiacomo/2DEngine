@@ -233,11 +233,28 @@ public class RenderBatch {
     }
 
     /**
-     * Returns if batch has space
+     * Returns if batch has more space
      *
      * @return True if batch has more space
      */
     public boolean hasSpace() {
         return hasSpace;
+    }
+
+    /**
+     * Check if there is space for more textures
+     * @return True/False
+     */
+    public boolean hasTextureSpace() {
+        return this.textures.size() < 8;
+    }
+
+    /**
+     * Check if batch contains texture
+     * @param tex Texture to check for
+     * @return True if contains texture
+     */
+    public boolean containsTexture(Texture tex) {
+        return textures.contains(tex);
     }
 }

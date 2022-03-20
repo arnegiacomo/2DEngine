@@ -1,8 +1,5 @@
 package no.arnemunthekaas.engine.entities.components;
 
-import no.arnemunthekaas.engine.entities.Component;
-import no.arnemunthekaas.engine.entities.GameObject;
-
 public class FontRenderer extends Component {
 
     @Override

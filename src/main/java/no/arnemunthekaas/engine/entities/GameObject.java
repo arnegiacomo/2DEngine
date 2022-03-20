@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.entities;
 
+import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.renderer.Transform;
 
 import java.util.ArrayList;

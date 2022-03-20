@@ -1,4 +1,6 @@
-package no.arnemunthekaas.engine.entities;
+package no.arnemunthekaas.engine.entities.components;
+
+import no.arnemunthekaas.engine.entities.GameObject;
 
 public abstract class Component {
 
