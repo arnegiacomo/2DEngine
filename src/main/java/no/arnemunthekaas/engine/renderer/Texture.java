@@ -47,9 +47,11 @@ public class Texture {
             this.height = height.get(0);
             if ( channels.get(0) == 3)
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width.get(0), height.get(0), 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-            else if (channels.get(0) == 4)
+            else if (channels.get(0) == 4) {
+                glEnable(GL_BLEND);
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width.get(0), height.get(0), 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-            else
+            } else
                 assert false : "Error: (Texture) Unknown number of channels '" + channels.get(0) + "'";
         } else
             assert false : "Error: (Texture) Could not load image '" + filepath + "'";

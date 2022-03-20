@@ -12,6 +12,9 @@ import org.joml.Vector4f;
 
 public class LevelEditorScene extends Scene {
 
+    private GameObject obj1;
+    private Spritesheet sprites;
+
     public LevelEditorScene() {
 
     }
@@ -21,19 +24,27 @@ public class LevelEditorScene extends Scene {
         loadResources();
         this.camera = new Camera(new Vector2f(-250, 0));
 
-        Spritesheet spritesheet = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+//        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(408,244)));
+//        obj1.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"))));
+//        this.addGameObject(obj1);
 
-        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(24,24)));
-        obj1.addComponent(new SpriteRenderer(spritesheet.getSprite(0)));
+//        GameObject obj2 = new GameObject("Obj2", new Transform(new Vector2f(300, 200), new Vector2f(564,592)));
+//        obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png"))));
+//        this.addGameObject(obj2);
+//
+        sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+
+        obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(24,24)));
+        obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObject(obj1);
-
-        GameObject obj2 = new GameObject("Obj2", new Transform(new Vector2f(300, 200), new Vector2f(24,24)));
-        obj2.addComponent(new SpriteRenderer(spritesheet.getSprite(132)));
-        this.addGameObject(obj2);
-
-        GameObject obj3 = new GameObject("Obj3", new Transform(new Vector2f(300, 100), new Vector2f(24,24)));
-        obj3.addComponent(new SpriteRenderer(spritesheet.getSprite(15)));
-        this.addGameObject(obj3);
+//
+//        GameObject obj4 = new GameObject("Obj2", new Transform(new Vector2f(300, 200), new Vector2f(24,24)));
+//        obj4.addComponent(new SpriteRenderer(spritesheet.getSprite(132)));
+//        this.addGameObject(obj4);
+//
+//        GameObject obj5 = new GameObject("Obj3", new Transform(new Vector2f(300, 100), new Vector2f(24,24)));
+//        obj5.addComponent(new SpriteRenderer(spritesheet.getSprite(15)));
+//        this.addGameObject(obj5);
 
     }
 
@@ -45,8 +56,21 @@ public class LevelEditorScene extends Scene {
 
     }
 
+    private int spriteIndex = 0;
+    private float spriteFlipTime = 0.2f;
+    private float spriteFlipTimeLeft = 0.0f;
     @Override
     public void update(float dt) {
+        spriteFlipTimeLeft -= dt;
+        if (spriteFlipTimeLeft <= 0) {
+            spriteFlipTimeLeft = spriteFlipTime;
+            spriteIndex++;
+            if (spriteIndex > 200) {
+                spriteIndex = 0;
+            }
+            obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
+        }
+
         // System.out.println("Fps: " + 1.0f / dt);
 
         gameObjects.forEach(c -> c.update(dt));

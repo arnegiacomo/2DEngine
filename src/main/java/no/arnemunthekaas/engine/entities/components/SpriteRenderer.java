@@ -1,6 +1,7 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import no.arnemunthekaas.engine.renderer.Texture;
+import no.arnemunthekaas.engine.renderer.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -8,6 +9,9 @@ public class SpriteRenderer extends Component {
 
     private Vector4f color;
     private Sprite sprite;
+
+    private Transform lastTransform;
+    private boolean isDirty = false;
 
     /**
      * Creates new SpriteRenderer component with given color vector
@@ -30,12 +34,15 @@ public class SpriteRenderer extends Component {
 
     @Override
     public void start() {
-
+        this.lastTransform = gameObject.transform.copy();
     }
 
     @Override
     public void update(float dt) {
-
+        if(!this.lastTransform.equals(this.gameObject.transform)) {
+            this.gameObject.transform.copy(this.lastTransform);
+            isDirty = true;
+        }
     }
 
     /**
@@ -61,5 +68,40 @@ public class SpriteRenderer extends Component {
      */
     public Vector2f[] getTextureCoordinates() {
         return sprite.getTexCoords();
+    }
+
+    /**
+     * Change color vector
+     * @param color
+     */
+    public void setColor(Vector4f color) {
+        if(!this.color.equals(color)) {
+            this.isDirty = true;
+            color.set(color);
+        }
+    }
+
+    /**
+     * Change sprite
+     * @param sprite
+     */
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+        this.isDirty = true;
+    }
+
+    /**
+     * Dirty flag, returns true if sprite has changed in any way
+     * @return isDirty
+     */
+    public boolean isDirty() {
+        return isDirty;
+    }
+
+    /**
+     * Cleans the dirty flag.
+     */
+    public void setClean() {
+        this.isDirty = false;
     }
 }
