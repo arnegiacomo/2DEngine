@@ -50,5 +50,4 @@ public class Camera {
     public Matrix4f getProjectionMat() {
         return this.projectionMat;
     }
-
 }
