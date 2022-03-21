@@ -4,6 +4,7 @@ import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Renderer {
@@ -20,7 +21,7 @@ public class Renderer {
 
 
     /**
-     * Add GameObject to Renderer batches. If batch is full, creates new batch and adds object to it.
+     * Add GameObject to Renderer batches. If batch is full, creates new batch and adds object to it. Only add sprites of same z-index to same batch
      * @param obj Game Object to batch
      */
     public void add(GameObject obj) {
@@ -33,7 +34,7 @@ public class Renderer {
         boolean added = false;
 
         for (RenderBatch batch: batches) {
-            if(batch.hasSpace()) {
+            if(batch.hasSpace() && batch.zIndex() == spr.gameObject.zIndex()) {
                 Texture tex = spr.getTexture();
                 if(tex == null || (batch.containsTexture(tex) || batch.hasTextureSpace())) {
                     batch.addSprite(spr);
@@ -44,10 +45,11 @@ public class Renderer {
         }
 
         if(!added) {
-            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE);
+            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, spr.gameObject.zIndex());
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(spr);
+            Collections.sort(batches);
         }
     }
 

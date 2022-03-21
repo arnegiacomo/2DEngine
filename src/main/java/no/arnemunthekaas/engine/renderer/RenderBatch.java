@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 
-public class RenderBatch {
+public class RenderBatch implements Comparable<RenderBatch>{
     /*
     Vertex
     ======
@@ -45,15 +45,18 @@ public class RenderBatch {
     private int vaoID, vboID;
     private int maxBatchSize;
     private Shader shader;
+    private int zIndex;
 
     /**
      * Creates new Render Batch with max amount of quads (sprites) to hold. Bigger = better performance but longer loading
      * @param maxBatchSize Max quad (sprite) amount
+     * @param zIndex Z-Index
      */
-    public RenderBatch(int maxBatchSize) {
+    public RenderBatch(int maxBatchSize, int zIndex) {
         shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
+        this.zIndex = zIndex;
 
         // 4 vertices quads
         vertices = new float[maxBatchSize * 4 * VERTEX_SIZE];
@@ -269,5 +272,23 @@ public class RenderBatch {
      */
     public boolean containsTexture(Texture tex) {
         return textures.contains(tex);
+    }
+
+    /**
+     * Get Z-Index
+     * @return Z-Index
+     */
+    public int zIndex() {
+        return zIndex;
+    }
+
+    /**
+     * See comparable. Compares batches by Z-index for render sorting
+     * @param o Render batch to compare
+     * @return -1 if less than, 0 if equals, 1 if more than
+     */
+    @Override
+    public int compareTo(RenderBatch o) {
+        return Integer.compare(this.zIndex, o.zIndex);
     }
 }

@@ -11,6 +11,7 @@ public class GameObject {
     private String name;
     private List<Component> components;
     public Transform transform;
+    private int zIndex;
 
     /**
      * Create new Game Object with given name
@@ -19,6 +20,7 @@ public class GameObject {
      */
     public GameObject(String name) {
         this.name = name;
+        this.zIndex = 0;
         this.components = new ArrayList<>();
         this.transform = new Transform();
     }
@@ -28,9 +30,11 @@ public class GameObject {
      *
      * @param name Game Object name
      * @param transform Game Object Transform
+     * @param zIndex Z-index of object ( what layer it is rendered on)
      */
-    public GameObject(String name, Transform transform) {
+    public GameObject(String name, Transform transform, int zIndex) {
         this.name = name;
+        this.zIndex = zIndex;
         this.components = new ArrayList<>();
         this.transform = transform;
     }
@@ -97,5 +101,13 @@ public class GameObject {
      */
     public void start() {
         components.forEach(Component::start);
+    }
+
+    /**
+     * Get Z-index of game object (default = 0)
+     * @return Z-Index
+     */
+    public int zIndex() {
+        return zIndex;
     }
 }
