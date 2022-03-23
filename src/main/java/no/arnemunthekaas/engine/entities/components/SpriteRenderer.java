@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
+import imgui.ImGui;
 import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.renderer.Transform;
 import org.joml.Vector2f;
@@ -44,6 +45,15 @@ public class SpriteRenderer extends Component {
         if(!this.lastTransform.equals(this.gameObject.transform)) {
             this.gameObject.transform.copy(this.lastTransform);
             isDirty = true;
+        }
+    }
+
+    @Override
+    public void imgui() {
+        float[] imguiColor = {color.x, color.y, color.z, color.w};
+        if (ImGui.colorPicker4("Color Picker: ", imguiColor)) {
+            this.color.set(imguiColor[0], imguiColor[1], imguiColor[2], imguiColor[3]);
+            this.isDirty = true;
         }
     }
 
@@ -106,4 +116,6 @@ public class SpriteRenderer extends Component {
     public void setClean() {
         this.isDirty = false;
     }
+
+
 }

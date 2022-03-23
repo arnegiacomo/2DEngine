@@ -2,12 +2,15 @@ package no.arnemunthekaas.engine;
 
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.imgui.ImGuiLayer;
 import no.arnemunthekaas.engine.scenes.LevelEditorScene;
 import no.arnemunthekaas.engine.scenes.LevelScene;
 import no.arnemunthekaas.engine.scenes.Scene;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+
+import java.awt.*;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -21,6 +24,7 @@ public class Window {
     private int width, height;
     private String title;
     private long glfwWindow;
+    private ImGuiLayer imGuiLayer;
 
     public float r;
     public float g;
@@ -33,6 +37,7 @@ public class Window {
     private static Scene currentScene;
 
     private Window() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.width = 1920;
         this.height = 1080;
         this.title = "Window";
@@ -79,11 +84,40 @@ public class Window {
 
     /**
      * Get current window Scene.
-     *
      * @return Scene object
      */
     public static Scene getScene() {
         return currentScene;
+    }
+
+    /**
+     * Get window width
+     * @return width
+     */
+    public static int getWidth() { return get().width;
+    }
+
+    /**
+     * Get window height
+     * @return height
+     */
+    public static int getHeight() { return get().height;
+    }
+
+    /**
+     * Set new width
+     * @param width new width
+     */
+    public static void setWidth(int width) {
+        get().width = width;
+    }
+
+    /**
+     * Set new height
+     * @param height new height
+     */
+    public static void setHeight(int height) {
+        get().height = height;
     }
 
     /**
@@ -116,7 +150,7 @@ public class Window {
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
 
         // macOS
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -132,6 +166,11 @@ public class Window {
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallBack);
+
+        glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+            Window.setWidth(newWidth);
+            Window.setHeight(newHeight);
+        });
 
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
@@ -150,6 +189,8 @@ public class Window {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        this.imGuiLayer = new ImGuiLayer(glfwWindow);
+        this.imGuiLayer.initImGui();
 
         Window.changeScene(0);
     }
@@ -169,6 +210,7 @@ public class Window {
             if(dt >= 0)
                 currentScene.update(dt);
 
+            this.imGuiLayer.update(dt, currentScene);
             glfwSwapBuffers(glfwWindow);
 
             endTime = (float) glfwGetTime();

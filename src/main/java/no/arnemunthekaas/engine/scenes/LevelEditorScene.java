@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.scenes;
 
+import imgui.ImGui;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Sprite;
@@ -9,6 +10,7 @@ import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
 import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 public class LevelEditorScene extends Scene {
 
@@ -25,9 +27,10 @@ public class LevelEditorScene extends Scene {
 
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
 
-        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 110);
-        obj1.addComponent(new SpriteRenderer(new Sprite(new Texture("assets/images/spritesheets/blendImage2.png"))));
+        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), -110);
+        obj1.addComponent(new SpriteRenderer(new Vector4f(0, 1, 0, 1)));
         this.addGameObject(obj1);
+        this.activeGameObject = obj1;
 
         GameObject obj2 = new GameObject("Obj2", new Transform(new Vector2f(0, 200), new Vector2f(200,200)), -10);
         obj2.addComponent(new SpriteRenderer(new Sprite(new Texture("assets/images/spritesheets/blendImage1.png"))));
@@ -54,6 +57,11 @@ public class LevelEditorScene extends Scene {
         gameObjects.forEach(c -> c.update(dt));
 
         this.renderer.render();
+
+    }
+
+    @Override
+    public void imgui() {
 
     }
 }

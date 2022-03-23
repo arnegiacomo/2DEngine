@@ -1,7 +1,9 @@
 package no.arnemunthekaas.engine.scenes;
 
+import imgui.ImGui;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.imgui.ImGuiLayer;
 import no.arnemunthekaas.engine.renderer.Renderer;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public abstract class Scene {
     protected Camera camera;
     private boolean running = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
+    protected GameObject activeGameObject;
 
     public Scene() {
 
@@ -68,5 +71,25 @@ public abstract class Scene {
      */
     public Camera getCamera() {
         return camera;
+    }
+
+    /**
+     *
+     */
+    public void sceneImgui() {
+        if(activeGameObject != null) {
+            ImGui.begin("Inspector");
+            activeGameObject.imgui();
+            ImGui.end();
+        }
+
+        imgui();
+    }
+
+    /**
+     *
+     */
+    public void imgui() {
+
     }
 }
