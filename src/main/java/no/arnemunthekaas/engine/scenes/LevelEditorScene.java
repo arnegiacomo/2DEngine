@@ -2,13 +2,14 @@ package no.arnemunthekaas.engine.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import imgui.ImGui;
 import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.entities.components.FontRenderer;
+import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.entities.components.Sprite;
+import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.entities.components.Spritesheet;
-import no.arnemunthekaas.engine.renderer.Texture;
+import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
 import org.joml.Vector2f;
@@ -27,12 +28,17 @@ public class LevelEditorScene extends Scene {
         loadResources();
         this.camera = new Camera(new Vector2f(-250, 0));
 
+        if(levelLoaded) {
+            return;
+        }
+
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
 
         GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 1);
         SpriteRenderer spr1 = new SpriteRenderer();
         spr1.setColor(new Vector4f(1,0,0,0.5f));
         obj1.addComponent(spr1);
+        obj1.addComponent(new FontRenderer());
         this.addGameObject(obj1);
         this.activeGameObject = obj1;
 
@@ -42,11 +48,6 @@ public class LevelEditorScene extends Scene {
         obj2.addComponent(spr2);
         this.addGameObject(obj2);
 
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String serialised = gson.toJson(obj1);
-        GameObject obj = gson.fromJson(serialised, GameObject.class);
-        System.out.println(obj1);
     }
 
     private void loadResources() {
