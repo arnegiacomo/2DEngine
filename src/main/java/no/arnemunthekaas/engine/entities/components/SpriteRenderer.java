@@ -8,32 +8,11 @@ import org.joml.Vector4f;
 
 public class SpriteRenderer extends Component {
 
-    private Vector4f color;
-    private Sprite sprite;
+    private Vector4f color = new Vector4f(1,1,1,1);
+    private Sprite sprite = new Sprite();
 
-    private Transform lastTransform;
-    private boolean isDirty = false;
-
-    /**
-     * Creates new SpriteRenderer component with given color vector
-     *
-     * @param color Color vector
-     */
-    public SpriteRenderer(Vector4f color) {
-        this.color = color;
-        this.sprite = new Sprite(null);
-        this.isDirty = true;
-    }
-
-    /**
-     * Create new SpriteRenderer with given sprite
-     * @param sprite
-     */
-    public SpriteRenderer(Sprite sprite) {
-        this.sprite = sprite;
-        this.color = new Vector4f(1, 1, 1, 1);
-        this.isDirty = true;
-    }
+    private transient Transform lastTransform;
+    private transient boolean isDirty = false;
 
     @Override
     public void start() {
@@ -89,7 +68,7 @@ public class SpriteRenderer extends Component {
     public void setColor(Vector4f color) {
         if(!this.color.equals(color)) {
             this.isDirty = true;
-            color.set(color);
+            this.color = color;
         }
     }
 

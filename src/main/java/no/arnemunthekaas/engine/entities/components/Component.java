@@ -4,7 +4,7 @@ import no.arnemunthekaas.engine.entities.GameObject;
 
 public abstract class Component {
 
-    public GameObject gameObject;
+    public transient GameObject gameObject;
 
     /**
      * Update component with delta time

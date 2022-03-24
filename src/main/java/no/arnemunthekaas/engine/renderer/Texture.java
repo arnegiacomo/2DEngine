@@ -15,10 +15,10 @@ public class Texture {
     private int width, height;
 
     /**
-     * Create a new texture from specified filepath
-     * @param filepath filepath of texture
+     * Initialise a texture with a filepath
+     * @param filepath
      */
-    public Texture(String filepath) {
+    public void init(String filepath) {
         this.filepath = filepath;
 
         // Generate texture on GPU
