@@ -12,7 +12,7 @@ public class SpriteRenderer extends Component {
     private Sprite sprite = new Sprite();
 
     private transient Transform lastTransform;
-    private transient boolean isDirty = false;
+    private transient boolean isDirty = true;
 
     @Override
     public void start() {

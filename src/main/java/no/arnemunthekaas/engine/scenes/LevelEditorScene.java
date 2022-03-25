@@ -3,12 +3,9 @@ package no.arnemunthekaas.engine.scenes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import no.arnemunthekaas.engine.camera.Camera;
-import no.arnemunthekaas.engine.entities.components.FontRenderer;
+import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.entities.components.Component;
-import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
-import no.arnemunthekaas.engine.entities.components.Spritesheet;
 import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
@@ -29,6 +26,7 @@ public class LevelEditorScene extends Scene {
         this.camera = new Camera(new Vector2f(-250, 0));
 
         if(levelLoaded) {
+            this.activeGameObject = gameObjects.get(0);
             return;
         }
 
@@ -38,9 +36,8 @@ public class LevelEditorScene extends Scene {
         SpriteRenderer spr1 = new SpriteRenderer();
         spr1.setColor(new Vector4f(1,0,0,0.5f));
         obj1.addComponent(spr1);
-        obj1.addComponent(new FontRenderer());
+        obj1.addComponent(new Rigidbody());
         this.addGameObject(obj1);
-        this.activeGameObject = obj1;
 
         GameObject obj2 = new GameObject("Obj2", new Transform(new Vector2f(200, 200), new Vector2f(200,200)), 0);
         SpriteRenderer spr2 = new SpriteRenderer();
