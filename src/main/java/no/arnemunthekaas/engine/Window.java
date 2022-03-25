@@ -22,7 +22,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
  */
 public class Window {
     private int width, height;
-    private String title;
+    private String title = "2D Engine";
     private long glfwWindow;
     private ImGuiLayer imGuiLayer;
 
@@ -32,7 +32,6 @@ public class Window {
     private float a;
 
     private static Window window = null;
-    private boolean fadeToBlack = false;
 
     private static Scene currentScene;
 

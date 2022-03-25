@@ -1,5 +1,8 @@
 package no.arnemunthekaas.engine.eventlisteners;
 
+import no.arnemunthekaas.engine.Window;
+import org.joml.Vector4f;
+
 import static org.lwjgl.glfw.GLFW.*;
 
 /**
@@ -103,6 +106,32 @@ public class MouseListener {
      */
     public static float getY() {
         return (float) get().yPos;
+    }
+
+    /**
+     * Get mouse pos in world coords
+     * @return
+     */
+    public static float getOrthoX() {
+        float currentX = getX();
+        currentX = (currentX / (float) Window.getWidth()) * 2.0f - 1.0f;
+        Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
+        tmp.mul(Window.getScene().getCamera().getInverseProjectionMat()).mul(Window.getScene().getCamera().getInverseViewMat());
+        currentX = tmp.x;
+        return currentX;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static float getOrthoY() {
+        float currentY = getY();
+        currentY = (currentY / (float) Window.getHeight()) * 2.0f - 1.0f;
+        Vector4f tmp = new Vector4f(0, currentY, 0, 1);
+        tmp.mul(Window.getScene().getCamera().getInverseProjectionMat()).mul(Window.getScene().getCamera().getInverseViewMat());
+        currentY = tmp.y;
+        return currentY;
     }
 
     /**
