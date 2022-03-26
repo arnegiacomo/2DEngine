@@ -1,0 +1,40 @@
+package no.arnemunthekaas.engine.entities.components;
+
+import no.arnemunthekaas.engine.Window;
+import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+
+import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
+
+public class MouseControls extends Component{
+
+    private GameObject holdingObject;
+
+    /**
+     * Change holding object
+     * @param gameObject
+     */
+    public void pickUpObject(GameObject gameObject) {
+        this.holdingObject = gameObject;
+        Window.getScene().addGameObject(gameObject);
+    }
+
+    /**
+     *
+     */
+    public void place() {
+        this.holdingObject = null;
+    }
+
+    @Override
+    public void update(float dt) {
+        if(holdingObject != null) {
+            holdingObject.transform.position.x = MouseListener.getOrthoX() - 24; // TODO CENTER ON MOUSE!
+            holdingObject.transform.position.y = MouseListener.getOrthoY() - 24;
+
+            if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+                place();
+            }
+        }
+    }
+}

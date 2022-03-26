@@ -132,10 +132,27 @@ public abstract class Scene {
         }
 
         if(inFile != null) {
+            int maxGameObjectID = -1;
+            int maxComponentId = -1;
             GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
+
             for (GameObject o : objs) {
                 addGameObject(o);
+
+                for(Component c : o.getComponents()) {
+                    if(c.getUid() > maxComponentId)
+                        maxComponentId = c.getUid();
+
+                }
+
+                if(o.getUid() > maxGameObjectID)
+                    maxGameObjectID = o.getUid();
             }
+
+            maxGameObjectID++;
+            maxComponentId++;
+            GameObject.init(maxGameObjectID);
+            Component.init(maxComponentId);
             this.levelLoaded = true;
 
         }

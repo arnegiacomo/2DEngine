@@ -7,23 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameObject {
+    private static int ID_COUNTER = 0;
+    private int uid = -1;
 
     private String name;
     private List<Component> components;
     public Transform transform;
     private int zIndex;
-
-    /**
-     * Create new Game Object with given name
-     *
-     * @param name Game Object name
-     */
-    public GameObject(String name) {
-        this.name = name;
-        this.zIndex = 0;
-        this.components = new ArrayList<>();
-        this.transform = new Transform();
-    }
 
     /**
      * Create new Game Object with given name and transform
@@ -37,6 +27,8 @@ public class GameObject {
         this.zIndex = zIndex;
         this.components = new ArrayList<>();
         this.transform = transform;
+
+        this.uid = ID_COUNTER++;
     }
 
     /**
@@ -83,6 +75,7 @@ public class GameObject {
      * @param c component to add
      */
     public void addComponent(Component c) {
+        c.generateID();
         this.components.add(c);
         c.gameObject = this;
     }
@@ -118,5 +111,29 @@ public class GameObject {
         for(Component c : components) {
             c.imgui();
         }
+    }
+
+    /**
+     * Get unique ID
+     * @return
+     */
+    public int getUid() {
+        return uid;
+    }
+
+    /**
+     *
+     * @param maxID
+     */
+    public static void init(int maxID) {
+        ID_COUNTER = maxID;
+    }
+
+    /**
+     * Get components
+     * @return
+     */
+    public List<Component> getComponents() {
+        return components;
     }
 }
