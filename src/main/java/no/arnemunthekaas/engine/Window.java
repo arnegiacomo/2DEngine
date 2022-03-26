@@ -3,6 +3,7 @@ package no.arnemunthekaas.engine;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.imgui.ImGuiLayer;
+import no.arnemunthekaas.engine.renderer.DebugDraw;
 import no.arnemunthekaas.engine.scenes.LevelEditorScene;
 import no.arnemunthekaas.engine.scenes.LevelScene;
 import no.arnemunthekaas.engine.scenes.Scene;
@@ -204,11 +205,15 @@ public class Window {
             // Poll events
             glfwPollEvents();
 
+            DebugDraw.beginFrame();
+
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            if(dt >= 0)
+            if(dt >= 0) {
+                DebugDraw.draw();
                 currentScene.update(dt);
+            }
 
             this.imGuiLayer.update(dt, currentScene);
             glfwSwapBuffers(glfwWindow);
