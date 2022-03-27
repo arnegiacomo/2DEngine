@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
+import no.arnemunthekaas.engine.utils.GameConstants;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
@@ -29,8 +30,10 @@ public class MouseControls extends Component{
     @Override
     public void update(float dt) {
         if(holdingObject != null) {
-            holdingObject.transform.position.x = MouseListener.getOrthoX() - 24; // TODO CENTER ON MOUSE!
-            holdingObject.transform.position.y = MouseListener.getOrthoY() - 24;
+            holdingObject.transform.position.x = MouseListener.getOrthoX();
+            holdingObject.transform.position.y = MouseListener.getOrthoY();
+            holdingObject.transform.position.x = (int) (holdingObject.transform.position.x / GameConstants.GRID_WIDTH) * GameConstants.GRID_WIDTH;
+            holdingObject.transform.position.y = (int) (holdingObject.transform.position.y / GameConstants.GRID_HEIGHT) * GameConstants.GRID_HEIGHT;
 
             if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 place();

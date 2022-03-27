@@ -1,90 +1,7 @@
 [
   {
-    "uid": 0,
-    "name": "Obj1",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 0.0,
-            "z": 0.0,
-            "w": 0.5
-          },
-          "sprite": {
-            "width": 0.0,
-            "height": 0.0,
-            "texCoords": [
-              {
-                "x": 1.0,
-                "y": 1.0
-              },
-              {
-                "x": 1.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 0
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Rigidbody",
-        "properties": {
-          "colliderType": 0,
-          "friction": 0.8,
-          "velocity": {
-            "x": 0.0,
-            "y": 0.5,
-            "z": 0.0
-          },
-          "clickMe": false,
-          "uid": 1
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.FontRenderer",
-        "properties": {
-          "uid": 3
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.FontRenderer",
-        "properties": {
-          "uid": 4
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.FontRenderer",
-        "properties": {
-          "uid": 5
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 100.0,
-        "y": 200.0
-      },
-      "scale": {
-        "x": 200.0,
-        "y": 200.0
-      }
-    },
-    "zIndex": 1
-  },
-  {
     "uid": 1,
-    "name": "Obj2",
+    "name": "Sprite_Object_Gen",
     "components": [
       {
         "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
@@ -106,19 +23,19 @@
             },
             "texCoords": [
               {
-                "x": 0.5294118,
+                "x": 0.05882353,
                 "y": 1.0
               },
               {
-                "x": 0.5294118,
+                "x": 0.05882353,
                 "y": 0.9166667
               },
               {
-                "x": 0.47058824,
+                "x": 0.0,
                 "y": 0.9166667
               },
               {
-                "x": 0.47058824,
+                "x": 0.0,
                 "y": 1.0
               }
             ]
@@ -129,12 +46,126 @@
     ],
     "transform": {
       "position": {
-        "x": 200.0,
-        "y": 200.0
+        "x": 1008.0,
+        "y": 648.0
       },
       "scale": {
-        "x": 200.0,
-        "y": 200.0
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 2,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "ID": 2,
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.47058824,
+                "y": 1.0
+              },
+              {
+                "x": 0.47058824,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.4117647,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.4117647,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 5
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 984.0,
+        "y": 648.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 3,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "ID": 2,
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.1764706,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.1764706,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.11764706,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.11764706,
+                "y": 0.9166667
+              }
+            ]
+          },
+          "uid": 8
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 696.0,
+        "y": 648.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
       }
     },
     "zIndex": 0

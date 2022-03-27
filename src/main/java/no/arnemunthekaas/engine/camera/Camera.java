@@ -8,6 +8,7 @@ public class Camera {
 
     private Matrix4f projectionMat, viewMat, inverseProjectionMat, inverseViewMat;
     public Vector2f position;
+    private Vector2f projectionSize = new Vector2f(32.0f * 40.0f, 32.0f * 21.0f);
 
     /**
      * Create a Camera object
@@ -28,7 +29,7 @@ public class Camera {
      */
     public void adjustProjection() {
         projectionMat.identity();
-        projectionMat.ortho(0.0f, 32.0f * 40.0f, 0.0f, 32.0f * 21.0f, 0.0f, 100.0f);
+        projectionMat.ortho(0.0f, projectionSize.x, 0.0f, projectionSize.y, 0.0f, 100.0f);
         projectionMat.invert(inverseProjectionMat);
         viewMat.invert(inverseViewMat);
     }
@@ -49,7 +50,7 @@ public class Camera {
     }
 
     /**
-     * Returns the projection matrix
+     * Get the projection matrix
      * @return Matrix4f for projection
      */
     public Matrix4f getProjectionMat() {
@@ -70,5 +71,13 @@ public class Camera {
      */
     public Matrix4f getInverseViewMat() {
         return inverseViewMat;
+    }
+
+    /**
+     * Get projection size
+     * @return projection size
+     */
+    public Vector2f getProjectionSize() {
+        return projectionSize;
     }
 }
