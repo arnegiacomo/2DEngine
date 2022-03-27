@@ -63,12 +63,18 @@ public class LevelEditorScene extends Scene {
 
     }
 
+    float x = 0.0f;
+    float y = 0.0f;
 
     @Override
     public void update(float dt) {
 
         // System.out.println("Fps: " + 1.0f / dt);
         levelEditorComponents.update(dt);
+
+        DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0,1,0), 1);
+        x += 50f *dt;
+        y += 50f*dt;
 
         gameObjects.forEach(c -> c.update(dt));
 

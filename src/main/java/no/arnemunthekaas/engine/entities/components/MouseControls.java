@@ -35,6 +35,8 @@ public class MouseControls extends Component{
             holdingObject.transform.position.x = (int) (holdingObject.transform.position.x / GameConstants.GRID_WIDTH) * GameConstants.GRID_WIDTH;
             holdingObject.transform.position.y = (int) (holdingObject.transform.position.y / GameConstants.GRID_HEIGHT) * GameConstants.GRID_HEIGHT;
 
+            holdingObject.transform.position.x -= holdingObject.transform.position.x <= 23 ? 24 : 0; // TODO : WHY??
+
             if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 place();
             }
