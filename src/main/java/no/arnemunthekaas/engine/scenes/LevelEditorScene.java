@@ -6,14 +6,11 @@ import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.prefabs.Prefabs;
-import no.arnemunthekaas.engine.renderer.DebugDraw;
-import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
 import no.arnemunthekaas.engine.utils.GameConstants;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+
 
 public class LevelEditorScene extends Scene {
 
@@ -35,7 +32,8 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
 
         if(levelLoaded) {
-            this.activeGameObject = gameObjects.get(0);
+            if(gameObjects.size() > 0)
+                this.activeGameObject = gameObjects.get(0);
             return;
         }
 
@@ -61,6 +59,15 @@ public class LevelEditorScene extends Scene {
 
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
+
+        for(GameObject go : gameObjects) {
+            if(go.getComponent(SpriteRenderer.class) != null) {
+                SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
+                if (spr.getTexture() != null) {
+                    spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
+                }
+            }
+        }
 
     }
 

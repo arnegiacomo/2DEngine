@@ -17,25 +17,24 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.29411766,
+                "x": 0.23529412,
                 "y": 1.0
               },
               {
-                "x": 0.29411766,
-                "y": 0.9166667
-              },
-              {
                 "x": 0.23529412,
                 "y": 0.9166667
               },
               {
-                "x": 0.23529412,
+                "x": 0.1764706,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.1764706,
                 "y": 1.0
               }
             ]
@@ -46,8 +45,8 @@
     ],
     "transform": {
       "position": {
-        "x": 240.0,
-        "y": 456.0
+        "x": 360.0,
+        "y": 576.0
       },
       "scale": {
         "x": 24.0,
@@ -74,25 +73,24 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.47058824,
+                "x": 0.1764706,
                 "y": 1.0
               },
               {
-                "x": 0.47058824,
+                "x": 0.1764706,
                 "y": 0.9166667
               },
               {
-                "x": 0.4117647,
+                "x": 0.11764706,
                 "y": 0.9166667
               },
               {
-                "x": 0.4117647,
+                "x": 0.11764706,
                 "y": 1.0
               }
             ]
@@ -103,8 +101,8 @@
     ],
     "transform": {
       "position": {
-        "x": 312.0,
-        "y": 456.0
+        "x": 384.0,
+        "y": 576.0
       },
       "scale": {
         "x": 24.0,
@@ -131,25 +129,24 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.64705884,
+                "x": 0.7058824,
                 "y": 1.0
               },
               {
+                "x": 0.7058824,
+                "y": 0.9166667
+              },
+              {
                 "x": 0.64705884,
                 "y": 0.9166667
               },
               {
-                "x": 0.5882353,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.5882353,
+                "x": 0.64705884,
                 "y": 1.0
               }
             ]
@@ -160,8 +157,8 @@
     ],
     "transform": {
       "position": {
-        "x": 288.0,
-        "y": 456.0
+        "x": 408.0,
+        "y": 552.0
       },
       "scale": {
         "x": 24.0,
@@ -188,25 +185,24 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.7058824,
+                "x": 0.29411766,
                 "y": 1.0
               },
               {
-                "x": 0.7058824,
+                "x": 0.29411766,
                 "y": 0.9166667
               },
               {
-                "x": 0.64705884,
+                "x": 0.23529412,
                 "y": 0.9166667
               },
               {
-                "x": 0.64705884,
+                "x": 0.23529412,
                 "y": 1.0
               }
             ]
@@ -217,8 +213,8 @@
     ],
     "transform": {
       "position": {
-        "x": 264.0,
-        "y": 456.0
+        "x": 336.0,
+        "y": 552.0
       },
       "scale": {
         "x": 24.0,
@@ -245,26 +241,25 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 1.0,
-                "y": 1.0
-              },
-              {
-                "x": 1.0,
+                "x": 0.5294118,
                 "y": 0.9166667
               },
               {
-                "x": 0.9411765,
-                "y": 0.9166667
+                "x": 0.5294118,
+                "y": 0.8333333
               },
               {
-                "x": 0.9411765,
-                "y": 1.0
+                "x": 0.47058824,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.47058824,
+                "y": 0.9166667
               }
             ]
           },
@@ -274,8 +269,8 @@
     ],
     "transform": {
       "position": {
-        "x": 264.0,
-        "y": 480.0
+        "x": 360.0,
+        "y": 552.0
       },
       "scale": {
         "x": 24.0,
@@ -302,37 +297,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.5294118,
+                "x": 1.0,
                 "y": 1.0
               },
               {
-                "x": 0.5294118,
+                "x": 1.0,
                 "y": 0.9166667
               },
               {
-                "x": 0.47058824,
+                "x": 0.9411765,
                 "y": 0.9166667
               },
               {
-                "x": 0.47058824,
+                "x": 0.9411765,
                 "y": 1.0
               }
             ]
           },
-          "uid": 9
+          "uid": 7
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 312.0,
-        "y": 312.0
+        "x": 384.0,
+        "y": 552.0
       },
       "scale": {
         "x": 24.0,
@@ -359,37 +353,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.4117647,
+                "x": 0.7647059,
                 "y": 1.0
               },
               {
-                "x": 0.4117647,
+                "x": 0.7647059,
                 "y": 0.9166667
               },
               {
-                "x": 0.3529412,
+                "x": 0.7058824,
                 "y": 0.9166667
               },
               {
-                "x": 0.3529412,
+                "x": 0.7058824,
                 "y": 1.0
               }
             ]
           },
-          "uid": 10
+          "uid": 8
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 456.0,
-        "y": 312.0
+        "x": 360.0,
+        "y": 528.0
       },
       "scale": {
         "x": 24.0,
@@ -416,37 +409,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.5882353,
+                "x": 1.0,
                 "y": 1.0
               },
               {
-                "x": 0.5882353,
+                "x": 1.0,
                 "y": 0.9166667
               },
               {
-                "x": 0.5294118,
+                "x": 0.9411765,
                 "y": 0.9166667
               },
               {
-                "x": 0.5294118,
+                "x": 0.9411765,
                 "y": 1.0
               }
             ]
           },
-          "uid": 11
+          "uid": 9
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 432.0,
-        "y": 312.0
+        "x": 408.0,
+        "y": 576.0
       },
       "scale": {
         "x": 24.0,
@@ -473,37 +465,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.5882353,
-                "y": 1.0
-              },
-              {
-                "x": 0.5882353,
+                "x": 1.0,
                 "y": 0.9166667
               },
               {
-                "x": 0.5294118,
-                "y": 0.9166667
+                "x": 1.0,
+                "y": 0.8333333
               },
               {
-                "x": 0.5294118,
-                "y": 1.0
+                "x": 0.9411765,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.9166667
               }
             ]
           },
-          "uid": 14
+          "uid": 10
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 408.0,
-        "y": 288.0
+        "x": 384.0,
+        "y": 528.0
       },
       "scale": {
         "x": 24.0,
@@ -530,37 +521,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.5294118,
-                "y": 1.0
-              },
-              {
-                "x": 0.5294118,
-                "y": 0.9166667
+                "x": 0.47058824,
+                "y": 0.6666667
               },
               {
                 "x": 0.47058824,
-                "y": 0.9166667
+                "y": 0.5833333
               },
               {
-                "x": 0.47058824,
-                "y": 1.0
+                "x": 0.4117647,
+                "y": 0.5833333
+              },
+              {
+                "x": 0.4117647,
+                "y": 0.6666667
               }
             ]
           },
-          "uid": 15
+          "uid": 11
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 288.0,
-        "y": 456.0
+        "x": 408.0,
+        "y": 528.0
       },
       "scale": {
         "x": 24.0,
@@ -587,37 +577,36 @@
             "height": 24.0,
             "texture": {
               "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
               "width": 408,
               "height": 288
             },
             "texCoords": [
               {
-                "x": 0.5294118,
-                "y": 0.8333333
+                "x": 0.4117647,
+                "y": 1.0
               },
               {
-                "x": 0.5294118,
-                "y": 0.75
+                "x": 0.4117647,
+                "y": 0.9166667
               },
               {
-                "x": 0.47058824,
-                "y": 0.75
+                "x": 0.3529412,
+                "y": 0.9166667
               },
               {
-                "x": 0.47058824,
-                "y": 0.8333333
+                "x": 0.3529412,
+                "y": 1.0
               }
             ]
           },
-          "uid": 16
+          "uid": 14
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 336.0,
-        "y": 456.0
+        "x": 168.0,
+        "y": 528.0
       },
       "scale": {
         "x": 24.0,
@@ -643,38 +632,37 @@
             "width": 24.0,
             "height": 24.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
             },
             "texCoords": [
               {
-                "x": 0.68085104,
-                "y": 0.9594595
+                "x": 0.1764706,
+                "y": 0.75
               },
               {
-                "x": 0.68085104,
-                "y": 0.9189189
+                "x": 0.1764706,
+                "y": 0.6666667
               },
               {
-                "x": 0.63829786,
-                "y": 0.9189189
+                "x": 0.11764706,
+                "y": 0.6666667
               },
               {
-                "x": 0.63829786,
-                "y": 0.9594595
+                "x": 0.11764706,
+                "y": 0.75
               }
             ]
           },
-          "uid": 19
+          "uid": 15
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 360.0,
-        "y": 456.0
+        "x": 240.0,
+        "y": 552.0
       },
       "scale": {
         "x": 24.0,
@@ -700,38 +688,37 @@
             "width": 24.0,
             "height": 24.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
             },
             "texCoords": [
               {
-                "x": 0.38297874,
-                "y": 0.8783784
+                "x": 0.11764706,
+                "y": 0.6666667
               },
               {
-                "x": 0.38297874,
-                "y": 0.8378378
+                "x": 0.11764706,
+                "y": 0.5833333
               },
               {
-                "x": 0.34042552,
-                "y": 0.8378378
+                "x": 0.05882353,
+                "y": 0.5833333
               },
               {
-                "x": 0.34042552,
-                "y": 0.8783784
+                "x": 0.05882353,
+                "y": 0.6666667
               }
             ]
           },
-          "uid": 20
+          "uid": 16
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 360.0,
-        "y": 456.0
+        "x": 216.0,
+        "y": 528.0
       },
       "scale": {
         "x": 24.0,
@@ -757,38 +744,37 @@
             "width": 24.0,
             "height": 24.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
             },
             "texCoords": [
               {
-                "x": 0.12765957,
-                "y": 0.9189189
+                "x": 1.0,
+                "y": 1.0
               },
               {
-                "x": 0.12765957,
-                "y": 0.8783784
+                "x": 1.0,
+                "y": 0.9166667
               },
               {
-                "x": 0.08510638,
-                "y": 0.8783784
+                "x": 0.9411765,
+                "y": 0.9166667
               },
               {
-                "x": 0.08510638,
-                "y": 0.9189189
+                "x": 0.9411765,
+                "y": 1.0
               }
             ]
           },
-          "uid": 21
+          "uid": 19
         }
       }
     ],
     "transform": {
       "position": {
-        "x": 360.0,
-        "y": 456.0
+        "x": 408.0,
+        "y": 504.0
       },
       "scale": {
         "x": 24.0,
@@ -814,27 +800,26 @@
             "width": 24.0,
             "height": 24.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
             },
             "texCoords": [
               {
-                "x": 0.89361703,
-                "y": 0.7162162
+                "x": 0.4117647,
+                "y": 0.9166667
               },
               {
-                "x": 0.89361703,
-                "y": 0.6756757
+                "x": 0.4117647,
+                "y": 0.8333333
               },
               {
-                "x": 0.85106385,
-                "y": 0.6756757
+                "x": 0.3529412,
+                "y": 0.8333333
               },
               {
-                "x": 0.85106385,
-                "y": 0.7162162
+                "x": 0.3529412,
+                "y": 0.9166667
               }
             ]
           },
@@ -844,582 +829,12 @@
     ],
     "transform": {
       "position": {
-        "x": 240.0,
-        "y": 456.0
+        "x": 960.0,
+        "y": 624.0
       },
       "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 16,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.85106385,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.85106385,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.80851066,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.80851066,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 23
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 264.0,
-        "y": 480.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 17,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.68085104,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.68085104,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.63829786,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.63829786,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 24
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 264.0,
-        "y": 504.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 18,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.85106385,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.85106385,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.80851066,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.80851066,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 25
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 192.0,
-        "y": 456.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 19,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.9361702,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.9361702,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.89361703,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.89361703,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 26
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 240.0,
-        "y": 408.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 20,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.9361702,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.9361702,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.89361703,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.89361703,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 27
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 216.0,
-        "y": 408.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 21,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.89361703,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.89361703,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.85106385,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.85106385,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 28
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 168.0,
-        "y": 408.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 22,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_fx_trans.png",
-              "ID": 2,
-              "width": 564,
-              "height": 592
-            },
-            "texCoords": [
-              {
-                "x": 0.9787234,
-                "y": 0.7162162
-              },
-              {
-                "x": 0.9787234,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.9361702,
-                "y": 0.6756757
-              },
-              {
-                "x": 0.9361702,
-                "y": 0.7162162
-              }
-            ]
-          },
-          "uid": 29
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 216.0,
-        "y": 336.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 23,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.5294118,
-                "y": 1.0
-              },
-              {
-                "x": 0.5294118,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.47058824,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.47058824,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 32
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 408.0,
-        "y": 456.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 24,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.05882353,
-                "y": 1.0
-              },
-              {
-                "x": 0.05882353,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 33
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 432.0,
-        "y": 456.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
-      }
-    },
-    "zIndex": 0
-  },
-  {
-    "uid": 25,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "ID": 2,
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.3529412,
-                "y": 1.0
-              },
-              {
-                "x": 0.3529412,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.29411766,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.29411766,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 34
-        }
-      }
-    ],
-    "transform": {
-      "position": {
-        "x": 456.0,
-        "y": 456.0
-      },
-      "scale": {
-        "x": 24.0,
-        "y": 24.0
+        "x": 48.0,
+        "y": 48.0
       }
     },
     "zIndex": 0

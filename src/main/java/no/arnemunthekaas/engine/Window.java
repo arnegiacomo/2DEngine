@@ -196,7 +196,7 @@ public class Window {
         this.imGuiLayer = new ImGuiLayer(glfwWindow);
         this.imGuiLayer.initImGui();
 
-        //this.framebuffer = new Framebuffer(2560, 1440); // TODO SCREEN SIZE
+        this.framebuffer = new Framebuffer(2560, 1440); // TODO SCREEN SIZE
 
         Window.changeScene(0);
     }
@@ -220,7 +220,7 @@ public class Window {
                 DebugDraw.draw();
                 currentScene.update(dt);
             }
-            //this.framebuffer.unBind();
+            this.framebuffer.unBind();
 
             this.imGuiLayer.update(dt, currentScene);
             glfwSwapBuffers(glfwWindow);

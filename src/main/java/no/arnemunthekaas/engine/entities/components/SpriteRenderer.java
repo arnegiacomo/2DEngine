@@ -96,5 +96,12 @@ public class SpriteRenderer extends Component {
         this.isDirty = false;
     }
 
+    /**
+     * Set texture
+     * @param tex
+     */
+    public void setTexture(Texture tex) {
+        this.sprite.setTexture(tex);
+    }
 
 }
