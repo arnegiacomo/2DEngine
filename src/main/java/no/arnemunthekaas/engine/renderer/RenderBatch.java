@@ -181,14 +181,14 @@ public class RenderBatch implements Comparable<RenderBatch>{
         Vector2f[] texCoords = sprite.getTextureCoordinates();
 
         int texID = 0;
-        if(sprite.getTexture()!= null)
+        if (sprite.getTexture() != null) {
             for (int i = 0; i < textures.size(); i++) {
-                if(textures.get(i) == sprite.getTexture()) {
+                if (textures.get(i).equals(sprite.getTexture())) {
                     texID = i + 1;
                     break;
                 }
             }
-
+        }
         // Add vertices with the appropriate properties
         float xAdd = 1.0f;
         float yAdd = 1.0f;

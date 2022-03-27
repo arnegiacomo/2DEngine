@@ -7,6 +7,7 @@ import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.prefabs.Prefabs;
 import no.arnemunthekaas.engine.renderer.DebugDraw;
+import no.arnemunthekaas.engine.renderer.Texture;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
 import no.arnemunthekaas.engine.utils.GameConstants;
@@ -45,13 +46,13 @@ public class LevelEditorScene extends Scene {
 //        obj1.addComponent(new Rigidbody());
 //        this.addGameObject(obj1);
 //
-//        GameObject obj2 = new GameObject("Obj2", new Transform(new Vector2f(200, 200), new Vector2f(200,200)), 0);
-//        SpriteRenderer spr2 = new SpriteRenderer();
-//        spr2.setSprite(sprites.getSprite(8));
-//        obj2.addComponent(spr2);
+//        GameObject obj2 = new GameObject("Obj1", new Transform(new Vector2f(100, 100), new Vector2f(800,800)), 1);
+//        SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
+//        Sprite obj2Sprite = new Sprite();
+//        obj2Sprite.setTexture(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png"));
+//        obj2SpriteRenderer.setSprite(obj2Sprite);
+//        obj2.addComponent(obj2SpriteRenderer);
 //        this.addGameObject(obj2);
-
-
 
     }
 
@@ -63,8 +64,6 @@ public class LevelEditorScene extends Scene {
 
     }
 
-    float x = 0.0f;
-    float y = 0.0f;
 
     @Override
     public void update(float dt) {
@@ -72,9 +71,6 @@ public class LevelEditorScene extends Scene {
         // System.out.println("Fps: " + 1.0f / dt);
         levelEditorComponents.update(dt);
 
-        DebugDraw.addCircle(new Vector2f(x, y), 64, new Vector3f(0,1,0), 1);
-        x += 50f *dt;
-        y += 50f*dt;
 
         gameObjects.forEach(c -> c.update(dt));
 
