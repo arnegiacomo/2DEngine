@@ -1,6 +1,9 @@
 package no.arnemunthekaas.engine.eventlisteners;
 
 import no.arnemunthekaas.engine.Window;
+import no.arnemunthekaas.engine.camera.Camera;
+import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -15,6 +18,9 @@ public class MouseListener {
     double xPos, yPos, lastY, lastX;
     private boolean mouseButtonPressed[] = new boolean[GLFW_MOUSE_BUTTON_LAST+1]; // <- how many mouse buttons program supports. See https://www.glfw.org/docs/3.3/group__buttons.html
     private boolean isDragging;
+
+    private Vector2f gameViewportPos = new Vector2f();
+    private Vector2f gameViewportSize = new Vector2f();
 
     private MouseListener() {
         this.scrollX = 0.0;
@@ -109,32 +115,6 @@ public class MouseListener {
     }
 
     /**
-     * Get mouse pos in world coords
-     * @return
-     */
-    public static float getOrthoX() {
-        float currentX = getX();
-        currentX = (currentX / (float) Window.getWidth()) * 2.0f - 1.0f;
-        Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
-        tmp.mul(Window.getScene().getCamera().getInverseProjectionMat()).mul(Window.getScene().getCamera().getInverseViewMat());
-        currentX = tmp.x;
-        return currentX;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static float getOrthoY() {
-        float currentY = Window.getHeight() - getY();
-        currentY = (currentY / (float) Window.getHeight()) * 2.0f - 1.0f;
-        Vector4f tmp = new Vector4f(0, currentY, 0, 1);
-        tmp.mul(Window.getScene().getCamera().getInverseProjectionMat()).mul(Window.getScene().getCamera().getInverseViewMat());
-        currentY = tmp.y;
-        return currentY;
-    }
-
-    /**
      * Get MouseListener change in x-position
      *
      * @return dX
@@ -180,6 +160,22 @@ public class MouseListener {
     }
 
     /**
+     * Set game viewport position
+     * @param gameViewportPos
+     */
+    public static void setGameViewportPos(Vector2f gameViewportPos) {
+        get().gameViewportPos.set(gameViewportPos);
+    }
+
+    /**
+     * Set game viewport size
+     * @param gameViewportSize
+     */
+    public static void setGameViewportSize(Vector2f gameViewportSize) {
+        get().gameViewportSize.set(gameViewportSize);
+    }
+
+    /**
      * Checks if a bytton is pressed
      *
      * @param button Button to check if pressed
@@ -187,6 +183,42 @@ public class MouseListener {
      */
     public static boolean mouseButtonDown(int button) {
         return get().mouseButtonPressed[button]; // Could check for IndexOutOfBoundsException, but won't for possible debugging scenarios
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static float getOrthoX() {
+        float currentX = getX() - get().gameViewportPos.x;
+        currentX = (currentX / get().gameViewportSize.x) * 2.0f - 1.0f;
+        Vector4f tmp = new Vector4f(currentX, 0, 0, 1);
+
+        Camera camera = Window.getScene().getCamera();
+        Matrix4f viewProjection = new Matrix4f();
+        camera.getInverseViewMat().mul(camera.getInverseProjectionMat(), viewProjection);
+        tmp.mul(viewProjection);
+        currentX = tmp.x;
+
+        return currentX;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static float getOrthoY() {
+        float currentY = getY() - get().gameViewportPos.y;
+        currentY = -((currentY / get().gameViewportSize.y) * 2.0f - 1.0f);
+        Vector4f tmp = new Vector4f(0, currentY, 0, 1);
+
+        Camera camera = Window.getScene().getCamera();
+        Matrix4f viewProjection = new Matrix4f();
+        camera.getInverseViewMat().mul(camera.getInverseProjectionMat(), viewProjection);
+        tmp.mul(viewProjection);
+        currentY = tmp.y;
+
+        return currentY;
     }
 
 }
