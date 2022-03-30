@@ -838,5 +838,61 @@
       }
     },
     "zIndex": 0
+  },
+  {
+    "uid": 16,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.3529412,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.3529412,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.29411766,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.29411766,
+                "y": 0.9166667
+              }
+            ]
+          },
+          "uid": 25
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 1008.0,
+        "y": 648.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
   }
 ]

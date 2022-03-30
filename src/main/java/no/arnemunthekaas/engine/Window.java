@@ -8,6 +8,7 @@ import no.arnemunthekaas.engine.renderer.Framebuffer;
 import no.arnemunthekaas.engine.scenes.LevelEditorScene;
 import no.arnemunthekaas.engine.scenes.LevelScene;
 import no.arnemunthekaas.engine.scenes.Scene;
+import no.arnemunthekaas.engine.utils.GameConstants;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -124,6 +125,22 @@ public class Window {
     }
 
     /**
+     * Returns the windows framebuffer object
+     * @return framebuffer
+     */
+    public static Framebuffer getFramebuffer() {
+        return get().framebuffer;
+    }
+
+    /**
+     * Returns target aspect ratio specified in GameConstants
+     * @return
+     */
+    public static float getTargetAspectRatio() {
+        return GameConstants.ASPECT_RATIO;
+    }
+
+    /**
      * Runs the LWJGL window
      */
     public void run() {
@@ -197,6 +214,7 @@ public class Window {
         this.imGuiLayer.initImGui();
 
         this.framebuffer = new Framebuffer(2560, 1440); // TODO SCREEN SIZE
+        glViewport(0,0, 2560, 1440);
 
         Window.changeScene(0);
     }
@@ -212,10 +230,12 @@ public class Window {
 
             DebugDraw.beginFrame();
 
+            this.framebuffer.bind();
+
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            //this.framebuffer.bind();
+
             if(dt >= 0) {
                 DebugDraw.draw();
                 currentScene.update(dt);
