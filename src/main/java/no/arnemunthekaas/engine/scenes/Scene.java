@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Scene {
 
@@ -24,7 +25,6 @@ public abstract class Scene {
     protected Camera camera;
     private boolean running = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
-    protected GameObject activeGameObject;
     protected boolean levelLoaded;
 
     public Scene() {
@@ -79,25 +79,22 @@ public abstract class Scene {
     }
 
     /**
+     * Finds and returns a game object in scene from its UID
+     * @param UID UID of object to be found
+     * @return Object if found, else null
+     */
+    public GameObject getGameObject(int UID) {
+        Optional<GameObject> result = gameObjects.stream().filter(g -> g.getUid() == UID).findFirst();
+        return result.orElse(null);
+    }
+
+    /**
      * Get Scene Camera
      *
      * @return Camera
      */
     public Camera getCamera() {
         return camera;
-    }
-
-    /**
-     *
-     */
-    public void sceneImgui() {
-        if(activeGameObject != null) {
-            ImGui.begin("Inspector");
-            activeGameObject.imgui();
-            ImGui.end();
-        }
-
-        imgui();
     }
 
     /**

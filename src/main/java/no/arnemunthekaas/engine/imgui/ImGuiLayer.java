@@ -7,8 +7,11 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.type.ImBoolean;
 import no.arnemunthekaas.engine.Window;
+import no.arnemunthekaas.engine.editor.GameViewWindow;
+import no.arnemunthekaas.engine.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.engine.scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -23,8 +26,13 @@ public class ImGuiLayer {
     // LWJGL3 renderer (SHOULD be initialized)
     private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
 
-    public ImGuiLayer(long glfwWindow) {
+    private GameViewWindow gameViewWindow;
+    private PropertiesWindow propertiesWindow;
+
+    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
         this.glfwWindow = glfwWindow;
+        this.gameViewWindow = new GameViewWindow();
+        this.propertiesWindow = new PropertiesWindow(pickingTexture);
     }
 
     // Initialize Dear ImGui.
@@ -124,7 +132,7 @@ public class ImGuiLayer {
                 ImGui.setWindowFocus(null);
             }
 
-            if (!io.getWantCaptureMouse() || GameViewWindow.getWantCaptureMouse()) {
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
         });
@@ -184,10 +192,12 @@ public class ImGuiLayer {
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         ImGui.newFrame();
         setupDockspace();
-        currentScene.sceneImgui();
+        currentScene.imgui();
+        propertiesWindow.update(dt, currentScene);
+        propertiesWindow.imgui();
 
         ImGui.showDemoWindow();
-        GameViewWindow.imgui();
+        gameViewWindow.imgui();
         ImGui.end();
         ImGui.render();
 

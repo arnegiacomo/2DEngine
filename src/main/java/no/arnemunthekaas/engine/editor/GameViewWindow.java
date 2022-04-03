@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.imgui;
+package no.arnemunthekaas.engine.editor;
 
 import imgui.ImGui;
 import imgui.ImVec2;
@@ -9,13 +9,13 @@ import org.joml.Vector2f;
 
 public class GameViewWindow {
 
-    private static float leftX, rightX, topY, bottomY;
+    private float leftX, rightX, topY, bottomY;
 
 
     /**
      *
      */
-    public static void imgui() {
+    public void imgui() {
         ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
 
         ImVec2 windowSize = getLargestSizeForViewport();
@@ -46,7 +46,7 @@ public class GameViewWindow {
      * Gets the centered position for the game viewport
      * @return ImVec2 center pos
      */
-    private static ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
+    private ImVec2 getCenteredPositionForViewport(ImVec2 aspectSize) {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
         windowSize.x -= ImGui.getScrollX();
@@ -62,7 +62,7 @@ public class GameViewWindow {
      * Gets the largest size for the game viewport, enables pillbox inf needed
      * @return ImVec2 largest size
      */
-    private static ImVec2 getLargestSizeForViewport() {
+    private ImVec2 getLargestSizeForViewport() {
         ImVec2 windowSize = new ImVec2();
         ImGui.getContentRegionAvail(windowSize);
         windowSize.x -= ImGui.getScrollX();
@@ -86,7 +86,7 @@ public class GameViewWindow {
      *
      * @return
      */
-    public static boolean getWantCaptureMouse() {
+    public boolean getWantCaptureMouse() {
         return MouseListener.getX() >= leftX && MouseListener.getX() <= rightX &&
                 MouseListener.getY() >= bottomY && MouseListener.getY() <= topY;
     }

@@ -31,12 +31,6 @@ public class LevelEditorScene extends Scene {
         this.camera = new Camera(new Vector2f(-250, 0));
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
 
-        if(levelLoaded) {
-            if(gameObjects.size() > 0)
-                this.activeGameObject = gameObjects.get(0);
-            return;
-        }
-
 //        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 1);
 //        SpriteRenderer spr1 = new SpriteRenderer();
 //        spr1.setColor(new Vector4f(1,0,0,0.5f));
