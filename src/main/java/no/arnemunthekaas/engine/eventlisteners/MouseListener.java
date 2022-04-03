@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.eventlisteners;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.utils.GameConstants;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -221,4 +222,26 @@ public class MouseListener {
         return currentY;
     }
 
+    /**
+     * Returns mouse x-position on screen (viewport)
+     * @return
+     */
+    public static float getScreenX() {
+        float currentX = getX() - get().gameViewportPos.x;
+        currentX = (currentX / get().gameViewportSize.x) * (float) GameConstants.SCREEN_WIDTH;
+
+
+        return currentX;
+    }
+
+    /**
+     * Returns mouse y-position on screen (viewport)
+     * @return
+     */
+    public static float getScreenY() {
+        float currentY = getY() - get().gameViewportPos.y;
+        currentY =  (float) GameConstants.SCREEN_HEIGHT -((currentY / get().gameViewportSize.y) * (float) GameConstants.SCREEN_HEIGHT);
+
+        return currentY;
+    }
 }

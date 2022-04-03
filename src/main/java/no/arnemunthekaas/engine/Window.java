@@ -3,11 +3,11 @@ package no.arnemunthekaas.engine;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.imgui.ImGuiLayer;
-import no.arnemunthekaas.engine.renderer.DebugDraw;
-import no.arnemunthekaas.engine.renderer.Framebuffer;
+import no.arnemunthekaas.engine.renderer.*;
 import no.arnemunthekaas.engine.scenes.LevelEditorScene;
 import no.arnemunthekaas.engine.scenes.LevelScene;
 import no.arnemunthekaas.engine.scenes.Scene;
+import no.arnemunthekaas.engine.utils.AssetPool;
 import no.arnemunthekaas.engine.utils.GameConstants;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -29,6 +29,7 @@ public class Window {
     private long glfwWindow;
     private ImGuiLayer imGuiLayer;
     private Framebuffer framebuffer;
+    private PickingTexture pickingTexture;
 
     public float r;
     public float g;
@@ -40,7 +41,7 @@ public class Window {
     private static Scene currentScene;
 
     private Window() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.width = 1920;
         this.height = 1080;
         this.title = "Window";
@@ -213,8 +214,9 @@ public class Window {
         this.imGuiLayer = new ImGuiLayer(glfwWindow);
         this.imGuiLayer.initImGui();
 
-        this.framebuffer = new Framebuffer(2560, 1440); // TODO SCREEN SIZE
-        glViewport(0,0, 2560, 1440);
+        this.framebuffer = new Framebuffer(GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
+        this.pickingTexture = new PickingTexture(GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
+        glViewport(0,0, GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
 
         Window.changeScene(0);
     }
@@ -223,11 +225,35 @@ public class Window {
         float beginTime = (float) glfwGetTime();
         float endTime;
         float dt = - 1.0f;
+        Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+        Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
         while (!glfwWindowShouldClose(glfwWindow)) {
             // Poll events
             glfwPollEvents();
 
+            // Render pass 1. Render picking texture
+            glDisable(GL_BLEND);
+            pickingTexture.enableWriting();
+
+            glViewport(0, 0, GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            Renderer.bindShader(pickingShader);
+            currentScene.render();
+
+            if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+                int x = (int) MouseListener.getScreenX();
+                int y = (int) MouseListener.getScreenY();
+                System.out.println(pickingTexture.readPixel(x, y));
+            }
+
+            pickingTexture.disableWriting();
+
+            glEnable(GL_BLEND);
+
+            // Render pass 2. Render game
             DebugDraw.beginFrame();
 
             this.framebuffer.bind();
@@ -238,7 +264,9 @@ public class Window {
 
             if(dt >= 0) {
                 DebugDraw.draw();
+                Renderer.bindShader(defaultShader);
                 currentScene.update(dt);
+                currentScene.render();
             }
             this.framebuffer.unBind();
 

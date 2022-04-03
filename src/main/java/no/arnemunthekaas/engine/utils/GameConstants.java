@@ -11,4 +11,6 @@ public class GameConstants {
 
     // Outside of game
     public static final float ASPECT_RATIO = 16.0f / 9.0f;
+    public static final int SCREEN_WIDTH = 2560;
+    public static final int SCREEN_HEIGHT = 1440;
 }

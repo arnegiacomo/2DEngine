@@ -38,6 +38,10 @@ public abstract class Scene {
      */
     public abstract void update(float dt);
 
+    /**
+     * Render scene in game loop
+     */
+    public abstract void render();
 
     /**
      *

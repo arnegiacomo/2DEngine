@@ -11,6 +11,7 @@ public class Renderer {
 
     private List<RenderBatch> batches;
     private final int MAX_BATCH_SIZE = 1000; // Amount of sprites that can be added to a batch
+    private static Shader currentShader;
 
     /**
      * Creates new Renderer
@@ -54,9 +55,26 @@ public class Renderer {
     }
 
     /**
+     * Bind a shader
+     * @param shader shader to bind
+     */
+    public static void bindShader(Shader shader) {
+        currentShader = shader;
+    }
+
+    /**
+     * Returns current bound shader
+     * @return
+     */
+    public static Shader getBoundShader() {
+        return currentShader;
+    }
+
+    /**
      * Renders all batches
      */
     public void render() {
+        currentShader.use();
         for(RenderBatch batch : batches) {
             batch.render();
         }
