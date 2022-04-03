@@ -3199,9 +3199,9 @@
         "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
         "properties": {
           "color": {
-            "x": 0.7970424,
-            "y": 0.9858156,
-            "z": 0.0,
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
             "w": 1.0
           },
           "sprite": {
@@ -3799,6 +3799,174 @@
       "position": {
         "x": 528.0,
         "y": 552.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 69,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.64705884,
+                "y": 1.0
+              },
+              {
+                "x": 0.64705884,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.5882353,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.5882353,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 131
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 936.0,
+        "y": 744.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 70,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.3529412,
+                "y": 1.0
+              },
+              {
+                "x": 0.3529412,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.29411766,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.29411766,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 135
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 672.0,
+        "y": 4272.0
+      },
+      "scale": {
+        "x": 24.0,
+        "y": 24.0
+      }
+    },
+    "zIndex": 0
+  },
+  {
+    "uid": 71,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.47058824,
+                "y": 1.0
+              },
+              {
+                "x": 0.47058824,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.4117647,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.4117647,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 139
+        }
+      }
+    ],
+    "transform": {
+      "position": {
+        "x": 936.0,
+        "y": -3672.0
       },
       "scale": {
         "x": 24.0,

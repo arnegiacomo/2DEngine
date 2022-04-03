@@ -24,11 +24,14 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        this.camera = new Camera(new Vector2f(-250, 0));
+
         levelEditorComponents.addComponent(new MouseControls());
         levelEditorComponents.addComponent(new GridLines());
+        levelEditorComponents.addComponent(new EditorCamera(this.camera));
 
         loadResources();
-        this.camera = new Camera(new Vector2f(-250, 0));
+
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
 
 //        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 1);
@@ -71,6 +74,8 @@ public class LevelEditorScene extends Scene {
 
         // System.out.println("Fps: " + 1.0f / dt);
         levelEditorComponents.update(dt);
+
+        this.camera.adjustProjection();
 
 
         gameObjects.forEach(c -> c.update(dt));
