@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
+import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
@@ -24,15 +25,19 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+
+        loadResources();
+        sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        Spritesheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
+
         this.camera = new Camera(new Vector2f(-250, 0));
 
         levelEditorComponents.addComponent(new MouseControls());
         levelEditorComponents.addComponent(new GridLines());
         levelEditorComponents.addComponent(new EditorCamera(this.camera));
+        levelEditorComponents.addComponent(new TranslateGizmo(gizmos.getSprite(1), Window.getImGuiLayer().getPropertiesWindow()));
 
-        loadResources();
-
-        sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        levelEditorComponents.start();
 
 //        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 1);
 //        SpriteRenderer spr1 = new SpriteRenderer();
@@ -53,9 +58,14 @@ public class LevelEditorScene extends Scene {
 
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
+        AssetPool.getShader("assets/shaders/pickingShader.glsl");
+        AssetPool.getShader("assets/shaders/debugLine2D.glsl");
 
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
+
+        AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,2,0));
+
 
         for(GameObject go : gameObjects) {
             if(go.getComponent(SpriteRenderer.class) != null) {
@@ -89,6 +99,10 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void imgui() {
+        ImGui.begin("Level Editor Components");
+        levelEditorComponents.imgui();
+        ImGui.end();
+
         ImGui.begin("Test window");
 
         ImVec2 windowPos = new ImVec2();

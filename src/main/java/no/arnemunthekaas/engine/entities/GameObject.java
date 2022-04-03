@@ -14,6 +14,7 @@ public class GameObject {
     private List<Component> components;
     public Transform transform;
     private int zIndex;
+    private boolean doSerialization = true;
 
     /**
      * Create new Game Object with given name and transform
@@ -135,5 +136,20 @@ public class GameObject {
      */
     public List<Component> getComponents() {
         return components;
+    }
+
+    /**
+     * Disable serialization for this game object. Default = true
+     */
+    public void setNoSerialization() {
+        this.doSerialization = false;
+    }
+
+    /**
+     * Returns if game object is serialized or not
+     * @return
+     */
+    public boolean doSerialization() {
+        return doSerialization;
     }
 }

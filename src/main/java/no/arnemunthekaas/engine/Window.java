@@ -278,4 +278,11 @@ public class Window {
 
     }
 
+    /**
+     *
+     * @return
+     */
+    public static ImGuiLayer getImGuiLayer() {
+        return get().imGuiLayer;
+    }
 }
