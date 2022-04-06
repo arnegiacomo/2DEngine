@@ -159,6 +159,9 @@ public class Window {
         glfwSetErrorCallback(null).free();
     }
 
+    /**
+     * Initializes game
+     */
     private void init() {
         // Setup an error callback
         GLFWErrorCallback.createPrint(System.err).set();
@@ -223,6 +226,9 @@ public class Window {
         Window.changeScene(0);
     }
 
+    /**
+     * Core game loop
+     */
     private void loop() {
         float beginTime = (float) glfwGetTime();
         float endTime;

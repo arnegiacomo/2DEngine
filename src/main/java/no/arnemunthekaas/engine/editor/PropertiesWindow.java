@@ -2,6 +2,7 @@ package no.arnemunthekaas.engine.editor;
 
 import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.components.UnPickable;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.engine.scenes.Scene;
@@ -35,8 +36,12 @@ public class PropertiesWindow {
             int x = (int) MouseListener.getScreenX();
             int y = (int) MouseListener.getScreenY();
             int gameObjectID = pickingTexture.readPixel(x, y);
-            activeGameObject = currentScene.getGameObject(gameObjectID);
+            GameObject go = currentScene.getGameObject(gameObjectID);
 
+            if( go != null && go.getComponent(UnPickable.class) == null)
+                activeGameObject = go;
+            else if( go == null && !MouseListener.isDragging())
+                activeGameObject = null;
             this.debounce = 0.2f;
         }
     }

@@ -6,6 +6,9 @@ import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
+import no.arnemunthekaas.engine.entities.components.gizmos.ScaleGizmo;
+import no.arnemunthekaas.engine.entities.components.gizmos.TranslateGizmo;
 import no.arnemunthekaas.engine.prefabs.Prefabs;
 import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
@@ -35,7 +38,8 @@ public class LevelEditorScene extends Scene {
         levelEditorComponents.addComponent(new MouseControls());
         levelEditorComponents.addComponent(new GridLines());
         levelEditorComponents.addComponent(new EditorCamera(this.camera));
-        levelEditorComponents.addComponent(new TranslateGizmo(gizmos.getSprite(1), Window.getImGuiLayer().getPropertiesWindow()));
+
+        levelEditorComponents.addComponent(new GizmoSystem(gizmos));
 
         levelEditorComponents.start();
 
@@ -64,7 +68,7 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
 
-        AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,2,0));
+        AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,3,0));
 
 
         for(GameObject go : gameObjects) {
