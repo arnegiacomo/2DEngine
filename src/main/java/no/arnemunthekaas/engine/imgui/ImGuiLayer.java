@@ -197,7 +197,7 @@ public class ImGuiLayer {
         propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
 
-        ImGui.showDemoWindow();
+//        ImGui.showDemoWindow();
         gameViewWindow.imgui();
         ImGui.end();
         ImGui.render();

@@ -35,7 +35,7 @@ public class Renderer {
         boolean added = false;
 
         for (RenderBatch batch: batches) {
-            if(batch.hasSpace() && batch.zIndex() == spr.gameObject.zIndex()) {
+            if(batch.hasSpace() && batch.zIndex() == spr.gameObject.transform.zIndex) {
                 Texture tex = spr.getTexture();
                 if(tex == null || (batch.containsTexture(tex) || batch.hasTextureSpace())) {
                     batch.addSprite(spr);
@@ -46,7 +46,7 @@ public class Renderer {
         }
 
         if(!added) {
-            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, spr.gameObject.zIndex());
+            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, spr.gameObject.transform.zIndex);
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(spr);

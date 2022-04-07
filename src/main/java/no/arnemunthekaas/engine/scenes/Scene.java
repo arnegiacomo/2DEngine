@@ -6,6 +6,7 @@ import imgui.ImGui;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
+import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
 import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
 import no.arnemunthekaas.engine.imgui.ImGuiLayer;
@@ -103,6 +104,18 @@ public abstract class Scene {
      */
     public void imgui() {
 
+    }
+
+    /**
+     * Create a new gameObject
+     * @param name
+     * @return
+     */
+    public GameObject createGameObject(String name) {
+        GameObject go = new GameObject(name);
+        go.addComponent(new Transform());
+        go.transform = go.getComponent(Transform.class);
+        return go;
     }
 
     /**

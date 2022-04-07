@@ -1,7 +1,8 @@
 package no.arnemunthekaas.engine.entities;
 
+import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.components.Component;
-import no.arnemunthekaas.engine.renderer.Transform;
+import no.arnemunthekaas.engine.entities.components.Transform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +13,12 @@ public class GameObject {
 
     private String name;
     private List<Component> components;
-    public Transform transform;
-    private int zIndex;
+    public transient Transform transform;
     private boolean doSerialization = true;
 
-    /**
-     * Create new Game Object with given name and transform
-     *
-     * @param name Game Object name
-     * @param transform Game Object Transform
-     * @param zIndex Z-index of object ( what layer it is rendered on)
-     */
-    public GameObject(String name, Transform transform, int zIndex) {
+    public GameObject(String name) {
         this.name = name;
-        this.zIndex = zIndex;
         this.components = new ArrayList<>();
-        this.transform = transform;
 
         this.uid = ID_COUNTER++;
     }
@@ -100,19 +91,12 @@ public class GameObject {
     }
 
     /**
-     * Get Z-index of game object (default = 0)
-     * @return Z-Index
-     */
-    public int zIndex() {
-        return zIndex;
-    }
-
-    /**
      *
      */
     public void imgui() {
         for(Component c : components) {
-            c.imgui();
+            if(ImGui.collapsingHeader(c.getClass().getSimpleName()))
+                c.imgui();
         }
     }
 

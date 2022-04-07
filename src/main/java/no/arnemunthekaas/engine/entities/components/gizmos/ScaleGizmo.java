@@ -7,7 +7,7 @@ import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 public class ScaleGizmo extends Gizmo {
 
     /**
-     * 
+     *
      * @param scaleSprite
      * @param propertiesWindow
      */

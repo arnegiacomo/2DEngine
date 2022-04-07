@@ -2,15 +2,11 @@ package no.arnemunthekaas.engine.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
-import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.camera.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
-import no.arnemunthekaas.engine.entities.components.gizmos.ScaleGizmo;
-import no.arnemunthekaas.engine.entities.components.gizmos.TranslateGizmo;
 import no.arnemunthekaas.engine.prefabs.Prefabs;
-import no.arnemunthekaas.engine.renderer.Transform;
 import no.arnemunthekaas.engine.utils.AssetPool;
 import no.arnemunthekaas.engine.utils.GameConstants;
 import org.joml.Vector2f;
@@ -20,7 +16,7 @@ public class LevelEditorScene extends Scene {
 
     private Spritesheet sprites;
 
-    GameObject levelEditorComponents = new GameObject("Level editor", new Transform(), 0);
+    GameObject levelEditorComponents = this.createGameObject("Level editor");
 
     public LevelEditorScene() {
 

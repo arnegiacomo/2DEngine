@@ -1,8 +1,8 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import imgui.ImGui;
+import no.arnemunthekaas.engine.imgui.ImGuiUtils;
 import no.arnemunthekaas.engine.renderer.Texture;
-import no.arnemunthekaas.engine.renderer.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -29,11 +29,9 @@ public class SpriteRenderer extends Component {
 
     @Override
     public void imgui() {
-        float[] imguiColor = {color.x, color.y, color.z, color.w};
-        if (ImGui.colorPicker4("Color Picker: ", imguiColor)) {
-            this.color.set(imguiColor[0], imguiColor[1], imguiColor[2], imguiColor[3]);
+        if (ImGuiUtils.colorPicker4("Color Picker", this.color))
             this.isDirty = true;
-        }
+
     }
 
     /**

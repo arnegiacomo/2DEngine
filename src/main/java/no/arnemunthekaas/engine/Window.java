@@ -18,6 +18,7 @@ import java.awt.*;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
@@ -181,6 +182,9 @@ public class Window {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+        // Antialiasing
+//        glfwWindowHint(GLFW_SAMPLES, 4);
+
         // Create the window
         glfwWindow = glfwCreateWindow(this.width, this.height, this.title, NULL, NULL);
         if (glfwWindow == NULL)
@@ -211,8 +215,12 @@ public class Window {
         // bindings available for use.
         GL.createCapabilities();
 
+        // Transparency and blending
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+        // Antialiasing
+//        glEnable(GL_MULTISAMPLE);
 
 
 
