@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.camera;
+package no.arnemunthekaas.engine;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;

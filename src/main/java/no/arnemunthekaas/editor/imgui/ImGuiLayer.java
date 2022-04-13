@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.imgui;
+package no.arnemunthekaas.editor.imgui;
 
 import imgui.*;
 import imgui.callback.ImStrConsumer;
@@ -7,12 +7,12 @@ import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.type.ImBoolean;
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.editor.GameViewWindow;
-import no.arnemunthekaas.engine.editor.PropertiesWindow;
+import no.arnemunthekaas.editor.GameViewWindow;
+import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
-import no.arnemunthekaas.engine.scenes.Scene;
+import no.arnemunthekaas.scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
 

@@ -1,15 +1,13 @@
-package no.arnemunthekaas.engine.scenes;
+package no.arnemunthekaas.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import imgui.ImGui;
-import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
 import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
-import no.arnemunthekaas.engine.imgui.ImGuiLayer;
 import no.arnemunthekaas.engine.renderer.Renderer;
 
 import java.io.FileWriter;

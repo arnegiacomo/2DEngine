@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.imgui;
+package no.arnemunthekaas.editor.imgui;
 
 import imgui.ImGui;
 import imgui.flag.ImGuiCol;

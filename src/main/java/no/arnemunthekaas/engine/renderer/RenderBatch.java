@@ -2,7 +2,6 @@ package no.arnemunthekaas.engine.renderer;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
-import no.arnemunthekaas.engine.utils.AssetPool;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;

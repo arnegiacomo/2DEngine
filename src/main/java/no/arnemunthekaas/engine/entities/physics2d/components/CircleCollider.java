@@ -1,8 +1,6 @@
-package no.arnemunthekaas.physics2d.components;
+package no.arnemunthekaas.engine.entities.physics2d.components;
 
-import no.arnemunthekaas.engine.entities.components.Component;
-
-public class CircleCollider extends Component {
+public class CircleCollider extends Collider {
     private float radius = 1.0f;
 
     /**

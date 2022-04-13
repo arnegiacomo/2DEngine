@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.utils;
+package no.arnemunthekaas.utils;
 
 /**
  * Static constants for game

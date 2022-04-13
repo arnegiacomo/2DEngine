@@ -1,11 +1,9 @@
-package no.arnemunthekaas.engine.prefabs;
+package no.arnemunthekaas.engine.entities;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Sprite;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
-import no.arnemunthekaas.engine.entities.components.Transform;
-import org.joml.Vector2f;
 
 public class Prefabs {
 

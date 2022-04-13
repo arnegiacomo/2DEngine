@@ -7,8 +7,8 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 637.27,
-            "y": 448.658
+            "x": 508.97858,
+            "y": 391.50992
           },
           "scale": {
             "x": 152.0,
@@ -69,7 +69,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 441.05957,
+            "x": 659.73834,
             "y": 455.96826
           },
           "scale": {
@@ -118,6 +118,22 @@
             ]
           },
           "uid": 22
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 414
         }
       }
     ],
@@ -255,7 +271,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 528.95386,
+            "x": 636.83624,
             "y": 487.91522
           },
           "scale": {
@@ -305,6 +321,20 @@
           },
           "uid": 46
         }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Rigidbody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "clickMe": false,
+          "uid": 375
+        }
       }
     ],
     "doSerialization": true
@@ -317,15 +347,15 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 12.544,
-            "y": 392.997
+            "x": 360.77933,
+            "y": 131.11314
           },
           "scale": {
-            "x": 145.276,
+            "x": 133.876,
             "y": 125.565
           },
-          "rotation": 7.8,
-          "zIndex": 934,
+          "rotation": 16.9,
+          "zIndex": 959,
           "uid": 65
         }
       },
@@ -441,14 +471,14 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 0.0,
+            "x": 442.21716,
             "y": 375.00195
           },
           "scale": {
             "x": 162.27814,
             "y": 165.52057
           },
-          "rotation": -41.9,
+          "rotation": -47.0,
           "zIndex": 423,
           "uid": 105
         }
@@ -552,6 +582,38 @@
             ]
           },
           "uid": 126
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Rigidbody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "clickMe": true,
+          "uid": 394
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 395
         }
       }
     ],
@@ -676,6 +738,49 @@
             ]
           },
           "uid": 130
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Rigidbody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "clickMe": true,
+          "uid": 371
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 372
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.CircleCollider",
+        "properties": {
+          "radius": -1.0,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 373
         }
       }
     ],
@@ -1371,14 +1476,14 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 456.0,
+            "x": 396.71335,
             "y": 360.0
           },
           "scale": {
             "x": 343.0,
             "y": 236.0
           },
-          "rotation": 83.0,
+          "rotation": 170.3,
           "zIndex": 0,
           "uid": 351
         }
@@ -1420,6 +1525,20 @@
             ]
           },
           "uid": 352
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Rigidbody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "clickMe": true,
+          "uid": 374
         }
       }
     ],

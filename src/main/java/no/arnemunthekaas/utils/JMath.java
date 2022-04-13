@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.utils;
+package no.arnemunthekaas.utils;
 
 import org.joml.Vector2f;
 

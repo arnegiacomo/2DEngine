@@ -1,11 +1,14 @@
-package no.arnemunthekaas.engine.editor;
+package no.arnemunthekaas.editor;
 
 import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.UnPickable;
+import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
+import no.arnemunthekaas.engine.entities.physics2d.components.CircleCollider;
+import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
-import no.arnemunthekaas.engine.scenes.Scene;
+import no.arnemunthekaas.scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
@@ -52,6 +55,31 @@ public class PropertiesWindow {
     public void imgui() {
         if(activeGameObject != null) {
             ImGui.begin("Properties");
+
+            if (ImGui.beginPopupContextWindow("ComponentAdder")) {
+                if(ImGui.menuItem("Add Rigidbody")) {
+                    if (activeGameObject.getComponent(Rigidbody2D.class) == null) {
+                        activeGameObject.addComponent(new Rigidbody2D());
+                    }
+                }
+
+                if (ImGui.menuItem("Add Box collider")) {
+                    if (activeGameObject.getComponent(Box2DCollider.class) == null &&
+                            activeGameObject.getComponent(CircleCollider.class)  == null) {
+                        activeGameObject.addComponent(new Box2DCollider());
+                    }
+                }
+
+                if (ImGui.menuItem("Add Circle collider")) {
+                    if (activeGameObject.getComponent(CircleCollider.class) == null &&
+                            activeGameObject.getComponent(Box2DCollider.class) == null) {
+                        activeGameObject.addComponent(new CircleCollider());
+                    }
+                }
+
+                ImGui.endPopup();
+            }
+
             activeGameObject.imgui();
             ImGui.end();
         }

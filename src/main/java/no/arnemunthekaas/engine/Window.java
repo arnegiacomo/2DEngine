@@ -2,23 +2,20 @@ package no.arnemunthekaas.engine;
 
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
-import no.arnemunthekaas.engine.imgui.ImGuiLayer;
+import no.arnemunthekaas.editor.imgui.ImGuiLayer;
 import no.arnemunthekaas.engine.renderer.*;
-import no.arnemunthekaas.engine.scenes.LevelEditorScene;
-import no.arnemunthekaas.engine.scenes.LevelScene;
-import no.arnemunthekaas.engine.scenes.Scene;
-import no.arnemunthekaas.engine.utils.AssetPool;
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.scenes.LevelEditorScene;
+import no.arnemunthekaas.scenes.LevelScene;
+import no.arnemunthekaas.scenes.Scene;
+import no.arnemunthekaas.utils.AssetPool;
+import no.arnemunthekaas.utils.GameConstants;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
-import java.awt.*;
-
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**

@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.scenes;
+package no.arnemunthekaas.scenes;
 
 import no.arnemunthekaas.engine.Window;
 

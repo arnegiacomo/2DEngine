@@ -1,7 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
-import imgui.ImGui;
-import no.arnemunthekaas.engine.imgui.ImGuiUtils;
+import no.arnemunthekaas.editor.imgui.ImGuiUtils;
 import no.arnemunthekaas.engine.renderer.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;

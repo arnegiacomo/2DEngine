@@ -1,6 +1,6 @@
 package no.arnemunthekaas.engine.entities.components.gizmos;
 
-import no.arnemunthekaas.engine.editor.PropertiesWindow;
+import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.entities.components.Sprite;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 

@@ -1,8 +1,8 @@
 package no.arnemunthekaas.engine.renderer;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.utils.AssetPool;
-import no.arnemunthekaas.engine.utils.JMath;
+import no.arnemunthekaas.utils.AssetPool;
+import no.arnemunthekaas.utils.JMath;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 

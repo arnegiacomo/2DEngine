@@ -1,15 +1,15 @@
 package no.arnemunthekaas.engine.entities.components.gizmos;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.editor.PropertiesWindow;
+import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.entities.components.Sprite;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.entities.components.UnPickable;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
-import no.arnemunthekaas.engine.prefabs.Prefabs;
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.engine.entities.Prefabs;
+import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 

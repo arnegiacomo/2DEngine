@@ -1,7 +1,7 @@
 package no.arnemunthekaas.engine.entities.components;
 
-import no.arnemunthekaas.engine.imgui.ImGuiUtils;
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.editor.imgui.ImGuiUtils;
+import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 
 public class Transform extends Component{

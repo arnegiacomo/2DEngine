@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.editor;
+package no.arnemunthekaas.editor;
 
 import imgui.ImGui;
 import imgui.ImVec2;

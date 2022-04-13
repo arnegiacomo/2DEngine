@@ -1,6 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.utils.GameConstants;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;

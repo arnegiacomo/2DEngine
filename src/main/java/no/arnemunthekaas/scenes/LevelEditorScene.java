@@ -1,14 +1,14 @@
-package no.arnemunthekaas.engine.scenes;
+package no.arnemunthekaas.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
-import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
-import no.arnemunthekaas.engine.prefabs.Prefabs;
-import no.arnemunthekaas.engine.utils.AssetPool;
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.engine.entities.Prefabs;
+import no.arnemunthekaas.utils.AssetPool;
+import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 
 

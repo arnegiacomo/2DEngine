@@ -1,9 +1,9 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.camera.Camera;
+import no.arnemunthekaas.engine.Camera;
 import no.arnemunthekaas.engine.renderer.DebugDraw;
-import no.arnemunthekaas.engine.utils.GameConstants;
+import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 

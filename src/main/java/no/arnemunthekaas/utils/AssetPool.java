@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.utils;
+package no.arnemunthekaas.utils;
 
 import no.arnemunthekaas.engine.entities.components.Spritesheet;
 import no.arnemunthekaas.engine.renderer.Shader;
