@@ -5,18 +5,40 @@ import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.observers.events.Event;
+import no.arnemunthekaas.observers.events.EventSystem;
+import no.arnemunthekaas.observers.events.EventType;
 import org.joml.Vector2f;
 
 public class GameViewWindow {
 
     private float leftX, rightX, topY, bottomY;
+    private boolean running;
 
 
     /**
      *
      */
     public void imgui() {
-        ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse);
+        ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse |
+                ImGuiWindowFlags.MenuBar);
+
+
+        ImGui.beginMenuBar();
+
+        if(ImGui.menuItem("Play", "", running, !running)) {
+            running = true;
+            EventSystem.notify(null, new Event(EventType.GameEnginePlay));
+        }
+
+        if(ImGui.menuItem("Stop", "", !running, running)) {
+            running = false;
+            EventSystem.notify(null, new Event(EventType.GameEngineStop));
+        }
+
+        ImGui.endMenuBar();
+
+
 
         ImVec2 windowSize = getLargestSizeForViewport();
         ImVec2 windowPos = getCenteredPositionForViewport(windowSize);

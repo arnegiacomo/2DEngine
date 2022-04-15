@@ -2,7 +2,6 @@ package no.arnemunthekaas.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
-import no.arnemunthekaas.engine.Camera;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
@@ -12,62 +11,46 @@ import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 
 
-public class LevelEditorScene extends Scene {
+public class LevelEditorSceneInitializer extends SceneInitializer {
 
     private Spritesheet sprites;
+    private GameObject levelEditorComponents;
 
-    GameObject levelEditorComponents = this.createGameObject("Level editor");
-
-    public LevelEditorScene() {
-
+    public LevelEditorSceneInitializer() {
     }
 
     @Override
-    public void init() {
-
-        loadResources();
+    public void init(Scene scene) {
         sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
         Spritesheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
 
-        this.camera = new Camera(new Vector2f(-250, 0));
+        levelEditorComponents = scene.createGameObject("LevelEditor");
+        levelEditorComponents.setNoSerialization();
 
         levelEditorComponents.addComponent(new MouseControls());
         levelEditorComponents.addComponent(new GridLines());
-        levelEditorComponents.addComponent(new EditorCamera(this.camera));
-
+        levelEditorComponents.addComponent(new EditorCamera(scene.getCamera()));
         levelEditorComponents.addComponent(new GizmoSystem(gizmos));
 
-        levelEditorComponents.start();
-
-//        GameObject obj1 = new GameObject("Obj1", new Transform(new Vector2f(100, 200), new Vector2f(200,200)), 1);
-//        SpriteRenderer spr1 = new SpriteRenderer();
-//        spr1.setColor(new Vector4f(1,0,0,0.5f));
-//        obj1.addComponent(spr1);
-//        obj1.addComponent(new Rigidbody());
-//        this.addGameObject(obj1);
-//
-//        GameObject obj2 = new GameObject("Obj1", new Transform(new Vector2f(100, 100), new Vector2f(800,800)), 1);
-//        SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
-//        Sprite obj2Sprite = new Sprite();
-//        obj2Sprite.setTexture(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png"));
-//        obj2SpriteRenderer.setSprite(obj2Sprite);
-//        obj2.addComponent(obj2SpriteRenderer);
-//        this.addGameObject(obj2);
-
+        scene.addGameObject(levelEditorComponents);
     }
 
-    private void loadResources() {
+    @Override
+    public void loadResources(Scene scene) {
+
+        // Load shaders
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/pickingShader.glsl");
         AssetPool.getShader("assets/shaders/debugLine2D.glsl");
 
+        // Load Sprites
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
 
         AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,3,0));
 
 
-        for(GameObject go : gameObjects) {
+        for(GameObject go : scene.getGameObjects()) {
             if(go.getComponent(SpriteRenderer.class) != null) {
                 SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
                 if (spr.getTexture() != null) {
@@ -76,25 +59,6 @@ public class LevelEditorScene extends Scene {
             }
         }
 
-    }
-
-
-    @Override
-    public void update(float dt) {
-
-        // System.out.println("Fps: " + 1.0f / dt);
-        levelEditorComponents.update(dt);
-
-        this.camera.adjustProjection();
-
-
-        gameObjects.forEach(c -> c.update(dt));
-
-    }
-
-    @Override
-    public void render() {
-        this.renderer.render();
     }
 
     @Override

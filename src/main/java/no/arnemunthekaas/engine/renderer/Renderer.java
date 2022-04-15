@@ -80,4 +80,15 @@ public class Renderer {
         }
     }
 
+    /**
+     * Destroys game object
+     * @param go
+     */
+    public void destroyGameObject(GameObject go) {
+        if(go.getComponent(SpriteRenderer.class) == null) return;
+        for (RenderBatch batch : batches) {
+            if(batch.destroyIfExists(go))
+                return;
+        }
+    }
 }

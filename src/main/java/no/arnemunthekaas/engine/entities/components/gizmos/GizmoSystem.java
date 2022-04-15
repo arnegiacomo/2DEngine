@@ -30,7 +30,7 @@ public class GizmoSystem extends Component {
     private float updateCooldown = 0;
 
     @Override
-    public void update(float dt) {
+    public void editorUpdate(float dt) {
         if(usingGizmo == 0) {
 
             gameObject.getComponent(TranslateGizmo.class).setNotUsing();

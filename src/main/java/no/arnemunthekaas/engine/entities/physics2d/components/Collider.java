@@ -4,7 +4,7 @@ import no.arnemunthekaas.engine.entities.components.Component;
 import org.joml.Vector2f;
 
 public abstract class Collider extends Component {
-    private Vector2f offset = new Vector2f();
+    protected Vector2f offset = new Vector2f();
 
     /**
      *

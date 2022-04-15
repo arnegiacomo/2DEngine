@@ -1,8 +1,8 @@
 package no.arnemunthekaas.observers.events;
 
 public enum EventType {
-    GameEngineStartPlay,
-    GameEngineStopPlay,
+    GameEnginePlay,
+    GameEngineStop,
     SaveLevel,
     LoadLevel,
     UserEvent

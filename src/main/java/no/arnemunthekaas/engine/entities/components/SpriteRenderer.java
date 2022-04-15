@@ -27,6 +27,14 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
+    public void editorUpdate(float dt) {
+        if(!this.lastTransform.equals(this.gameObject.transform)) {
+            this.gameObject.transform.copy(this.lastTransform);
+            isDirty = true;
+        }
+    }
+
+    @Override
     public void imgui() {
         if (ImGuiUtils.colorPicker4("Color Picker", this.color))
             this.isDirty = true;
@@ -101,4 +109,10 @@ public class SpriteRenderer extends Component {
         this.sprite.setTexture(tex);
     }
 
+    /**
+     * Sets dirty flag to true
+     */
+    public void setDirty() {
+        this.isDirty = true;
+    }
 }

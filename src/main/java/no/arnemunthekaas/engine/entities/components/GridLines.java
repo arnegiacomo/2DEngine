@@ -1,7 +1,7 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.Camera;
+import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.renderer.DebugDraw;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
@@ -11,7 +11,7 @@ public class GridLines extends Component{
 
     // TODO: Fix camera pan zoom and top right corner new lines
     @Override
-    public void update(float dt) {
+    public void editorUpdate(float dt) {
         Camera camera = Window.getScene().getCamera();
         Vector2f cameraPos = camera.position;
         Vector2f projectionSize = camera.getProjectionSize();

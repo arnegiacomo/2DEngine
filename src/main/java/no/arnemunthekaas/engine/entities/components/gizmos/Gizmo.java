@@ -70,6 +70,12 @@ public abstract class Gizmo extends Component {
 
     @Override
     public void update(float dt) {
+        if (using)
+            this.setInActive();
+    }
+
+    @Override
+    public void editorUpdate(float dt) {
         if(!using) return;
 
         this.activeGameObject = this.propertiesWindow.getActiveGameObject();

@@ -27,6 +27,13 @@ public abstract class Component {
     }
 
     /**
+     *
+     * @param dt
+     */
+    public void editorUpdate(float dt) {
+    }
+
+    /**
      * Start component
      */
     public void start() {
@@ -113,4 +120,12 @@ public abstract class Component {
     public static void init(int maxID) {
         ID_COUNTER = maxID;
     }
+
+    /**
+     *
+     */
+    public void destroy() {
+    }
+
+
 }

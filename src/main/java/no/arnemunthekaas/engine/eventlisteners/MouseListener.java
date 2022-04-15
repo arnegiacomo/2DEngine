@@ -1,7 +1,7 @@
 package no.arnemunthekaas.engine.eventlisteners;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.Camera;
+import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;

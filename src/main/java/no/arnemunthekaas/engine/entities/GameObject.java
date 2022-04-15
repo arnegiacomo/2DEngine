@@ -15,6 +15,7 @@ public class GameObject {
     private List<Component> components;
     public transient Transform transform;
     private boolean doSerialization = true;
+    private boolean dead;
 
     public GameObject(String name) {
         this.name = name;
@@ -82,12 +83,36 @@ public class GameObject {
     }
 
     /**
+     *
+     * @param dt
+     */
+    public void editorUpdate(float dt) {
+        components.forEach(c -> c.editorUpdate(dt));
+    }
+    /**
      * Start all components
      */
     public void start() {
         for (int i=0; i < components.size(); i++) {
             components.get(i).start();
         }
+    }
+
+    /**
+     * Destroy game object and all its components
+     */
+    public void destroy() {
+        this.dead = true;
+        for(int i = 0; i < components.size(); i++)
+            components.get(i).destroy();
+
+    }
+
+    /**
+     * Check if game object is set to be destroyed (dead)
+     */
+    public boolean isDead(){
+        return this.dead;
     }
 
     /**
@@ -138,4 +163,7 @@ public class GameObject {
     public boolean doSerialization() {
         return doSerialization;
     }
+
+
+
 }

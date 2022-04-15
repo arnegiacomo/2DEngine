@@ -2,13 +2,15 @@ package no.arnemunthekaas.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import no.arnemunthekaas.engine.Camera;
+import no.arnemunthekaas.engine.entities.physics2d.Physics2D;
+import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
 import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
 import no.arnemunthekaas.engine.renderer.Renderer;
+import org.joml.Vector2f;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,35 +21,31 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public abstract class Scene {
+public class Scene {
 
-    protected Renderer renderer = new Renderer();
-    protected Camera camera;
-    private boolean running = false;
-    protected List<GameObject> gameObjects = new ArrayList<>();
-    protected boolean levelLoaded;
+    private Renderer renderer;
+    private Camera camera;
+    private boolean running;
+    private List<GameObject> gameObjects;
+    private Physics2D physics2D;
 
-    public Scene() {
+    private SceneInitializer sceneInitializer;
 
+    public Scene(SceneInitializer sceneInitializer) {
+        this.sceneInitializer = sceneInitializer;
+        this.physics2D = new Physics2D();
+        this.renderer = new Renderer();
+        this.gameObjects = new ArrayList<>();
+        this.running = false;
     }
-
-    /**
-     * Update the scene in game loop using delta time
-     *
-     * @param dt delta time
-     */
-    public abstract void update(float dt);
-
-    /**
-     * Render scene in game loop
-     */
-    public abstract void render();
 
     /**
      *
      */
     public void init() {
-
+        this.camera = new Camera(new Vector2f(-250, 0));
+        this.sceneInitializer.loadResources(this);
+        this.sceneInitializer.init(this);
     }
 
     /**
@@ -55,13 +53,80 @@ public abstract class Scene {
      * Starts all Game Objects and their components.
      */
     public void start() {
-        for(GameObject go : gameObjects) {
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
             go.start();
-            renderer.add(go);
+            this.renderer.add(go);
+            this.physics2D.add(go);
         }
-        running = true;
+        this.running = true;
     }
 
+    /**
+     * Destroy all objects currently in scene
+     */
+    public void destroy() {
+        for (GameObject go : gameObjects)
+            go.destroy();
+    }
+
+    /**
+     * Update the scene in game loop using delta time
+     *
+     * Adjusts scene's camera's projection matrix and updates all game objects in scene and
+     * destroys dead game objects
+     *
+     * @param dt delta time
+     */
+    public void update(float dt) {
+        this.camera.adjustProjection();
+        this.physics2D.update(dt);
+
+        for (int i = 0; i < gameObjects.size(); i++) {
+
+            GameObject go = gameObjects.get(i);
+            go.update(dt);
+
+            if(go.isDead()) {
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                i--;
+            }
+
+
+        }
+    }
+
+    /**
+     *
+     * @param dt
+     */
+    public void editorUpdate(float dt) {
+        this.camera.adjustProjection();
+
+        for (int i = 0; i < gameObjects.size(); i++) {
+
+            GameObject go = gameObjects.get(i);
+            go.editorUpdate(dt);
+
+            if(go.isDead()) {
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                i--;
+            }
+
+
+        }
+    }
+
+    /**
+     * Render scene in game loop
+     */
+    public void render() {
+        this.renderer.render();
+    }
 
     /**
      * Add Game Object to scene
@@ -70,12 +135,21 @@ public abstract class Scene {
      */
     public void addGameObject(GameObject go) {
         if(!running)
-            gameObjects.add(go);
+            this.gameObjects.add(go);
         else {
-            gameObjects.add(go);
+            this.gameObjects.add(go);
             go.start();
-            renderer.add(go);
+            this.renderer.add(go);
+            this.physics2D.add(go);
         }
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<GameObject> getGameObjects() {
+        return this.gameObjects;
     }
 
     /**
@@ -101,7 +175,7 @@ public abstract class Scene {
      *
      */
     public void imgui() {
-
+        this.sceneInitializer.imgui();
     }
 
     /**
@@ -119,7 +193,7 @@ public abstract class Scene {
     /**
      *
      */
-    public void saveExit() {
+    public void save() {
         Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentDeserializer()).registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).create();
 
         try {
@@ -169,7 +243,6 @@ public abstract class Scene {
             maxComponentId++;
             GameObject.init(maxGameObjectID);
             Component.init(maxComponentId);
-            this.levelLoaded = true;
 
         }
     }

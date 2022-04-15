@@ -28,7 +28,7 @@ public class Physics2D {
      */
     public void add(GameObject go) {
         Rigidbody2D rb = go.getComponent(Rigidbody2D.class);
-        if(rb != null && rb.getRawBody() != null) {
+        if(rb != null && rb.getRawBody() == null) {
             Transform transform = go.transform;
 
             BodyDef bodyDef = new BodyDef();
@@ -72,6 +72,20 @@ public class Physics2D {
 
     /**
      *
+     * @param go
+     */
+    public void destroyGameObject(GameObject go) {
+        Rigidbody2D rb = go.getComponent(Rigidbody2D.class);
+        if (rb != null) {
+            if (rb.getRawBody() != null) {
+                world.destroyBody(rb.getRawBody());
+                rb.setRawBody(null);
+            }
+        }
+    }
+
+    /**
+     *
      * @param dt
      */
     public void update(float dt) {
@@ -82,8 +96,6 @@ public class Physics2D {
             world.step(physicsTimeStep, velocityIterations, positionIterations);
         }
     }
-
-
 
 
 }

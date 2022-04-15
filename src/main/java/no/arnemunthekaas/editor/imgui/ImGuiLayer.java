@@ -6,6 +6,7 @@ import imgui.callback.ImStrSupplier;
 import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.type.ImBoolean;
+import no.arnemunthekaas.editor.MenuBar;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.editor.GameViewWindow;
 import no.arnemunthekaas.editor.PropertiesWindow;
@@ -28,11 +29,13 @@ public class ImGuiLayer {
 
     private GameViewWindow gameViewWindow;
     private PropertiesWindow propertiesWindow;
+    private MenuBar menuBar;
 
     public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
         this.glfwWindow = glfwWindow;
         this.gameViewWindow = new GameViewWindow();
         this.propertiesWindow = new PropertiesWindow(pickingTexture);
+        this.menuBar = new MenuBar();
     }
 
     // Initialize Dear ImGui.
@@ -196,6 +199,7 @@ public class ImGuiLayer {
         currentScene.imgui();
         propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
+        menuBar.imgui();
 
 //        ImGui.showDemoWindow();
         gameViewWindow.imgui();

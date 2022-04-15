@@ -6,6 +6,8 @@ package no.arnemunthekaas.utils;
 public class GameConstants {
 
     // In game
+        // Name
+        public static final String GAME_NAME = "2D GAME";
 
         // GRID
         public static final int GRID_WIDTH = 24;

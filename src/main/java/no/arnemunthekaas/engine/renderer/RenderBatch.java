@@ -1,6 +1,7 @@
 package no.arnemunthekaas.engine.renderer;
 
 import no.arnemunthekaas.engine.Window;
+import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -315,5 +316,25 @@ public class RenderBatch implements Comparable<RenderBatch>{
     @Override
     public int compareTo(RenderBatch o) {
         return Integer.compare(this.zIndex, o.zIndex);
+    }
+
+    /**
+     * Destroys a game object in batch if batch contains it
+     * @param go
+     * @return
+     */
+    public boolean destroyIfExists(GameObject go) {
+        SpriteRenderer sprite = go.getComponent(SpriteRenderer.class);
+        for (int i = 0; i < spriteAmount; i++) {
+            if (sprites[i] == sprite) {
+                for (int j = 1; j < spriteAmount - 1; j++) {
+                    sprites[j] = sprites[j+1];
+                    sprites[j].setDirty();
+                }
+                spriteAmount--;
+                return true;
+            }
+        }
+        return false;
     }
 }

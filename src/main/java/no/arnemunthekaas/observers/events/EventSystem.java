@@ -2,7 +2,6 @@ package no.arnemunthekaas.observers.events;
 
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.observers.Observer;
-import no.arnemunthekaas.observers.events.Event;
 
 import java.util.ArrayList;
 import java.util.List;

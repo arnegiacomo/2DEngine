@@ -1,6 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
-import no.arnemunthekaas.engine.Camera;
+import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import org.joml.Vector2f;
@@ -30,7 +30,7 @@ public class EditorCamera extends Component{
     }
 
     @Override
-    public void update(float dt) {
+    public void editorUpdate(float dt) {
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE) && dragDebounce > 0) {
             this.clickOrigin = new Vector2f(MouseListener.getOrthoX(), MouseListener.getOrthoY());
             dragDebounce -= dt;

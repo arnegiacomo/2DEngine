@@ -6,5 +6,5 @@ import no.arnemunthekaas.observers.events.Event;
 public interface Observer {
 
 
-    void onNotify(GameObject obj, Event evt);
+    void onNotify(GameObject object, Event event);
 }

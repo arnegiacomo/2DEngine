@@ -92,4 +92,12 @@ public class PropertiesWindow {
     public GameObject getActiveGameObject() {
         return activeGameObject;
     }
+
+    /**
+     * Set active game object
+     * @param o
+     */
+    public void setActiveGameObject(GameObject o) {
+        activeGameObject = o;
+    }
 }
