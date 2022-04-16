@@ -17,7 +17,7 @@ public class GameObject {
     private static int ID_COUNTER = 0;
     private int uid = -1;
 
-    private String name;
+    public String name;
     private List<Component> components;
     public transient Transform transform;
     private boolean doSerialization = true;
@@ -199,6 +199,5 @@ public class GameObject {
 
         return obj;
     }
-
 
 }

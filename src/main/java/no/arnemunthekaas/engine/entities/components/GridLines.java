@@ -9,9 +9,16 @@ import org.joml.Vector3f;
 
 public class GridLines extends Component{
 
-    // TODO: Fix camera pan zoom and top right corner new lines
+    private boolean enabled = true;
+
     @Override
     public void editorUpdate(float dt) {
+        if(!enabled) {
+            DebugDraw.beginFrame(); // TODO FIX SOLUTION
+            return;
+        }
+
+
         Camera camera = Window.getScene().getCamera();
         Vector2f cameraPos = camera.position;
         Vector2f projectionSize = camera.getProjectionSize();

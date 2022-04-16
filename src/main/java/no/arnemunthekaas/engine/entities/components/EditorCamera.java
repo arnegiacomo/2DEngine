@@ -9,7 +9,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_KP_DECIMAL;
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_MIDDLE;
 
 public class EditorCamera extends Component{
-
+ // TODO FIX MAX ZOOM
     private float dragDebounce = 0.032f;
 
     private Camera levelEditorCamera;
