@@ -16,22 +16,22 @@ public class GridLines extends Component{
         Vector2f cameraPos = camera.position;
         Vector2f projectionSize = camera.getProjectionSize();
 
-        int firstX = ((int) (cameraPos.x / GameConstants.GRID_WIDTH) - 1) * GameConstants.GRID_HEIGHT;
-        int firstY = ((int) (cameraPos.y / GameConstants.GRID_HEIGHT) - 1) * GameConstants.GRID_WIDTH;
+        float firstX = ((int) (cameraPos.x / GameConstants.GRID_WIDTH) -1 ) * GameConstants.GRID_HEIGHT;
+        float firstY = ((int) (cameraPos.y / GameConstants.GRID_HEIGHT) -1) * GameConstants.GRID_WIDTH;
 
         int verticalLines = (int) (projectionSize.x * camera.getZoom()/ GameConstants.GRID_WIDTH) + 2;
         int horizontalLines = (int) (projectionSize.y * camera.getZoom()/ GameConstants.GRID_HEIGHT) + 2;
 
-        int width = (int) (projectionSize.x * camera.getZoom()) + GameConstants.GRID_WIDTH * 2;
-        int height = (int) (projectionSize.y * camera.getZoom()) + GameConstants.GRID_HEIGHT * 2;
+        float width = (int) (projectionSize.x * camera.getZoom()) + GameConstants.GRID_WIDTH * 2 + 2;
+        float height = (int) (projectionSize.y * camera.getZoom()) + GameConstants.GRID_HEIGHT * 2 + 2;
 
         int maxlines = Math.max(verticalLines, horizontalLines);
 
         Vector3f color = new Vector3f(0.2f, 0.2f, 0.2f);
 
         for(int i = 0; i <= maxlines; i++) {
-            int x = firstX + (GameConstants.GRID_WIDTH * i);
-            int y = firstY + (GameConstants.GRID_HEIGHT * i);
+            float x = firstX + (GameConstants.GRID_WIDTH * i);
+            float y = firstY + (GameConstants.GRID_HEIGHT * i);
 
             if(i < horizontalLines)
                 DebugDraw.addLine2D(new Vector2f(firstX, y), new Vector2f(firstX + width, y), color);

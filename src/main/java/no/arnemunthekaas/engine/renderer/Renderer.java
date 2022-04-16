@@ -46,7 +46,7 @@ public class Renderer {
         }
 
         if(!added) {
-            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, spr.gameObject.transform.zIndex);
+            RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, spr.gameObject.transform.zIndex, this);
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(spr);
@@ -75,8 +75,9 @@ public class Renderer {
      */
     public void render() {
         currentShader.use();
-        for(RenderBatch batch : batches) {
-            batch.render();
+
+        for(int i = 0; i < batches.size(); i++) {
+            batches.get(i).render();
         }
     }
 

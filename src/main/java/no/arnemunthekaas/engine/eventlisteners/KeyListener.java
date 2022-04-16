@@ -9,7 +9,7 @@ import static org.lwjgl.glfw.GLFW.*;
 public class KeyListener {
     private static KeyListener instance;
     private boolean keyPressed[] = new boolean[GLFW_KEY_LAST + 2]; // <- How many keys the program supports
-
+    private boolean keyBeginPress[] = new boolean[keyPressed.length];
     private KeyListener() {
 
     }
@@ -38,10 +38,13 @@ public class KeyListener {
     public static void keyCallBack(long window, int key, int scancode, int action, int mods) {
         if (key == GLFW_KEY_UNKNOWN) return; // To prevent IndexOutOfBoundsException when pressing a key undefined in GLFW. See https://www.glfw.org/docs/3.3/group__keys.html
 
-        if(action == GLFW_PRESS)
+        if(action == GLFW_PRESS) {
             get().keyPressed[key] = true;
-        else if (action == GLFW_RELEASE)
+            get().keyBeginPress[key] = true;
+        } else if (action == GLFW_RELEASE) {
             get().keyPressed[key] = false;
+            get().keyBeginPress[key] = false;
+        }
     }
 
     // Static getters and setters for single KeyListener Instance
@@ -56,4 +59,17 @@ public class KeyListener {
         return get().keyPressed[keyCode]; // Could check for IndexOutOfBoundsException, but won't for possible debugging scenarios
     }
 
+    /**
+     * Check if key is pressed for the first time (not held)
+     * @param keyCode
+     * @return
+     */
+    public static boolean isKeyBeginPress(int keyCode) {
+        boolean result = get().keyBeginPress[keyCode];
+
+        if (result)
+            get().keyBeginPress[keyCode] = false;
+
+        return result;
+    }
 }

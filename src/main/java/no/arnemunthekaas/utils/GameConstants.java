@@ -10,8 +10,8 @@ public class GameConstants {
         public static final String GAME_NAME = "2D GAME";
 
         // GRID
-        public static final int GRID_WIDTH = 24;
-        public static final int GRID_HEIGHT = 24;
+        public static final float GRID_WIDTH = 0.25f;
+        public static final float GRID_HEIGHT = 0.25f;
 
         // Z-Indexing
         public static final int MAX_Z_INDEX = Integer.MAX_VALUE;

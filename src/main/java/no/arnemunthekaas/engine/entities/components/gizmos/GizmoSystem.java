@@ -9,7 +9,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_E;
 
 public class GizmoSystem extends Component {
     private Spritesheet gizmos;
-    private int usingGizmo = 0;
+    private int usingGizmo = 1;
     private int gizmoAmount;
 
     /**

@@ -1,6 +1,7 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import imgui.ImGui;
+import imgui.type.ImInt;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.editor.imgui.ImGuiUtils;
 import org.joml.Vector2f;
@@ -86,6 +87,14 @@ public abstract class Component {
                 } else if (type == Vector4f.class) {
                     Vector4f val = (Vector4f) value;
                     ImGuiUtils.colorPicker4(name, val);
+                } else if (type.isEnum()) {
+                    String[] enumValues = getEnumValues(type);
+                    String enumType = ((Enum)value).name();
+                    ImInt index = new ImInt(indexOf(enumType, enumValues));
+
+                    if (ImGui.combo(f.getName(), index, enumValues, enumValues.length))
+                        f.set(this, type.getEnumConstants()[index.get()]);
+
                 }
 
                 if (isPrivate)
@@ -94,6 +103,26 @@ public abstract class Component {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    private int indexOf(String str, String[] arr) {
+        for(int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(str))
+                return i;
+        }
+        return -1;
+    }
+
+    private <T extends Enum<T>> String[] getEnumValues(Class<T> enumType) {
+        String[] enumValues = new String[enumType.getEnumConstants().length];
+        int i = 0;
+
+        for (T enumIntegerValue : enumType.getEnumConstants()) {
+            enumValues[i] = enumIntegerValue.name();
+            i++;
+        }
+
+        return enumValues;
     }
 
     /**

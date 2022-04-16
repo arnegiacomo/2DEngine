@@ -49,15 +49,18 @@ public class RenderBatch implements Comparable<RenderBatch>{
     private int maxBatchSize;
     private int zIndex;
 
+    private Renderer renderer;
+
     /**
      * Creates new Render Batch with max amount of quads (sprites) to hold. Bigger = better performance but longer loading
      * @param maxBatchSize Max quad (sprite) amount
      * @param zIndex Z-Index
      */
-    public RenderBatch(int maxBatchSize, int zIndex) {
+    public RenderBatch(int maxBatchSize, int zIndex, Renderer renderer) {
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
         this.zIndex = zIndex;
+        this.renderer = renderer;
 
         // 4 vertices quads
         vertices = new float[maxBatchSize * 4 * VERTEX_SIZE];
@@ -138,6 +141,13 @@ public class RenderBatch implements Comparable<RenderBatch>{
                 spr.setClean();
                 rebufferData = true;
             }
+
+            // TODO cleanup
+            if(spr.gameObject.transform.zIndex != this.zIndex) {
+                destroyIfExists(spr.gameObject);
+                renderer.add(spr.gameObject);
+                i--;
+            }
         }
 
         // If any sprites were dirty -> rebuffer data
@@ -205,15 +215,15 @@ public class RenderBatch implements Comparable<RenderBatch>{
         }
 
         // Add vertices with the appropriate properties
-        float xAdd = 1.0f;
-        float yAdd = 1.0f;
+        float xAdd = 0.5f;
+        float yAdd = 0.5f;
         for (int i=0; i < 4; i++) {
             if (i == 1) {
-                yAdd = 0.0f;
+                yAdd = -0.5f;
             } else if (i == 2) {
-                xAdd = 0.0f;
+                xAdd = -0.5f;
             } else if (i == 3) {
-                yAdd = 1.0f;
+                yAdd = 0.5f;
             }
 
             Vector4f currentPos = new Vector4f(sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x),
@@ -327,7 +337,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
         SpriteRenderer sprite = go.getComponent(SpriteRenderer.class);
         for (int i = 0; i < spriteAmount; i++) {
             if (sprites[i] == sprite) {
-                for (int j = 1; j < spriteAmount - 1; j++) {
+                for (int j = i; j < spriteAmount - 1; j++) {
                     sprites[j] = sprites[j+1];
                     sprites[j].setDirty();
                 }

@@ -1,8 +1,14 @@
 package no.arnemunthekaas.engine.entities;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.components.Component;
+import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.entities.components.Transform;
+import no.arnemunthekaas.engine.entities.deserializers.ComponentDeserializer;
+import no.arnemunthekaas.engine.entities.deserializers.GameObjectDeserializer;
+import no.arnemunthekaas.utils.AssetPool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,6 +140,13 @@ public class GameObject {
     }
 
     /**
+     * Generate new UID
+     */
+    public void generateUid() {
+        this.uid = ID_COUNTER++;
+    }
+
+    /**
      *
      * @param maxID
      */
@@ -164,6 +177,28 @@ public class GameObject {
         return doSerialization;
     }
 
+    /**
+     * Creates a copy of this game object
+     * @return
+     */
+    public GameObject copy() {
+        // TODO find better solution
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentDeserializer()).registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).create();
+        String objAsJson = gson.toJson(this);
+        GameObject obj = gson.fromJson(objAsJson, GameObject.class);
+
+        obj.generateUid();
+        for (Component c : obj.components)
+            c.generateID();
+
+        SpriteRenderer sprite = obj.getComponent(SpriteRenderer.class);
+
+        if (sprite != null && sprite.getTexture() != null) {
+            sprite.setTexture(AssetPool.getTexture(sprite.getTexture().getFilepath()));
+        }
+
+        return obj;
+    }
 
 
 }
