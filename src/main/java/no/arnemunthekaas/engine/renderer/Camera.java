@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.renderer;
 
+import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -10,7 +11,7 @@ public class Camera {
     public Vector2f position;
 
     private float projectionWidth = 6;
-    private float projectionHeight = 3;
+    private float projectionHeight = 6 / GameConstants.ASPECT_RATIO;
     private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
     private float zoom = 1.0f;
 

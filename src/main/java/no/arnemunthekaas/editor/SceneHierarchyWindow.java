@@ -9,6 +9,8 @@ import java.util.List;
 
 public class SceneHierarchyWindow {
 
+    private static String payloadDragDropType = "SceneHierarchy";
+
     public void imgui() {
         ImGui.begin("Scene Hierarchy");
 
@@ -19,13 +21,7 @@ public class SceneHierarchyWindow {
             if(!obj.doSerialization())
                 continue;
 
-            ImGui.pushID(index);
-            boolean treeNodeOpen = ImGui.treeNodeEx(obj.name,
-                    ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.FramePadding |
-                    ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.SpanAvailWidth,
-                    obj.name);
-
-            ImGui.popID();
+            boolean treeNodeOpen = doTreeNode(obj, index);
 
             if(treeNodeOpen)
                 ImGui.treePop();
@@ -33,5 +29,37 @@ public class SceneHierarchyWindow {
             index++;
         }
         ImGui.end();
+    }
+
+    private boolean doTreeNode(GameObject obj, int index) {
+        ImGui.pushID(index);
+        boolean treeNodeOpen = ImGui.treeNodeEx(obj.name,
+                ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.FramePadding |
+                        ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.SpanAvailWidth,
+                obj.name);
+
+        ImGui.popID();
+
+        if (ImGui.beginDragDropSource()) {
+            //ImGui.setDragDropPayloadObject(payloadDragDropType, obj); // doesnt exist anymore?
+            ImGui.setDragDropPayload(payloadDragDropType, obj);
+            ImGui.text(obj.name);
+            // TODO https://youtu.be/vt_KGvT525w?t=697
+            ImGui.endDragDropSource();
+        }
+
+        if (ImGui.beginDragDropTarget()) {
+            Object payloadObj = ImGui.acceptDragDropPayload(payloadDragDropType);
+
+            if(payloadObj != null) {
+                if(payloadObj.getClass().isAssignableFrom(GameObject.class)) {
+                    GameObject playerGameObj = (GameObject) payloadObj;
+                }
+            }
+
+            ImGui.endDragDropTarget();
+        }
+
+        return treeNodeOpen;
     }
 }

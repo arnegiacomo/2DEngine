@@ -71,10 +71,10 @@ public abstract class Component {
 
                 } else if (type == boolean.class) {
                     boolean val = (boolean) value;
-//                    f.set(this, ImGuiUtils.checkBox(name, val));
-                    if (ImGui.checkbox(name + ": ", val)) {
-                        f.set(this, !val);
-                    }
+                    f.set(this, ImGuiUtils.checkBox(name, val));
+//                    if (ImGui.checkbox(name + ": ", val)) {
+//                        f.set(this, !val);
+//                    }
 
                 } else if (type == Vector2f.class) {
                     Vector2f val = (Vector2f) value;

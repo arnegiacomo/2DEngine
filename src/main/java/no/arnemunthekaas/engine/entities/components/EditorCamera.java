@@ -58,7 +58,7 @@ public class EditorCamera extends Component{
         }
 
         if(reset) {
-            levelEditorCamera.position.lerp(new Vector2f(), lerpTime);
+            levelEditorCamera.position.lerp(new Vector2f(-250, 0), lerpTime);
             levelEditorCamera.setZoom(this.levelEditorCamera.getZoom() + (1.0f - levelEditorCamera.getZoom()) * lerpTime);
             lerpTime += 0.1f * dt;
 
