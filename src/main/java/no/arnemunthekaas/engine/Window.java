@@ -28,7 +28,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class Window implements Observer {
     private int width, height;
     private String title = "2D Engine";
-    private long glfwWindow;
+    public long glfwWindow;
     private ImGuiLayer imGuiLayer;
     private Framebuffer framebuffer;
     private PickingTexture pickingTexture;
@@ -283,6 +283,7 @@ public class Window implements Observer {
             dt = endTime - beginTime;
             beginTime = endTime;
         }
+
 
     }
 

@@ -40,7 +40,7 @@ public class ImGuiLayer {
         this.gameViewWindow = new GameViewWindow();
         this.propertiesWindow = new PropertiesWindow(pickingTexture);
         this.menuBar = new MenuBar();
-        this.sceneHierarchyWindow = new SceneHierarchyWindow();
+        this.sceneHierarchyWindow = new SceneHierarchyWindow(); // TODO: make this work / add functionality
     }
 
     // Initialize Dear ImGui.

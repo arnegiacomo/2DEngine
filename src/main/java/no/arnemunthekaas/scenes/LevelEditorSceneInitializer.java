@@ -2,6 +2,7 @@ package no.arnemunthekaas.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
+import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
@@ -9,6 +10,8 @@ import no.arnemunthekaas.engine.entities.Prefabs;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
+
+import static org.lwjgl.glfw.GLFW.*;
 
 
 public class LevelEditorSceneInitializer extends SceneInitializer {

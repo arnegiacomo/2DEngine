@@ -27,7 +27,7 @@ public class GridLines extends Component{
         float firstY = ((int) (cameraPos.y / GameConstants.GRID_HEIGHT) -1) * GameConstants.GRID_WIDTH;
 
         int verticalLines = (int) (projectionSize.x * camera.getZoom()/ GameConstants.GRID_WIDTH) + 2;
-        int horizontalLines = (int) (projectionSize.y * camera.getZoom()/ GameConstants.GRID_HEIGHT) + 2;
+        int horizontalLines = (int) (projectionSize.y * camera.getZoom()/ GameConstants.GRID_HEIGHT) + 3;
 
         float width = (int) (projectionSize.x * camera.getZoom()) + GameConstants.GRID_WIDTH * 2 + 2;
         float height = (int) (projectionSize.y * camera.getZoom()) + GameConstants.GRID_HEIGHT * 2 + 2;
