@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
+import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.utils.GameConstants;
 import no.arnemunthekaas.engine.Window;
@@ -35,6 +36,9 @@ public class MouseControls extends Component{
     public void place() {
         GameObject newObj = this.holdingObject.copy();
         newObj.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+        if (newObj.getComponent(StateMachine.class) != null)
+            newObj.getComponent(StateMachine.class).refreshTextures();
+
         newObj.removeComponent(UnPickable.class);
         Window.getScene().addGameObject(newObj);
     }
