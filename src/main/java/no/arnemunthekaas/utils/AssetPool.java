@@ -74,7 +74,7 @@ public class AssetPool {
         if(!spritesheets.containsKey(file.getAbsolutePath()))
             assert false : "Error: Tried to access spritesheed '" + resourceName + "' and it has not been added to assetpool";
 
-        return spritesheets.getOrDefault(file.getAbsolutePath(), null); // TODO Default null texture instead of null value? Like minecraft pink texture?
+        return spritesheets.getOrDefault(file.getAbsolutePath(), null);
     }
 
     /**

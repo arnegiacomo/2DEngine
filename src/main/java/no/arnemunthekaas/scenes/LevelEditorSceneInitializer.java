@@ -51,13 +51,15 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.getShader("assets/shaders/pickingShader.glsl");
         AssetPool.getShader("assets/shaders/debugLine2D.glsl");
 
-        // Load Sprites
+        // Load Images
+        AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,3,0));
+        AssetPool.addSpriteSheet("assets/images/missingtex.png", new Spritesheet(AssetPool.getTexture("assets/images/missingtex.png"),32,32,1,0));
+
+        // Load Spritesheets
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png"),
                 24, 24, 204, 0));
-
-        AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,3,0));
 
         // Load Sounds
         AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", true);
