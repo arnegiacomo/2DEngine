@@ -15,10 +15,15 @@ import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -37,6 +42,9 @@ public class Window implements Observer {
     public float r = 1, g = 1, b = 1, a = 1;
 
     private static Window window = null;
+
+    private long audioContext;
+    private long audioDevice;
 
     private static Scene currentScene;
     private boolean runtimePlaying;
@@ -141,6 +149,10 @@ public class Window implements Observer {
         init();
         loop();
 
+        // Destroy audio context
+        alcDestroyContext(audioContext);
+        alcCloseDevice(audioDevice);
+
         // Free memory
         glfwFreeCallbacks(glfwWindow);
         glfwDestroyWindow(glfwWindow);
@@ -197,6 +209,20 @@ public class Window implements Observer {
 
         // Make the window visible
         glfwShowWindow(glfwWindow);
+
+        // Init audio device
+        String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
+        audioDevice = alcOpenDevice(defaultDeviceName);
+
+        int[] attributes = {0};
+        audioContext = alcCreateContext(audioDevice, attributes);
+        alcMakeContextCurrent(audioContext);
+
+        ALCCapabilities alcCapabilities = ALC.createCapabilities(audioDevice);
+        ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
+
+        if (!alCapabilities.OpenAL10)
+            assert false : "Audio library not supported.";
 
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.

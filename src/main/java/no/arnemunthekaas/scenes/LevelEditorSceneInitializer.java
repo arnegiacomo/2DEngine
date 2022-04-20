@@ -3,6 +3,7 @@ package no.arnemunthekaas.scenes;
 import imgui.ImGui;
 import imgui.ImVec2;
 import no.arnemunthekaas.engine.Window;
+import no.arnemunthekaas.engine.audio.Sound;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
@@ -11,6 +12,9 @@ import no.arnemunthekaas.engine.entities.Prefabs;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
+
+import java.io.File;
+import java.util.Collection;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -55,6 +59,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         AssetPool.addSpriteSheet("assets/images/gizmos.png", new Spritesheet(AssetPool.getTexture("assets/images/gizmos.png"),24,48,3,0));
 
+        // Load Sounds
+        AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", true);
 
         for(GameObject go : scene.getGameObjects()) {
             if(go.getComponent(SpriteRenderer.class) != null) {
@@ -131,6 +137,26 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
 
                 }
+                ImGui.sameLine();
+
+                ImGui.endTabItem();
+            }
+
+            if (ImGui.beginTabItem("Sounds")) {
+                Collection<Sound> sounds = AssetPool.getAllSounds();
+                for (Sound sound : sounds) {
+                    File tmp = new File(sound.getFilepath());
+                    if (ImGui.button(tmp.getName())) {
+                        if (!sound.isPlaying())
+                            sound.play();
+                        else
+                            sound.stop();
+                    }
+
+                    if (ImGui.getContentRegionAvailX() > 100)
+                        ImGui.sameLine();
+                }
+
                 ImGui.sameLine();
 
                 ImGui.endTabItem();

@@ -1,10 +1,12 @@
 package no.arnemunthekaas.utils;
 
+import no.arnemunthekaas.engine.audio.Sound;
 import no.arnemunthekaas.engine.entities.components.Spritesheet;
 import no.arnemunthekaas.engine.renderer.Shader;
 import no.arnemunthekaas.engine.renderer.Texture;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ public class AssetPool {
     private static Map<String, Shader> shaders = new HashMap<>();
     private static Map<String, Texture> textures = new HashMap<>();
     private static Map<String, Spritesheet> spritesheets = new HashMap<>();
+    private static Map<String, Sound> sounds = new HashMap<>();
 
     /**
      *
@@ -72,6 +75,45 @@ public class AssetPool {
             assert false : "Error: Tried to access spritesheed '" + resourceName + "' and it has not been added to assetpool";
 
         return spritesheets.getOrDefault(file.getAbsolutePath(), null); // TODO Default null texture instead of null value? Like minecraft pink texture?
+    }
+
+    /**
+     * Returns all sounds
+     * @return
+     */
+    public static Collection<Sound> getAllSounds() {
+        return AssetPool.sounds.values();
+    }
+
+    /**
+     *
+     * @param soundFile
+     * @return
+     */
+    public static Sound getSound(String soundFile) {
+        File file = new File(soundFile);
+        if (sounds.containsKey(file.getAbsolutePath()))
+            return sounds.get(file.getAbsolutePath());
+        else
+            assert false : "Error: Tried to access sound '" + soundFile + "' and it has not been added to assetpool";
+        return null;
+    }
+
+    /**
+     *
+     * @param soundFile
+     * @param loops
+     * @return
+     */
+    public static Sound addSound(String soundFile, boolean loops) {
+        File file = new File(soundFile);
+        if(sounds.containsKey(file.getAbsolutePath()))
+            return sounds.get(file.getAbsolutePath());
+        else {
+            Sound sound = new Sound(file.getAbsolutePath(), loops);
+            AssetPool.sounds.put(file.getAbsolutePath(), sound);
+            return sound;
+        }
     }
 
 }

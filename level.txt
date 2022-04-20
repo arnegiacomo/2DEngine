@@ -1,6 +1,6 @@
 [
   {
-    "uid": 0,
+    "uid": 604,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -145,7 +145,7 @@
     "dead": false
   },
   {
-    "uid": 1,
+    "uid": 605,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -284,7 +284,7 @@
     "dead": false
   },
   {
-    "uid": 2,
+    "uid": 606,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -423,7 +423,7 @@
     "dead": false
   },
   {
-    "uid": 3,
+    "uid": 607,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -562,7 +562,7 @@
     "dead": false
   },
   {
-    "uid": 4,
+    "uid": 608,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -625,7 +625,7 @@
     "dead": false
   },
   {
-    "uid": 5,
+    "uid": 609,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -688,7 +688,7 @@
     "dead": false
   },
   {
-    "uid": 6,
+    "uid": 610,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -751,7 +751,7 @@
     "dead": false
   },
   {
-    "uid": 7,
+    "uid": 611,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -814,7 +814,7 @@
     "dead": false
   },
   {
-    "uid": 8,
+    "uid": 612,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1019,7 +1019,7 @@
     "dead": false
   },
   {
-    "uid": 9,
+    "uid": 613,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1218,7 +1218,7 @@
     "dead": false
   },
   {
-    "uid": 10,
+    "uid": 614,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1417,7 +1417,7 @@
     "dead": false
   },
   {
-    "uid": 11,
+    "uid": 615,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1622,15 +1622,15 @@
     "dead": false
   },
   {
-    "uid": 12,
-    "name": "Sprite_Object_Gen",
+    "uid": 616,
+    "name": "Prefab_Gen",
     "components": [
       {
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 1.875,
-            "y": 1.375
+            "x": 3.125,
+            "y": 2.875
           },
           "scale": {
             "x": 0.25,
@@ -1638,7 +1638,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 68
+          "uid": 91
         }
       },
       {
@@ -1677,7 +1677,7 @@
               }
             ]
           },
-          "uid": 69
+          "uid": 92
         }
       },
       {
@@ -1813,7 +1813,7 @@
             }
           ],
           "defaultStateTitle": "Idle",
-          "uid": 70
+          "uid": 93
         }
       }
     ],
@@ -1821,15 +1821,15 @@
     "dead": false
   },
   {
-    "uid": 13,
-    "name": "Sprite_Object_Gen",
+    "uid": 617,
+    "name": "Prefab_Gen",
     "components": [
       {
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 1.875,
-            "y": 1.375
+            "x": 2.375,
+            "y": 2.625
           },
           "scale": {
             "x": 0.25,
@@ -1837,7 +1837,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 68
+          "uid": 91
         }
       },
       {
@@ -1876,7 +1876,7 @@
               }
             ]
           },
-          "uid": 69
+          "uid": 92
         }
       },
       {
@@ -2012,7 +2012,615 @@
             }
           ],
           "defaultStateTitle": "Idle",
-          "uid": 70
+          "uid": 93
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 118
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 119
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 618,
+    "name": "Prefab_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 0.375,
+            "y": -19.299383
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 91
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+              "width": 480,
+              "height": 648
+            },
+            "texCoords": [
+              {
+                "x": 0.3,
+                "y": 0.962963
+              },
+              {
+                "x": 0.3,
+                "y": 0.9259259
+              },
+              {
+                "x": 0.25,
+                "y": 0.9259259
+              },
+              {
+                "x": 0.25,
+                "y": 0.962963
+              }
+            ]
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.animation.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Idle",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.15,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.1,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.1,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.2,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.3,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.3,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Idle",
+          "uid": 93
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 619,
+    "name": "Prefab_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 0.375,
+            "y": 2.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 91
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+              "width": 480,
+              "height": 648
+            },
+            "texCoords": [
+              {
+                "x": 0.3,
+                "y": 0.962963
+              },
+              {
+                "x": 0.3,
+                "y": 0.9259259
+              },
+              {
+                "x": 0.25,
+                "y": 0.9259259
+              },
+              {
+                "x": 0.25,
+                "y": 0.962963
+              }
+            ]
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.animation.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Idle",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.15,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.1,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.1,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.2,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.15,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.2,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png",
+                      "width": 480,
+                      "height": 648
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.3,
+                        "y": 0.962963
+                      },
+                      {
+                        "x": 0.3,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.9259259
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.962963
+                      }
+                    ]
+                  },
+                  "frameTime": 0.5
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Idle",
+          "uid": 93
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 95
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 620,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
+            "y": 1.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 115
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.7058824,
+                "y": 1.0
+              },
+              {
+                "x": 0.7058824,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.64705884,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.64705884,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 116
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 621,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
+            "y": 1.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 115
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.7058824,
+                "y": 1.0
+              },
+              {
+                "x": 0.7058824,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.64705884,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.64705884,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 116
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 120
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 121
         }
       }
     ],

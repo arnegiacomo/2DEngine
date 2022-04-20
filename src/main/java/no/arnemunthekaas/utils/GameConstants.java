@@ -9,6 +9,9 @@ public class GameConstants {
         // Name
         public static final String GAME_NAME = "2D GAME";
 
+        // Settings
+        public static float gain = 0.3f;
+
         // GRID
         public static final float GRID_WIDTH = 0.25f;
         public static final float GRID_HEIGHT = 0.25f;
