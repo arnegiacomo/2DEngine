@@ -51,8 +51,8 @@ public class Window implements Observer {
 
     private Window() {
         // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.width = 1920;
-        this.height = 1080;
+        this.width = 2560;
+        this.height = 1440;
         this.title = GameConstants.GAME_NAME;
 
         EventSystem.addObserver(this);
@@ -98,14 +98,16 @@ public class Window implements Observer {
      * Get window width
      * @return width
      */
-    public static int getWidth() { return get().width;
+    public static int getWidth() {
+        return get().framebuffer.width;
     }
 
     /**
      * Get window height
      * @return height
      */
-    public static int getHeight() { return get().height;
+    public static int getHeight() {
+        return get().framebuffer.height;
     }
 
     /**
@@ -138,6 +140,14 @@ public class Window implements Observer {
      */
     public static float getTargetAspectRatio() {
         return GameConstants.ASPECT_RATIO;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static ImGuiLayer getImguiLayer() {
+        return get().imGuiLayer;
     }
 
     /**
@@ -177,7 +187,7 @@ public class Window implements Observer {
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
+        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
         // macOS
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -289,7 +299,6 @@ public class Window implements Observer {
 
 
             if(dt >= 0) {
-                DebugDraw.draw();
                 Renderer.bindShader(defaultShader);
 
                 if(runtimePlaying)
@@ -298,6 +307,7 @@ public class Window implements Observer {
                     currentScene.editorUpdate(dt);
 
                 currentScene.render();
+                DebugDraw.draw();
             }
             this.framebuffer.unBind();
 

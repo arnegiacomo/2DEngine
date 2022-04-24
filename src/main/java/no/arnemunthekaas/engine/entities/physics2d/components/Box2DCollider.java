@@ -36,4 +36,6 @@ public class Box2DCollider extends Collider {
         Vector2f center = new Vector2f(this.gameObject.transform.position.add(this.offset));
         DebugDraw.addBox2D(center, this.halfSize, this.gameObject.transform.rotation);
     }
+
+
 }

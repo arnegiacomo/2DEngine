@@ -10,50 +10,32 @@ import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.scenes.Scene;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 public class PropertiesWindow {
 
+    private List<GameObject> activeGameObjects;
     private GameObject activeGameObject;
     private PickingTexture pickingTexture;
-
-    private float debounce = 0.2f;
 
     /**
      *
      * @param pickingTexture
      */
     public PropertiesWindow(PickingTexture pickingTexture) {
+        this.activeGameObjects = new ArrayList<>();
         this.pickingTexture = pickingTexture;
-    }
-
-    /**
-     *
-     * @param dt
-     * @param currentScene
-     */
-    public void update(float dt, Scene currentScene) {
-        debounce -= dt;
-
-        if(!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
-            int x = (int) MouseListener.getScreenX();
-            int y = (int) MouseListener.getScreenY();
-            int gameObjectID = pickingTexture.readPixel(x, y);
-            GameObject go = currentScene.getGameObject(gameObjectID);
-
-            if( go != null && go.getComponent(UnPickable.class) == null)
-                activeGameObject = go;
-            else if( go == null && !MouseListener.isDragging())
-                activeGameObject = null;
-            this.debounce = 0.2f;
-        }
     }
 
     /**
      *
      */
     public void imgui() {
-        if(activeGameObject != null) {
+        if(activeGameObjects.size() == 1 && activeGameObjects.get(0) != null) {
+            activeGameObject = activeGameObjects.get(0);
             ImGui.begin("Properties");
 
             if (ImGui.beginPopupContextWindow("ComponentAdder")) {
@@ -90,14 +72,48 @@ public class PropertiesWindow {
      * @return
      */
     public GameObject getActiveGameObject() {
-        return activeGameObject;
+        return this.activeGameObjects.size() == 1 ? this.activeGameObjects.get(0) : null;
     }
 
     /**
      * Set active game object
-     * @param o
+     * @param go
      */
-    public void setActiveGameObject(GameObject o) {
-        activeGameObject = o;
+    public void setActiveGameObject(GameObject go) {
+        if (go != null) {
+            clearSelected();
+            this.activeGameObjects.add(go);
+        }
+    }
+
+    /**
+     * Returns all active game objects
+     * @return
+     */
+    public List<GameObject> getActiveGameObjects() {
+        return this.activeGameObjects;
+    }
+
+    /**
+     *
+     */
+    public void clearSelected() {
+        this.activeGameObjects.clear();
+    }
+
+    /**
+     *
+     * @param go
+     */
+    public void addActiveGameObject(GameObject go) {
+        this.activeGameObjects.add(go);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public PickingTexture getPickingTexture() {
+        return this.pickingTexture;
     }
 }

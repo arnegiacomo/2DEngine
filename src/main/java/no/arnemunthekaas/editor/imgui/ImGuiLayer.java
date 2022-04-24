@@ -110,6 +110,8 @@ public class ImGuiLayer {
             io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
             if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse())
                 MouseListener.mouseScrollCallback(w, xOffset, yOffset);
+            else
+                MouseListener.clear();
         });
 
         io.setSetClipboardTextFn(new ImStrConsumer() {
@@ -163,7 +165,6 @@ public class ImGuiLayer {
         // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
         setupDockspace();
         currentScene.imgui();
-        propertiesWindow.update(dt, currentScene);
         propertiesWindow.imgui();
         sceneHierarchyWindow.imgui();
 
@@ -235,5 +236,13 @@ public class ImGuiLayer {
      */
     public PropertiesWindow getPropertiesWindow() {
         return propertiesWindow;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public GameViewWindow getGameViewWindow() {
+        return gameViewWindow;
     }
 }

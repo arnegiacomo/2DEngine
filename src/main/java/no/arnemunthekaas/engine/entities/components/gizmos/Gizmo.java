@@ -82,23 +82,9 @@ public abstract class Gizmo extends Component {
         if(!using) return;
 
         this.activeGameObject = this.propertiesWindow.getActiveGameObject();
-        // TODO move to keyeditorbinding component class
+
         if(this.activeGameObject != null) {
             this.setActive();
-            if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListener.isKeyBeginPress(GLFW_KEY_D)) {
-                GameObject newObj = this.activeGameObject.copy();
-                Window.getScene().addGameObject(newObj);
-                newObj.transform.position.add(GameConstants.GRID_WIDTH / 2f, GameConstants.GRID_HEIGHT / 2f);
-                this.propertiesWindow.setActiveGameObject(newObj);
-                return;
-            } else if (KeyListener.isKeyBeginPress(GLFW_KEY_DELETE) || KeyListener.isKeyBeginPress(GLFW_KEY_BACKSPACE)) {
-                activeGameObject.destroy();
-                this.setInActive();
-                this.propertiesWindow.setActiveGameObject(null);
-                return;
-            }
-
-
         } else {
             this.setInActive();
             return;
