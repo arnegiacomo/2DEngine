@@ -4,6 +4,7 @@ import imgui.ImGui;
 import imgui.type.ImInt;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.editor.imgui.ImGuiUtils;
+import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -157,5 +158,43 @@ public abstract class Component {
 
     }
 
+    /**
+     *
+     * @param collidingObject
+     * @param contact
+     * @param hitNormal
+     */
+    public void beginContact(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
 
+    }
+
+    /**
+     *
+     * @param collidingObject
+     * @param contact
+     * @param hitNormal
+     */
+    public void endContact(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+    }
+
+    /**
+     *
+     * @param collidingObject
+     * @param contact
+     * @param hitNormal
+     */
+    public void preSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+    }
+
+    /**
+     *
+     * @param collidingObject
+     * @param contact
+     * @param hitNormal
+     */
+    public void postSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+
+    }
 }

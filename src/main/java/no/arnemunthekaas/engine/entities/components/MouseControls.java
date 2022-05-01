@@ -1,5 +1,6 @@
 package no.arnemunthekaas.engine.entities.components;
 
+import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.renderer.DebugDraw;
@@ -22,7 +23,7 @@ import static org.lwjgl.glfw.GLFW.*;
 public class MouseControls extends Component{
 
     private GameObject holdingObject;
-    private float debounceTime = 0.05f;
+    private float debounceTime = 0.2f;
     private float debounce = debounceTime;
 
     private boolean boxSelectSet;
@@ -62,16 +63,22 @@ public class MouseControls extends Component{
         PickingTexture pickingTexture = Window.getImGuiLayer().getPropertiesWindow().getPickingTexture();
         Scene currentScene = Window.getScene();
 
-        if(holdingObject != null && debounce <= 0.0f) {
+        if(holdingObject != null) {
             float x = MouseListener.getWorldX();
             float y = MouseListener.getWorldY();
             holdingObject.transform.position.x = ((int)Math.floor(x / GameConstants.GRID_WIDTH) * GameConstants.GRID_WIDTH) + GameConstants.GRID_WIDTH / 2.0f;
             holdingObject.transform.position.y = ((int)Math.floor(y / GameConstants.GRID_HEIGHT) * GameConstants.GRID_HEIGHT) + GameConstants.GRID_HEIGHT / 2.0f;
 
-//
+
             if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-                place();
-                debounce = debounceTime;
+                float halfWidth = GameConstants.GRID_WIDTH / 2.0f;
+                float halfHeight = GameConstants.GRID_HEIGHT / 2.0f;
+                if ( MouseListener.isDragging() && !blockInSquare(holdingObject.transform.position.x - halfHeight, holdingObject.transform.position.y - halfHeight)) {
+                    place();
+                } else if (!MouseListener.isDragging() && debounce < 0) {
+                    place();
+                    debounce = debounceTime;
+                }
             }
 
             if(KeyListener.isKeyPressed(GLFW_KEY_ESCAPE) || MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
@@ -136,5 +143,28 @@ public class MouseControls extends Component{
 
             }
         }
+    }
+
+    private boolean blockInSquare(float x, float y) {
+
+        PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
+        Vector2f start = new Vector2f(x, y);
+        Vector2f end = new Vector2f(start).add(new Vector2f(GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT));
+        Vector2f startScreenf = MouseListener.worldToScreen(start);
+        Vector2f endScreenf = MouseListener.worldToScreen(end);
+        Vector2i startScreen = new Vector2i((int) startScreenf.x + 2, (int) startScreenf.y - 2);
+        Vector2i endScreen = new Vector2i((int) endScreenf.x - 2, (int) endScreenf.y - 2);
+        float[] gameObjectIds = propertiesWindow.getPickingTexture().readPixels(startScreen, endScreen);
+
+        for (int i = 0; i < gameObjectIds.length; i++) {
+            if (gameObjectIds[i] >= 0) {
+                GameObject pickedObject = Window.getScene().getGameObject((int)gameObjectIds[i]);
+                if(pickedObject.getComponent(UnPickable.class) == null)
+                    return true;
+            }
+        }
+
+        return false;
+
     }
 }

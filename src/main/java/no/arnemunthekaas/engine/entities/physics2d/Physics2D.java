@@ -4,13 +4,12 @@ import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.physics2d.components.CircleCollider;
+import no.arnemunthekaas.engine.entities.physics2d.components.RayCastInfo;
 import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
+import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
-import org.jbox2d.dynamics.Body;
-import org.jbox2d.dynamics.BodyDef;
-import org.jbox2d.dynamics.BodyType;
-import org.jbox2d.dynamics.World;
+import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
 
 public class Physics2D {
@@ -38,6 +37,10 @@ public class Physics2D {
             bodyDef.linearDamping = rb.getLinearDamping();
             bodyDef.fixedRotation = rb.isFixedRotation();
             bodyDef.bullet = rb.isContinuousCollision();
+            bodyDef.gravityScale = rb.gravityScale;
+            bodyDef.angularVelocity = rb.angularVelocity;
+            bodyDef.userData = rb.gameObject;
+
 
             switch (rb.getBodyType()) {
                 case Kinematic: bodyDef.type = BodyType.KINEMATIC; break;
@@ -45,30 +48,25 @@ public class Physics2D {
                 case Dynamic: bodyDef.type = BodyType.DYNAMIC; break;
             }
 
-            PolygonShape shape = new PolygonShape();
+            Body body = this.world.createBody(bodyDef);
+            body.m_mass = rb.getMass();
+            rb.setRawBody(body);
+
             CircleCollider circleCollider;
             Box2DCollider boxCollider;
 
             if((circleCollider = go.getComponent(CircleCollider.class)) != null) {
-                shape.setRadius(circleCollider.getRadius());
-            } else if ((boxCollider = go.getComponent(Box2DCollider.class)) != null) {
-                Vector2f halfSize = new Vector2f(boxCollider.getHalfSize()).mul(0.5f);
-                Vector2f offset = boxCollider.getOffset();
-                Vector2f origin = new Vector2f(boxCollider.getOrigin());
-                shape.setAsBox(halfSize.x, halfSize.y, new Vec2(origin.x, origin.y), 0);
-
-                Vec2 pos = bodyDef.position;
-                float xPos = pos.x + offset.x;
-                float yPos = pos.y + offset.y;
-                bodyDef.position.set(xPos, yPos);
-
+                addCircleCollider(rb, circleCollider);
             }
 
-            Body body = this.world.createBody(bodyDef);
-            rb.setRawBody(body);
-            body.createFixture(shape, rb.getMass());
+            if ((boxCollider = go.getComponent(Box2DCollider.class)) != null) {
+                addBox2dCollider(rb, boxCollider);
+            }
+
         }
     }
+
+
 
     /**
      *
@@ -97,5 +95,135 @@ public class Physics2D {
         }
     }
 
+    /**
+     *
+     * @param rigidbody2D
+     * @param box2DCollider
+     */
+    public void resetBox2DCollider(Rigidbody2D rigidbody2D, Box2DCollider box2DCollider) {
+        Body body = rigidbody2D.getRawBody();
+        if(body == null)
+            return;
 
+        int size = fixtureListSize(body);
+        for(int i = 0; i < size; i++) {
+            body.destroyFixture(body.getFixtureList());
+        }
+
+        addBox2dCollider(rigidbody2D, box2DCollider);
+        body.resetMassData();
+    }
+
+    /**
+     *
+     * @param rigidbody2D
+     * @param box2DCollider
+     */
+    public void addBox2dCollider(Rigidbody2D rigidbody2D, Box2DCollider box2DCollider) {
+        Body body = rigidbody2D.getRawBody();
+        assert body != null : "Raw body must not be nul";
+
+        PolygonShape shape = new PolygonShape();
+        Vector2f halfSize = new Vector2f(box2DCollider.getHalfSize()).mul(0.5f);
+        Vector2f offset = box2DCollider.getOffset();
+        Vector2f origin = new Vector2f(box2DCollider.getOrigin());
+        shape.setAsBox(halfSize.x, halfSize.y, new Vec2(offset.x, offset.y), 0);
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = shape;
+        fixtureDef.density = 1-0f; // TODO: implement customizable physics density?
+        fixtureDef.friction = rigidbody2D.getFriction();
+        fixtureDef.userData = box2DCollider.gameObject;
+        fixtureDef.isSensor = rigidbody2D.isSensor();
+        body.createFixture(fixtureDef);
+    }
+
+    /**
+     *
+     * @param rigidbody2D
+     * @param circleCollider
+     */
+    public void resetCircleCollider(Rigidbody2D rigidbody2D, CircleCollider circleCollider) {
+        Body body = rigidbody2D.getRawBody();
+        if(body == null)
+            return;
+
+        int size = fixtureListSize(body);
+        for(int i = 0; i < size; i++) {
+            body.destroyFixture(body.getFixtureList());
+        }
+
+        addCircleCollider(rigidbody2D, circleCollider);
+        body.resetMassData();
+    }
+
+    /**
+     *
+     * @param rigidbody2D
+     * @param circleCollider
+     */
+    public void addCircleCollider(Rigidbody2D rigidbody2D, CircleCollider circleCollider) {
+        Body body = rigidbody2D.getRawBody();
+        assert body != null : "Raw body must not be nul";
+
+        CircleShape shape = new CircleShape();
+        shape.setRadius(circleCollider.getRadius());
+        shape.m_p.set(circleCollider.getOffset().x, circleCollider.getOffset().y);
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = shape;
+        fixtureDef.density = 1-0f; // TODO: implement customizable physics density?
+        fixtureDef.friction = rigidbody2D.getFriction();
+        fixtureDef.userData = circleCollider.gameObject;
+        fixtureDef.isSensor = rigidbody2D.isSensor();
+        body.createFixture(fixtureDef);
+    }
+
+    public RayCastInfo rayCast(GameObject requestingObject, Vector2f start, Vector2f end) {
+        RayCastInfo callback = new RayCastInfo(requestingObject);
+        world.raycast(callback, new Vec2(start.x, start.y), new Vec2(end.x, end.y));
+        return callback;
+    }
+
+
+    private int fixtureListSize(Body body) {
+        int size = 0;
+        Fixture fixture = body.getFixtureList();
+
+        while(fixture != null) {
+            size++;
+            fixture = fixture.m_next;
+        }
+
+        return size;
+    }
+
+    /**
+     *
+     * @param rigidbody2D
+     */
+    public void setNotSensor(Rigidbody2D rigidbody2D) {
+        Body body = rigidbody2D.getRawBody();
+        if (body == null) return;
+
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            fixture.m_isSensor = false;
+            fixture = fixture.m_next;
+        }
+    }
+
+    /**
+     *
+     * @param rigidbody2D
+     */
+    public void setIsSensor(Rigidbody2D rigidbody2D) {
+        Body body = rigidbody2D.getRawBody();
+        if (body == null) return;
+
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            fixture.m_isSensor = true;
+            fixture = fixture.m_next;
+        }
+    }
 }

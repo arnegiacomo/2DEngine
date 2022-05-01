@@ -2,6 +2,7 @@ package no.arnemunthekaas.editor;
 
 import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
 import no.arnemunthekaas.engine.entities.components.UnPickable;
 import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.physics2d.components.CircleCollider;
@@ -9,6 +10,7 @@ import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.scenes.Scene;
+import org.joml.Vector4f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 public class PropertiesWindow {
 
     private List<GameObject> activeGameObjects;
+    private List<Vector4f> activeGameObjectsOriginalColor;
     private GameObject activeGameObject;
     private PickingTexture pickingTexture;
 
@@ -27,6 +30,7 @@ public class PropertiesWindow {
      */
     public PropertiesWindow(PickingTexture pickingTexture) {
         this.activeGameObjects = new ArrayList<>();
+        this.activeGameObjectsOriginalColor = new ArrayList<>();
         this.pickingTexture = pickingTexture;
     }
 
@@ -98,7 +102,15 @@ public class PropertiesWindow {
      *
      */
     public void clearSelected() {
+        if(activeGameObjectsOriginalColor.size() > 0) {
+            for(int i = 0; i < activeGameObjects.size(); i++) {
+                SpriteRenderer spr = activeGameObjects.get(i).getComponent(SpriteRenderer.class);
+                if(spr != null)
+                    spr.setColor(activeGameObjectsOriginalColor.get(i));
+            }
+        }
         this.activeGameObjects.clear();
+        this.activeGameObjectsOriginalColor.clear();
     }
 
     /**
@@ -106,7 +118,16 @@ public class PropertiesWindow {
      * @param go
      */
     public void addActiveGameObject(GameObject go) {
+        SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
+        if (spr != null) {
+            this.activeGameObjectsOriginalColor.add(new Vector4f(spr.getColor()));
+            spr.setColor(new Vector4f(0.8f, 0.8f, 0.0f, 0.8f));
+        } else {
+            this.activeGameObjectsOriginalColor.add(new Vector4f());
+        }
+
         this.activeGameObjects.add(go);
+
     }
 
     /**

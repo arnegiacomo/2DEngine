@@ -1,6 +1,8 @@
 package no.arnemunthekaas.engine;
 
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.physics2d.Physics2D;
+import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.eventlisteners.KeyListener;
 import no.arnemunthekaas.engine.eventlisteners.MouseListener;
 import no.arnemunthekaas.editor.imgui.ImGuiLayer;
@@ -148,6 +150,14 @@ public class Window implements Observer {
      */
     public static ImGuiLayer getImguiLayer() {
         return get().imGuiLayer;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static Physics2D getPhysics() {
+        return currentScene.getPhysics();
     }
 
     /**
@@ -313,6 +323,8 @@ public class Window implements Observer {
 
             this.imGuiLayer.update(dt, currentScene);
             glfwSwapBuffers(glfwWindow);
+
+            KeyListener.endFrame();
             MouseListener.endFrame();
 
             endTime = (float) glfwGetTime();

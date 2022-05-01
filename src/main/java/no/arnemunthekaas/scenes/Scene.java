@@ -3,6 +3,7 @@ package no.arnemunthekaas.scenes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import no.arnemunthekaas.engine.entities.physics2d.Physics2D;
+import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
@@ -245,5 +246,13 @@ public class Scene {
             Component.init(maxComponentId);
 
         }
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Physics2D getPhysics() {
+        return this.physics2D;
     }
 }
