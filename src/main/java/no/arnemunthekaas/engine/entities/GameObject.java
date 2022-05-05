@@ -182,7 +182,7 @@ public class GameObject {
      */
     public GameObject copy() {
         // TODO find better solution
-        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentDeserializer()).registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Component.class, new ComponentDeserializer()).registerTypeAdapter(GameObject.class, new GameObjectDeserializer()).enableComplexMapKeySerialization().create();
         String objAsJson = gson.toJson(this);
         GameObject obj = gson.fromJson(objAsJson, GameObject.class);
 

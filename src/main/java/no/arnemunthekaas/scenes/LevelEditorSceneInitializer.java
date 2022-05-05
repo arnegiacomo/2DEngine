@@ -9,9 +9,13 @@ import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
 import no.arnemunthekaas.engine.entities.Prefabs;
+import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
+import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
+import no.arnemunthekaas.engine.entities.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
+import org.joml.Vector2i;
 
 import java.io.File;
 import java.util.Collection;
@@ -29,8 +33,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void init(Scene scene) {
-        sprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
-        Spritesheet gizmos = AssetPool.getSpriteSheet("assets/images/gizmos.png");
+        sprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
 
         levelEditorComponents = scene.createGameObject("LevelEditor");
         levelEditorComponents.setNoSerialization();
@@ -61,6 +65,11 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 24, 24, 204, 0));
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png"),
                 24, 24, 204, 0));
+
+        AssetPool.addSpriteSheet("assets/images/spritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheet.png"),
+                16, 16, 14, 0));
+        AssetPool.addSpriteSheet("assets/images/bigSpritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/bigSpritesheet.png"),
+                16, 32, 42, 0));
 
         // Load Sounds
         AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", true);
@@ -100,6 +109,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                 float windowX2 = windowPos.x + windowSize.x;
                 for (int i = 0; i < sprites.size(); i++) {
+                    // TODO: Skip all sprites that will not have box colliders
                     Sprite sprite = sprites.getSprite(i);
                     float spriteWidth = sprite.getWidth() * 2;
                     float spriteHeight = sprite.getHeight() * 2;
@@ -109,7 +119,13 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                     ImGui.pushID(i);
                     if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
                         GameObject gameObject = Prefabs.generateSpriteObject(sprite, GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
-                        // Attach to cursor
+                        Rigidbody2D rigidbody2D = new Rigidbody2D();
+                        rigidbody2D.setBodyType(BodyType.Static);
+                        gameObject.addComponent(rigidbody2D);
+                        Box2DCollider box2DCollider = new Box2DCollider();
+                        box2DCollider.setHalfSize(new Vector2f(GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT));
+                        gameObject.addComponent(box2DCollider);
+                        gameObject.addComponent(new Ground());
                         levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
 
                     }
@@ -128,7 +144,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             }
 
             if (ImGui.beginTabItem("Prefabs")) {
-                Spritesheet playerSprites = AssetPool.getSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png");
+                Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png");
                 Sprite sprite = playerSprites.getSprite(22);
                 float spriteWidth = sprite.getWidth() * 2;
                 float spriteHeight = sprite.getHeight() * 2;

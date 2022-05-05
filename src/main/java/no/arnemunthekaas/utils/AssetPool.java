@@ -69,7 +69,7 @@ public class AssetPool {
      * @param resourceName
      * @return
      */
-    public static Spritesheet getSpriteSheet(String resourceName) {
+    public static Spritesheet getSpritesheet(String resourceName) {
         File file = new File(resourceName);
         if(!spritesheets.containsKey(file.getAbsolutePath()))
             assert false : "Error: Tried to access spritesheed '" + resourceName + "' and it has not been added to assetpool";
