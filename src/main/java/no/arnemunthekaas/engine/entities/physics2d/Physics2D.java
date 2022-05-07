@@ -184,8 +184,15 @@ public class Physics2D {
         body.createFixture(fixtureDef);
     }
 
-    public RayCastInfo rayCast(GameObject requestingObject, Vector2f start, Vector2f end) {
-        RayCastInfo callback = new RayCastInfo(requestingObject);
+    /**
+     *
+     * @param requestingObject
+     * @param start
+     * @param end
+     * @return
+     */
+    public RaycastInfo raycast(GameObject requestingObject, Vector2f start, Vector2f end) {
+        RaycastInfo callback = new RaycastInfo(requestingObject);
         world.raycast(callback, new Vec2(start.x, start.y), new Vec2(end.x, end.y));
         return callback;
     }

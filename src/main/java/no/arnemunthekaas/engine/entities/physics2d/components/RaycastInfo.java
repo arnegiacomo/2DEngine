@@ -6,7 +6,7 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Fixture;
 import org.joml.Vector2f;
 
-public class RayCastInfo implements RayCastCallback {
+public class RaycastInfo implements RayCastCallback {
     public Fixture fixture;
     public Vector2f hitPoint;
     public Vector2f normal;
@@ -20,7 +20,7 @@ public class RayCastInfo implements RayCastCallback {
      *
      * @param object
      */
-    public RayCastInfo(GameObject object) {
+    public RaycastInfo(GameObject object) {
         fixture = null;
         hitPoint = new Vector2f();
         normal = new Vector2f();
@@ -32,9 +32,9 @@ public class RayCastInfo implements RayCastCallback {
 
     @Override
     public float reportFixture(Fixture fixture, Vec2 hitPoint, Vec2 normal, float fraction) {
-        if(fixture.m_userData == requestingObject) {
+        if(fixture.m_userData == requestingObject)
             return 1;
-        }
+
         this.fixture = fixture;
         this.hitPoint = new Vector2f(hitPoint.x, hitPoint.y);
         this.normal = new Vector2f(normal.x, normal.y);

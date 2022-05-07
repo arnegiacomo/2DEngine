@@ -2,17 +2,16 @@ package no.arnemunthekaas.engine.entities;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.entities.components.PlayerController;
-import no.arnemunthekaas.engine.entities.components.Sprite;
-import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
-import no.arnemunthekaas.engine.entities.components.Spritesheet;
+import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.components.animation.AnimationState;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
+import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.physics2d.components.PillboxCollider;
 import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.entities.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
+import org.joml.Vector2f;
 
 public class Prefabs {
 
@@ -252,4 +251,63 @@ public class Prefabs {
 
         return mario;
     }
+
+    public static GameObject generateQuestionBlock() {
+        Spritesheet sprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        GameObject questionBlock = generateSpriteObject(sprites.getSprite(3), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+
+        AnimationState flicker = new AnimationState();
+        flicker.title = "Question";
+        float defaultFrameTime = 0.23f;
+        flicker.addFrame(sprites.getSprite(3), 0.57f);
+        flicker.addFrame(sprites.getSprite(4), defaultFrameTime);
+        flicker.setLoop(true);
+
+        AnimationState inactive = new AnimationState();
+        inactive.title = "Inactive";
+        inactive.addFrame(sprites.getSprite(3), 0.1f);
+        inactive.setLoop(false);
+
+        StateMachine stateMachine = new StateMachine();
+        stateMachine.addState(flicker);
+        stateMachine.addState(inactive);
+        stateMachine.setDefaultState(flicker.title);
+        stateMachine.addState(flicker.title, inactive.title, "setInactive");
+        questionBlock.addComponent(stateMachine);
+        questionBlock.addComponent(new QuestionBlock());
+
+        Rigidbody2D rb = new Rigidbody2D();
+        rb.setBodyType(BodyType.Static);
+        questionBlock.addComponent(rb);
+        Box2DCollider b2d = new Box2DCollider();
+        b2d.setHalfSize(new Vector2f(GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT));
+        questionBlock.addComponent(b2d);
+        questionBlock.addComponent(new Ground());
+
+        return questionBlock;
+    }
+
+    public static GameObject generateBlockCoin() {
+        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png");
+        GameObject coin = generateSpriteObject(items.getSprite(68), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+
+        AnimationState coinFlip = new AnimationState();
+        coinFlip.title = "CoinFlip";
+        float defaultFrameTime = 0.23f;
+        coinFlip.addFrame(items.getSprite(68), 0.57f);
+        coinFlip.addFrame(items.getSprite(68), defaultFrameTime);
+        coinFlip.addFrame(items.getSprite(68), defaultFrameTime);
+        coinFlip.setLoop(true);
+
+        StateMachine stateMachine = new StateMachine();
+        stateMachine.addState(coinFlip);
+        stateMachine.setDefaultState(coinFlip.title);
+        coin.addComponent(stateMachine);
+        coin.addComponent(new QuestionBlock());
+
+        coin.addComponent(new BlockCoin());
+
+        return coin;
+    }
+
 }

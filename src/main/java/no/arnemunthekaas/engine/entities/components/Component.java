@@ -162,9 +162,9 @@ public abstract class Component {
      *
      * @param collidingObject
      * @param contact
-     * @param hitNormal
+     * @param contactNormal
      */
-    public void beginContact(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+    public void beginContact(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
 
     }
 

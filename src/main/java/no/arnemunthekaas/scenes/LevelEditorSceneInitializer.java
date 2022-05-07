@@ -71,8 +71,15 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.addSpriteSheet("assets/images/bigSpritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/bigSpritesheet.png"),
                 16, 32, 42, 0));
 
+        AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png"),
+                16, 16, 300, 0));
+
         // Load Sounds
-        AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", true);
+        AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_jump-small.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_jump-super.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_bump.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_break_block.ogg", false);
 
         for(GameObject go : scene.getGameObjects()) {
             if(go.getComponent(SpriteRenderer.class) != null) {
@@ -126,6 +133,10 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                         box2DCollider.setHalfSize(new Vector2f(GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT));
                         gameObject.addComponent(box2DCollider);
                         gameObject.addComponent(new Ground());
+
+                        if(i == 1 || i == 2)
+                            gameObject.addComponent(new Breakable());
+
                         levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
 
                     }
@@ -156,6 +167,18 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
 
                 }
+
+                ImGui.sameLine();
+
+                Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+                sprite = items.getSprite(4);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject object = Prefabs.generateQuestionBlock();
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(object);
+                }
+
                 ImGui.sameLine();
 
                 ImGui.endTabItem();
