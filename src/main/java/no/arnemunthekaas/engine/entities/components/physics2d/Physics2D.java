@@ -1,15 +1,23 @@
 package no.arnemunthekaas.engine.entities.components.physics2d;
 
+import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
+import no.arnemunthekaas.engine.entities.components.Ground;
+import no.arnemunthekaas.engine.entities.components.PlayerController;
 import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.*;
+import no.arnemunthekaas.engine.renderer.DebugDraw;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 public class Physics2D {
+
+    // TODO: Move BodyType enum here
+
     private Vec2 gravity = new Vec2(0, -10.0f);
     private World world = new World(gravity);
 
@@ -287,5 +295,34 @@ public class Physics2D {
      */
     public Vector2f getGravity() {
         return new Vector2f(this.gravity.x, this.gravity.y);
+    }
+
+    /**
+     *
+     * @param gameObject
+     * @param width
+     * @param height
+     * @return
+     */
+    public static boolean checkOnGround(GameObject gameObject, float width, float height) {
+        Vector2f raycastBegin = new Vector2f(gameObject.transform.position);
+        raycastBegin.sub(width / 2.0f, 0.0f);
+
+        float yVal = height;
+        Vector2f raycastEnd = new Vector2f(raycastBegin).add(0.0f, yVal);
+
+        RaycastInfo info = Window.getPhysics().raycast(gameObject, raycastBegin, raycastEnd);
+
+        Vector2f raycast2Begin = new Vector2f(raycastBegin).add(width, 0.0f);
+        Vector2f raycast2End = new Vector2f(raycastEnd).add(width, 0.0f);
+        RaycastInfo info2 = Window.getPhysics().raycast(gameObject, raycast2Begin, raycast2End);
+
+        boolean onGround = (info.hit && info.hitObject != null && info.hitObject.getComponent(Ground.class) != null) ||
+                (info2.hit && info2.hitObject != null && info2.hitObject.getComponent(Ground.class) != null);
+
+//        DebugDraw.addLine2D(raycastBegin, raycastEnd, new Vector3f(1, 0, 0));
+//        DebugDraw.addLine2D(raycast2Begin, raycast2End, new Vector3f(1, 0, 0));
+
+        return onGround;
     }
 }

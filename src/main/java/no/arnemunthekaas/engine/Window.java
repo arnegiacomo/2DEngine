@@ -280,6 +280,8 @@ public class Window implements Observer {
         Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
         while (!glfwWindowShouldClose(glfwWindow)) {
+            System.out.println("FPS: " + 1 / dt);
+
             // Poll events
             glfwPollEvents();
 

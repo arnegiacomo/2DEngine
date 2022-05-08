@@ -21,7 +21,6 @@ import java.util.Collection;
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
 
-    private Spritesheet sprites;
     private GameObject levelEditorComponents;
 
     public LevelEditorSceneInitializer() {
@@ -29,7 +28,6 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void init(Scene scene) {
-        sprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
         Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
 
         levelEditorComponents = scene.createGameObject("LevelEditor");
@@ -60,15 +58,18 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png"),
                 24, 24, 204, 0));
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png"),
-                24, 24, 204, 0));
+                24, 24, 300, 0));
 
         AssetPool.addSpriteSheet("assets/images/spritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheet.png"),
-                16, 16, 14, 0));
+                16, 16, 20, 0));
         AssetPool.addSpriteSheet("assets/images/bigSpritesheet.png", new Spritesheet(AssetPool.getTexture("assets/images/bigSpritesheet.png"),
                 16, 32, 42, 0));
 
         AssetPool.addSpriteSheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png", new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png"),
                 16, 16, 300, 0));
+
+        AssetPool.addSpriteSheet("assets/images/img.png", new Spritesheet(AssetPool.getTexture("assets/images/img.png"),
+                16, 16, 64, 0));
 
         // Load Sounds
         AssetPool.addSound("assets/audio/Powerup6.ogg", false);
@@ -78,6 +79,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.addSound("assets/audio/assets_sounds_jump-super.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_bump.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_break_block.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_mario_die.ogg", false);
+        AssetPool.addSound("assets/audio/assets_sounds_pipe.ogg", false);
 
         for(GameObject go : scene.getGameObjects()) {
             if(go.getComponent(SpriteRenderer.class) != null) {
@@ -97,6 +100,11 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void imgui() {
+        Spritesheet solidTiles = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        Spritesheet decorativeTiles = AssetPool.getSpritesheet("assets/images/img.png");
+        Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
+        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+
         ImGui.begin("Level Editor Components");
         levelEditorComponents.imgui();
         ImGui.end();
@@ -104,7 +112,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         ImGui.begin("Objects");
 
         if (ImGui.beginTabBar("WindowTabBar")) {
-            if (ImGui.beginTabItem("Tiles")) {
+            if (ImGui.beginTabItem("Solid Tiles")) {
                 ImVec2 windowPos = new ImVec2();
                 ImGui.getWindowPos(windowPos);
                 ImVec2 windowSize = new ImVec2();
@@ -113,9 +121,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.getStyle().getItemSpacing(itemSpacing);
 
                 float windowX2 = windowPos.x + windowSize.x;
-                for (int i = 0; i < sprites.size(); i++) {
-                    // TODO: Skip all sprites that will not have box colliders
-                    Sprite sprite = sprites.getSprite(i);
+                for (int i = 0; i < solidTiles.size(); i++) {
+                    Sprite sprite = solidTiles.getSprite(i);
                     float spriteWidth = sprite.getWidth() * 2;
                     float spriteHeight = sprite.getHeight() * 2;
                     int id = sprite.getTexID();
@@ -145,7 +152,44 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                     float lastButtonX2 = lastButtonPos.x;
                     float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
 
-                    if (i + 1 < sprites.size() && nextButtonX2 < windowX2)
+                    if (i + 1 < solidTiles.size() && nextButtonX2 < windowX2)
+                        ImGui.sameLine();
+
+                }
+                ImGui.endTabItem();
+            }
+
+            if (ImGui.beginTabItem("Decoration")) {
+
+                ImVec2 windowPos = new ImVec2();
+                ImGui.getWindowPos(windowPos);
+                ImVec2 windowSize = new ImVec2();
+                ImGui.getWindowSize(windowSize);
+                ImVec2 itemSpacing = new ImVec2();
+                ImGui.getStyle().getItemSpacing(itemSpacing);
+
+                float windowX2 = windowPos.x + windowSize.x;
+                for (int i = 0; i < decorativeTiles.size(); i++) {
+                    Sprite sprite = decorativeTiles.getSprite(i);
+                    float spriteWidth = sprite.getWidth() * 2;
+                    float spriteHeight = sprite.getHeight() * 2;
+                    int id = sprite.getTexID();
+                    Vector2f[] texCoords = sprite.getTexCoords();
+
+                    ImGui.pushID(i);
+                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                        GameObject gameObject = Prefabs.generateSpriteObject(sprite, GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+                        gameObject.transform.zIndex = Integer.MIN_VALUE;
+                        levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                    }
+                    ImGui.popID();
+
+                    ImVec2 lastButtonPos = new ImVec2();
+                    ImGui.getItemRectMax(lastButtonPos);
+                    float lastButtonX2 = lastButtonPos.x;
+                    float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+
+                    if (i + 1 < decorativeTiles.size() && nextButtonX2 < windowX2)
                         ImGui.sameLine();
 
                 }
@@ -153,42 +197,51 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
             }
 
             if (ImGui.beginTabItem("Prefabs")) {
-                Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png");
-                Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+                int uid = 0;
 
-                Sprite sprite = playerSprites.getSprite(22);
+                // Player Character
+                Sprite sprite = playerSprites.getSprite(0);
                 float spriteWidth = sprite.getWidth() * 2;
                 float spriteHeight = sprite.getHeight() * 2;
                 int id = sprite.getTexID();
                 Vector2f[] texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
                     GameObject gameObject = Prefabs.generatePlayerCharacter();
-                    // Attach to cursor
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
-
                 }
-
+                ImGui.popID();
                 ImGui.sameLine();
+
+                // Moonblock
 
                 sprite = items.getSprite(4);
                 id = sprite.getTexID();
                 texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
                     GameObject object = Prefabs.generateMoonBlock();
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(object);
                 }
-
+                ImGui.popID();
                 ImGui.sameLine();
 
-                sprite = items.getSprite(5);
+                // Goomba
+
+                sprite = playerSprites.getSprite(14);
                 id = sprite.getTexID();
                 texCoords = sprite.getTexCoords();
-                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                    GameObject object = Prefabs.generateMoonBlock();
-                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(object);
-                }
 
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generateGoomba();
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
                 ImGui.sameLine();
+
 
                 ImGui.endTabItem();
             }

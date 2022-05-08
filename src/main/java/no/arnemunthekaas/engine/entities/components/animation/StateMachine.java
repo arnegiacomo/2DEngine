@@ -19,7 +19,7 @@ public class StateMachine extends Component {
      * @param to
      * @param onTrigger
      */
-    public void addState(String from, String to, String onTrigger) {
+    public void addTrigger(String from, String to, String onTrigger) {
         this.stateTransfers.put(new StateTrigger(from, onTrigger), to);
     }
 
@@ -158,12 +158,12 @@ public class StateMachine extends Component {
 
     @Override
     public void editorUpdate(float dt) {
-        if (currentState != null) {
-            currentState.update(dt);
-            SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
-            if (sprite != null)
-                sprite.setSprite(currentState.getCurrentSprite());
-        }
+//        if (currentState != null) {
+//            currentState.update(dt);
+//            SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
+//            if (sprite != null)
+//                sprite.setSprite(currentState.getCurrentSprite());
+//        }
     }
 
     @Override
