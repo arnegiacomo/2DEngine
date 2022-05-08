@@ -3,14 +3,15 @@ package no.arnemunthekaas.engine.entities.components.gizmos;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.Component;
 import no.arnemunthekaas.engine.entities.components.Spritesheet;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_E;
 
 public class GizmoSystem extends Component {
     private Spritesheet gizmos;
-    private int usingGizmo = 1;
+    private transient int usingGizmo = 1;
     private transient int gizmoAmount;
+    private transient float updateCooldown = 0;
 
     /**
      *
@@ -26,8 +27,6 @@ public class GizmoSystem extends Component {
         gameObject.addComponent(new ScaleGizmo(gizmos.getSprite(2), Window.getImGuiLayer().getPropertiesWindow()));
             gizmoAmount = 2;
     }
-
-    private float updateCooldown = 0;
 
     @Override
     public void editorUpdate(float dt) {

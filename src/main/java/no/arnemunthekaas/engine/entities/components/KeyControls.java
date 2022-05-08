@@ -3,7 +3,8 @@ package no.arnemunthekaas.engine.entities.components;
 import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
+import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
 import no.arnemunthekaas.utils.GameConstants;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class KeyControls extends Component{
             Window.getScene().addGameObject(newObj);
             newObj.transform.position.add(GameConstants.GRID_WIDTH, 0);
             propertiesWindow.setActiveGameObject(newObj);
+            if (newObj.getComponent(StateMachine.class) != null)
+                newObj.getComponent(StateMachine.class).refreshTextures();
         } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) && KeyListener.isKeyBeginPress(GLFW_KEY_D) && activeGameObjects.size() > 1) {
             List<GameObject> gameObjects = new ArrayList<>(activeGameObjects);
             propertiesWindow.clearSelected();
@@ -32,6 +35,9 @@ public class KeyControls extends Component{
                 GameObject copy = go.copy();
                 Window.getScene().addGameObject(copy);
                 propertiesWindow.addActiveGameObject(copy);
+
+                if (copy.getComponent(StateMachine.class) != null)
+                    copy.getComponent(StateMachine.class).refreshTextures();
             }
         } else if ((KeyListener.isKeyBeginPress(GLFW_KEY_DELETE) || KeyListener.isKeyBeginPress(GLFW_KEY_BACKSPACE))) {
             activeGameObjects.forEach(go -> go.destroy());

@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.entities.physics2d;
+package no.arnemunthekaas.engine.entities.components.physics2d;
 
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;

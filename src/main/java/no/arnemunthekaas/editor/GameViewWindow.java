@@ -4,10 +4,10 @@ import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
-import no.arnemunthekaas.observers.events.Event;
-import no.arnemunthekaas.observers.events.EventSystem;
-import no.arnemunthekaas.observers.events.EventType;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
+import no.arnemunthekaas.engine.events.observers.events.Event;
+import no.arnemunthekaas.engine.events.observers.events.EventSystem;
+import no.arnemunthekaas.engine.events.observers.events.EventType;
 import org.joml.Vector2f;
 
 public class GameViewWindow {

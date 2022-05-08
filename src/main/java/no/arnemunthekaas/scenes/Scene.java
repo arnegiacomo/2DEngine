@@ -2,8 +2,7 @@ package no.arnemunthekaas.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import no.arnemunthekaas.engine.entities.physics2d.Physics2D;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
+import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Component;
@@ -28,6 +27,7 @@ public class Scene {
     private Camera camera;
     private boolean running;
     private List<GameObject> gameObjects;
+    private List<GameObject> pendingObjects;
     private Physics2D physics2D;
 
     private SceneInitializer sceneInitializer;
@@ -37,6 +37,7 @@ public class Scene {
         this.physics2D = new Physics2D();
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
+        this.pendingObjects = new ArrayList<>();
         this.running = false;
     }
 
@@ -97,6 +98,14 @@ public class Scene {
 
 
         }
+
+        for (GameObject go : pendingObjects) {
+            this.gameObjects.add(go);
+            go.start();
+            this.renderer.add(go);
+            this.physics2D.add(go);
+        }
+        pendingObjects.clear();
     }
 
     /**
@@ -120,6 +129,14 @@ public class Scene {
 
 
         }
+
+        for (GameObject go : pendingObjects) {
+            this.gameObjects.add(go);
+            go.start();
+            this.renderer.add(go);
+            this.physics2D.add(go);
+        }
+        pendingObjects.clear();
     }
 
     /**
@@ -138,10 +155,8 @@ public class Scene {
         if(!running)
             this.gameObjects.add(go);
         else {
-            this.gameObjects.add(go);
-            go.start();
-            this.renderer.add(go);
-            this.physics2D.add(go);
+            pendingObjects.add(go);
+
         }
     }
 

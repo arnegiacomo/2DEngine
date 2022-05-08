@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.eventlisteners;
+package no.arnemunthekaas.engine.events.listeners;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.renderer.Camera;

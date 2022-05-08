@@ -12,8 +12,8 @@ import no.arnemunthekaas.editor.SceneHierarchyWindow;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.editor.GameViewWindow;
 import no.arnemunthekaas.editor.PropertiesWindow;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.scenes.Scene;
 

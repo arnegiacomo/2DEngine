@@ -1,8 +1,8 @@
-package no.arnemunthekaas.engine.entities.physics2d.components;
+package no.arnemunthekaas.engine.entities.components.physics2d.components;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.Component;
-import no.arnemunthekaas.engine.entities.physics2d.enums.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.joml.Vector2f;

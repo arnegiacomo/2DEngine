@@ -2,7 +2,7 @@ package no.arnemunthekaas.engine.entities.components.gizmos;
 
 import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.entities.components.Sprite;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
 
 public class TranslateGizmo extends Gizmo {
 

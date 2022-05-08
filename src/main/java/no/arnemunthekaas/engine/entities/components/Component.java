@@ -184,7 +184,7 @@ public abstract class Component {
      * @param contact
      * @param hitNormal
      */
-    public void preSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+    public void preSolve(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
 
     }
 

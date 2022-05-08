@@ -1,15 +1,14 @@
 package no.arnemunthekaas.engine;
 
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.entities.physics2d.Physics2D;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
 import no.arnemunthekaas.editor.imgui.ImGuiLayer;
 import no.arnemunthekaas.engine.renderer.*;
-import no.arnemunthekaas.observers.Observer;
-import no.arnemunthekaas.observers.events.Event;
-import no.arnemunthekaas.observers.events.EventSystem;
+import no.arnemunthekaas.engine.events.observers.Observer;
+import no.arnemunthekaas.engine.events.observers.events.Event;
+import no.arnemunthekaas.engine.events.observers.events.EventSystem;
 import no.arnemunthekaas.scenes.LevelEditorSceneInitializer;
 import no.arnemunthekaas.scenes.Scene;
 import no.arnemunthekaas.scenes.SceneInitializer;

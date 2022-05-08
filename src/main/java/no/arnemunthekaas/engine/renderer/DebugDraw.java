@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class DebugDraw {
-    private static final int MAX_LINES = 500; // maximum drawable lines
+    private static final int MAX_LINES = 2000; // maximum drawable lines
 
     private static List<Line2D> lines = new ArrayList<>();
     // 6 floats per vertex, 2 per line

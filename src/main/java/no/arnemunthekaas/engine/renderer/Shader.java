@@ -12,6 +12,7 @@ import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL20.glGetShaderInfoLog;
 
+// TODO: Post processing and lighting
 public class Shader {
 
     private int shaderProgramID;

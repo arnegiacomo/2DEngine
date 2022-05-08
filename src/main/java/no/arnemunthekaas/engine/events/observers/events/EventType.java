@@ -1,4 +1,4 @@
-package no.arnemunthekaas.observers.events;
+package no.arnemunthekaas.engine.events.observers.events;
 
 public enum EventType {
     GameEnginePlay,

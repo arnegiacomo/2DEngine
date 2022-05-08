@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.eventlisteners;
+package no.arnemunthekaas.engine.events.listeners;
 
 import java.util.Arrays;
 

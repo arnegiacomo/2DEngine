@@ -1,8 +1,8 @@
-package no.arnemunthekaas.engine.entities.physics2d;
+package no.arnemunthekaas.engine.entities.components.physics2d;
 
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Transform;
-import no.arnemunthekaas.engine.entities.physics2d.components.*;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.*;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;

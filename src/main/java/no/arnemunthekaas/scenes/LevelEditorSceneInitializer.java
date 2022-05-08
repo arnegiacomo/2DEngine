@@ -2,25 +2,21 @@ package no.arnemunthekaas.scenes;
 
 import imgui.ImGui;
 import imgui.ImVec2;
-import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.audio.Sound;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
 import no.arnemunthekaas.engine.entities.Prefabs;
-import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.entities.physics2d.enums.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
+import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
-import org.joml.Vector2i;
 
 import java.io.File;
 import java.util.Collection;
-
-import static org.lwjgl.glfw.GLFW.*;
 
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
@@ -75,7 +71,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 16, 16, 300, 0));
 
         // Load Sounds
-        AssetPool.addSound("assets/audio/assets_sounds_1-up.ogg", false);
+        AssetPool.addSound("assets/audio/Powerup6.ogg", false);
+        AssetPool.addSound("assets/audio/button_2.ogg", false);
+        AssetPool.addSound("assets/audio/mario1up.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_jump-small.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_jump-super.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_bump.ogg", false);
@@ -156,6 +154,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
             if (ImGui.beginTabItem("Prefabs")) {
                 Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_creatures_trans.png");
+                Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+
                 Sprite sprite = playerSprites.getSprite(22);
                 float spriteWidth = sprite.getWidth() * 2;
                 float spriteHeight = sprite.getHeight() * 2;
@@ -170,12 +170,21 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                 ImGui.sameLine();
 
-                Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
                 sprite = items.getSprite(4);
                 id = sprite.getTexID();
                 texCoords = sprite.getTexCoords();
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                    GameObject object = Prefabs.generateQuestionBlock();
+                    GameObject object = Prefabs.generateMoonBlock();
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(object);
+                }
+
+                ImGui.sameLine();
+
+                sprite = items.getSprite(5);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject object = Prefabs.generateMoonBlock();
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(object);
                 }
 

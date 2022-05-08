@@ -3,15 +3,14 @@ package no.arnemunthekaas.engine.entities.components;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
-import no.arnemunthekaas.engine.entities.physics2d.components.RaycastInfo;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
-import no.arnemunthekaas.engine.renderer.DebugDraw;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.PillboxCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.RaycastInfo;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -139,7 +138,7 @@ public class PlayerController extends Component {
         Vector2f raycastBegin = new Vector2f(this.gameObject.transform.position);
         float innerPlayerWidth = this.playerWidth * 0.6f;
         raycastBegin.sub(innerPlayerWidth / 2.0f, 0.0f);
-        float yVal = playerState == PlayerState.Small ? -0.14f : -0.24f;
+        float yVal = playerState == PlayerState.Small ? -0.16f : -0.26f;
         Vector2f raycastEnd = new Vector2f(raycastBegin).add(0.0f, yVal);
 
         RaycastInfo info = Window.getPhysics().raycast(gameObject, raycastBegin, raycastEnd);
@@ -177,6 +176,45 @@ public class PlayerController extends Component {
      */
     public boolean isSmall() {
         return this.playerState == PlayerState.Small;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isBig() {
+        return this.playerState == PlayerState.Big;
+    }
+
+    /**
+     *
+     * @param consumable
+     */
+    public void consume(Consumable consumable) {
+        if (consumable instanceof Potion) {
+
+                if (playerState == PlayerState.Small) {
+                    playerState = PlayerState.Big;
+                    AssetPool.getSound("assets/audio/mario1up.ogg").play();
+                    gameObject.transform.scale.y = 0.42f;
+                    PillboxCollider pillboxCollider = gameObject.getComponent(PillboxCollider.class);
+
+                    if(pillboxCollider != null) {
+                        jumpBoost *= bigJumpBoostFactor;
+                        walkSpeed *= bigJumpBoostFactor;
+                        pillboxCollider.setHeight(0.63f);
+                    }
+                } else if (playerState == PlayerState.Big) {
+                    AssetPool.getSound("assets/audio/mario1up.ogg").play();
+                    // TODO: inventory system
+                }
+
+                stateMachine.trigger("powerup");
+
+
+
+
+        }
     }
 
 }

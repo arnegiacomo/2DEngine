@@ -1,8 +1,8 @@
 package no.arnemunthekaas.engine.entities.components;
 
 import no.arnemunthekaas.engine.renderer.Camera;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
 import org.joml.Vector2f;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_KP_DECIMAL;

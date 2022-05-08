@@ -1,9 +1,9 @@
 package no.arnemunthekaas.editor;
 
 import imgui.ImGui;
-import no.arnemunthekaas.observers.events.Event;
-import no.arnemunthekaas.observers.events.EventSystem;
-import no.arnemunthekaas.observers.events.EventType;
+import no.arnemunthekaas.engine.events.observers.events.Event;
+import no.arnemunthekaas.engine.events.observers.events.EventSystem;
+import no.arnemunthekaas.engine.events.observers.events.EventType;
 
 public class MenuBar {
 

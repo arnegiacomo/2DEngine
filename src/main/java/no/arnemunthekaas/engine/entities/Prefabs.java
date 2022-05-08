@@ -1,20 +1,23 @@
 package no.arnemunthekaas.engine.entities;
 
 import no.arnemunthekaas.engine.Window;
-import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.components.animation.AnimationState;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
-import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
-import no.arnemunthekaas.engine.entities.physics2d.components.PillboxCollider;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.entities.physics2d.enums.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.CircleCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.PillboxCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
+import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 
 public class Prefabs {
 
+    private static Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png");
+    private static Spritesheet tiles = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+    
     /**
      *
      * @param sprite
@@ -71,7 +74,7 @@ public class Prefabs {
 //        return playerCharacter;
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
         Spritesheet bigPlayerSprites = AssetPool.getSpritesheet("assets/images/bigSpritesheet.png");
-        GameObject mario = generateSpriteObject(playerSprites.getSprite(0), 0.25f, 0.25f);
+        GameObject mario = generateSpriteObject(playerSprites.getSprite(0), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
 
         // Little mario animations
         AnimationState run = new AnimationState();
@@ -252,20 +255,19 @@ public class Prefabs {
         return mario;
     }
 
-    public static GameObject generateQuestionBlock() {
-        Spritesheet sprites = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
-        GameObject questionBlock = generateSpriteObject(sprites.getSprite(3), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+    public static GameObject generateMoonBlock() {
+        GameObject questionBlock = generateSpriteObject(tiles.getSprite(3), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
 
         AnimationState flicker = new AnimationState();
         flicker.title = "Question";
         float defaultFrameTime = 0.23f;
-        flicker.addFrame(sprites.getSprite(3), 0.57f);
-        flicker.addFrame(sprites.getSprite(4), defaultFrameTime);
+        flicker.addFrame(tiles.getSprite(3), 0.57f);
+        flicker.addFrame(tiles.getSprite(4), defaultFrameTime);
         flicker.setLoop(true);
 
         AnimationState inactive = new AnimationState();
         inactive.title = "Inactive";
-        inactive.addFrame(sprites.getSprite(3), 0.1f);
+        inactive.addFrame(tiles.getSprite(3), 0.1f);
         inactive.setLoop(false);
 
         StateMachine stateMachine = new StateMachine();
@@ -274,7 +276,7 @@ public class Prefabs {
         stateMachine.setDefaultState(flicker.title);
         stateMachine.addState(flicker.title, inactive.title, "setInactive");
         questionBlock.addComponent(stateMachine);
-        questionBlock.addComponent(new QuestionBlock());
+        questionBlock.addComponent(new MoonBlock());
 
         Rigidbody2D rb = new Rigidbody2D();
         rb.setBodyType(BodyType.Static);
@@ -287,27 +289,75 @@ public class Prefabs {
         return questionBlock;
     }
 
-    public static GameObject generateBlockCoin() {
-        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png");
-        GameObject coin = generateSpriteObject(items.getSprite(68), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateHeart() {
+        GameObject heart = generateSpriteObject(items.getSprite(115), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
 
-        AnimationState coinFlip = new AnimationState();
-        coinFlip.title = "CoinFlip";
+        AnimationState flip = new AnimationState();
+        flip.title = "Flip";
         float defaultFrameTime = 0.23f;
-        coinFlip.addFrame(items.getSprite(68), 0.57f);
-        coinFlip.addFrame(items.getSprite(68), defaultFrameTime);
-        coinFlip.addFrame(items.getSprite(68), defaultFrameTime);
-        coinFlip.setLoop(true);
+        flip.addFrame(items.getSprite(115), 0.57f);
+        flip.addFrame(items.getSprite(118), defaultFrameTime);
+        flip.addFrame(items.getSprite(117), defaultFrameTime);
+        flip.setLoop(true);
 
         StateMachine stateMachine = new StateMachine();
-        stateMachine.addState(coinFlip);
-        stateMachine.setDefaultState(coinFlip.title);
-        coin.addComponent(stateMachine);
-        coin.addComponent(new QuestionBlock());
+        stateMachine.addState(flip);
+        stateMachine.setDefaultState(flip.title);
+        heart.addComponent(stateMachine);
+        heart.addComponent(new MoonBlock());
 
-        coin.addComponent(new BlockCoin());
+        heart.addComponent(new Heart());
 
-        return coin;
+        return heart;
     }
 
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateBluePotion() {
+        GameObject bluePotion = generateSpriteObject(items.getSprite(25), GameConstants.GRID_WIDTH / 1.5f, GameConstants.GRID_HEIGHT / 1.5f);
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Dynamic);
+        rigidbody2D.setFixedRotation(true);
+        rigidbody2D.setContinuousCollision(false);
+        bluePotion.addComponent(rigidbody2D);
+
+        PillboxCollider pillboxCollider = new PillboxCollider();
+        pillboxCollider.setHeight(GameConstants.GRID_HEIGHT / 1.1f);
+        pillboxCollider.setWidth(GameConstants.GRID_HEIGHT / 2.5f);
+        bluePotion.addComponent(pillboxCollider);
+
+        bluePotion.addComponent(new BluePotion());
+
+        return bluePotion;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateRedPotion() {
+        GameObject redPotion = generateSpriteObject(items.getSprite(27), GameConstants.GRID_WIDTH / 1.5f, GameConstants.GRID_HEIGHT / 1.5f);
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Static);
+        rigidbody2D.setFixedRotation(true);
+        rigidbody2D.setContinuousCollision(false);
+        redPotion.addComponent(rigidbody2D);
+
+        PillboxCollider pillboxCollider = new PillboxCollider();
+        pillboxCollider.setHeight(GameConstants.GRID_HEIGHT / 1.1f);
+        pillboxCollider.setWidth(GameConstants.GRID_HEIGHT / 2.5f);
+        redPotion.addComponent(pillboxCollider);
+
+        redPotion.addComponent(new RedPotion());
+
+        return redPotion;
+    }
 }

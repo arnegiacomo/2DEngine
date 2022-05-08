@@ -1,7 +1,7 @@
-package no.arnemunthekaas.observers;
+package no.arnemunthekaas.engine.events.observers;
 
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.observers.events.Event;
+import no.arnemunthekaas.engine.events.observers.events.Event;
 
 public interface Observer {
 

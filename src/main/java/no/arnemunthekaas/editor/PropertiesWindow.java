@@ -3,19 +3,14 @@ package no.arnemunthekaas.editor;
 import imgui.ImGui;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.SpriteRenderer;
-import no.arnemunthekaas.engine.entities.components.UnPickable;
-import no.arnemunthekaas.engine.entities.physics2d.components.Box2DCollider;
-import no.arnemunthekaas.engine.entities.physics2d.components.CircleCollider;
-import no.arnemunthekaas.engine.entities.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.CircleCollider;
+import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
-import no.arnemunthekaas.scenes.Scene;
 import org.joml.Vector4f;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;
 
 public class PropertiesWindow {
 

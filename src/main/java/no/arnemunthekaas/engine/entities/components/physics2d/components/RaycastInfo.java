@@ -1,4 +1,4 @@
-package no.arnemunthekaas.engine.entities.physics2d.components;
+package no.arnemunthekaas.engine.entities.components.physics2d.components;
 
 import no.arnemunthekaas.engine.entities.GameObject;
 import org.jbox2d.callbacks.RayCastCallback;

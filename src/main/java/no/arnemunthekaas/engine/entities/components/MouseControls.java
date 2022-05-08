@@ -2,14 +2,14 @@ package no.arnemunthekaas.engine.entities.components;
 
 import no.arnemunthekaas.editor.PropertiesWindow;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
-import no.arnemunthekaas.engine.eventlisteners.KeyListener;
+import no.arnemunthekaas.engine.events.listeners.KeyListener;
 import no.arnemunthekaas.engine.renderer.DebugDraw;
 import no.arnemunthekaas.engine.renderer.PickingTexture;
 import no.arnemunthekaas.scenes.Scene;
 import no.arnemunthekaas.utils.GameConstants;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
-import no.arnemunthekaas.engine.eventlisteners.MouseListener;
+import no.arnemunthekaas.engine.events.listeners.MouseListener;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3f;
