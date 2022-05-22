@@ -2,7 +2,8 @@ package no.arnemunthekaas.engine.entities.components.physics2d.components;
 
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.Component;
-import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.joml.Vector2f;
@@ -243,5 +244,15 @@ public class Rigidbody2D extends Component {
     public void addImpulse(Vector2f force) {
         if(rawBody != null)
             rawBody.applyLinearImpulse(new Vec2(force.x, force.y), rawBody.getWorldCenter());
+    }
+
+    /**
+     * Change position
+     * @param newPosition
+     */
+    public void setPosition(Vector2f newPosition) {
+        if (rawBody != null) {
+            rawBody.setTransform(new Vec2(newPosition.x, newPosition.y), gameObject.transform.rotation);
+        }
     }
 }

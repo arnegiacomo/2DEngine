@@ -3,10 +3,10 @@ package no.arnemunthekaas.engine.entities.components;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
+import no.arnemunthekaas.engine.entities.components.physics2d.BodyType;
 import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.PillboxCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import no.arnemunthekaas.engine.events.listeners.KeyListener;
 import no.arnemunthekaas.scenes.LevelEditorSceneInitializer;
 import no.arnemunthekaas.utils.AssetPool;
@@ -20,7 +20,7 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class PlayerController extends Component {
 
-    public enum PlayerState {
+    private enum PlayerState {
         Small,
         Big,
         Fire,
@@ -310,6 +310,15 @@ public class PlayerController extends Component {
         if (gameObject.transform.position.y > 0) {
             deadMinHeight = -GameConstants.GRID_HEIGHT;
         }
+    }
+
+    /**
+     * Set new player position
+     * @param newPosition
+     */
+    public void setPosition(Vector2f newPosition) {
+        this.gameObject.transform.position.set(newPosition);
+        this.rigidbody2D.setPosition(newPosition);
     }
 
 }

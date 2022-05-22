@@ -179,6 +179,16 @@ public class Scene {
     }
 
     /**
+     * Finds and returns a game object in scene from its name
+     * @param name Name of object to be found
+     * @return Object if found, else null
+     */
+    public GameObject getGameObject(String name) {
+        Optional<GameObject> result = gameObjects.stream().filter(g -> g.name.equals(name)).findFirst();
+        return result.orElse(null);
+    }
+
+    /**
      * Get Scene Camera
      *
      * @return Camera

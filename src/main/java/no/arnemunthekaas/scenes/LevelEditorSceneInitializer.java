@@ -3,14 +3,16 @@ package no.arnemunthekaas.scenes;
 import imgui.ImGui;
 import imgui.ImVec2;
 import no.arnemunthekaas.engine.audio.Sound;
+import no.arnemunthekaas.engine.entities.Direction;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
 import no.arnemunthekaas.engine.entities.Prefabs;
+import no.arnemunthekaas.engine.entities.components.physics2d.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
@@ -45,6 +47,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     @Override
     public void loadResources(Scene scene) {
 
+        // TODO: Have all resource paths specified in a file, refactor and cleanup here and make adding easier / less tedious
+
         // Load shaders
         AssetPool.getShader("assets/shaders/default.glsl");
         AssetPool.getShader("assets/shaders/pickingShader.glsl");
@@ -70,6 +74,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         AssetPool.addSpriteSheet("assets/images/img.png", new Spritesheet(AssetPool.getTexture("assets/images/img.png"),
                 16, 16, 64, 0));
+
+        AssetPool.addSpriteSheet("assets/images/img_1.png", new Spritesheet(AssetPool.getTexture("assets/images/img_1.png"),
+                32, 32, 4, 0));
 
         // Load Sounds
         AssetPool.addSound("assets/audio/Powerup6.ogg", false);
@@ -100,10 +107,12 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void imgui() {
+        // TODO: cleanup here, create helper methods for tab items
         Spritesheet solidTiles = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
         Spritesheet decorativeTiles = AssetPool.getSpritesheet("assets/images/img.png");
         Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
         Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
+        Spritesheet pipes = AssetPool.getSpritesheet("assets/images/img_1.png");
 
         ImGui.begin("Level Editor Components");
         levelEditorComponents.imgui();
@@ -241,6 +250,57 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 }
                 ImGui.popID();
                 ImGui.sameLine();
+
+                // Pipes
+
+                sprite = pipes.getSprite(0);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generatePipe(Direction.Down);
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
+                sprite = pipes.getSprite(1);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generatePipe(Direction.Up);
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
+                sprite = pipes.getSprite(2);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generatePipe(Direction.Right);
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
+                sprite = pipes.getSprite(3);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generatePipe(Direction.Left);
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
 
 
                 ImGui.endTabItem();

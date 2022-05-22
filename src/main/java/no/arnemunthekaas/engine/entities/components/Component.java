@@ -96,6 +96,9 @@ public abstract class Component {
                     if (ImGui.combo(f.getName(), index, enumValues, enumValues.length))
                         f.set(this, type.getEnumConstants()[index.get()]);
 
+                } else if (type == String.class) {
+                    f.set(this, ImGuiUtils.inputText(f.getName() + ": ",
+                            (String) value));
                 }
 
                 if (isPrivate)
@@ -172,9 +175,9 @@ public abstract class Component {
      *
      * @param collidingObject
      * @param contact
-     * @param hitNormal
+     * @param contactNormal
      */
-    public void endContact(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+    public void endContact(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
 
     }
 
@@ -182,7 +185,7 @@ public abstract class Component {
      *
      * @param collidingObject
      * @param contact
-     * @param hitNormal
+     * @param contactNormal
      */
     public void preSolve(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
 
@@ -192,9 +195,9 @@ public abstract class Component {
      *
      * @param collidingObject
      * @param contact
-     * @param hitNormal
+     * @param contactNormal
      */
-    public void postSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
+    public void postSolve(GameObject collidingObject, Contact contact, Vector2f contactNormal) {
 
     }
 }

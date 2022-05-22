@@ -3,20 +3,21 @@ package no.arnemunthekaas.engine.entities.components.physics2d;
 import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.GameObject;
 import no.arnemunthekaas.engine.entities.components.Ground;
-import no.arnemunthekaas.engine.entities.components.PlayerController;
 import no.arnemunthekaas.engine.entities.components.Transform;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.*;
-import no.arnemunthekaas.engine.renderer.DebugDraw;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
+
+import static no.arnemunthekaas.engine.entities.components.physics2d.BodyType.*;
+import static org.jbox2d.dynamics.BodyType.*;
+
 
 public class Physics2D {
 
-    // TODO: Move BodyType enum here
+
 
     private Vec2 gravity = new Vec2(0, -10.0f);
     private World world = new World(gravity);
@@ -52,9 +53,9 @@ public class Physics2D {
 
 
             switch (rb.getBodyType()) {
-                case Kinematic: bodyDef.type = BodyType.KINEMATIC; break;
-                case Static: bodyDef.type = BodyType.STATIC; break;
-                case Dynamic: bodyDef.type = BodyType.DYNAMIC; break;
+                case Kinematic: bodyDef.type = KINEMATIC; break;
+                case Static: bodyDef.type = STATIC; break;
+                case Dynamic: bodyDef.type = DYNAMIC; break;
             }
 
             Body body = this.world.createBody(bodyDef);

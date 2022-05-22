@@ -4,22 +4,25 @@ import no.arnemunthekaas.engine.Window;
 import no.arnemunthekaas.engine.entities.components.*;
 import no.arnemunthekaas.engine.entities.components.animation.AnimationState;
 import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
+import no.arnemunthekaas.engine.entities.components.physics2d.BodyType;
+import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.CircleCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.PillboxCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
-import no.arnemunthekaas.engine.entities.components.physics2d.enums.BodyType;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Vector2f;
 
 public class Prefabs {
 
+    // TODO: remove paths from here, instantiate static variables or something
     private static Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_items_trans.png");
     private static Spritesheet tiles = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
     private static Spritesheet sprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
     private static Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
     private static Spritesheet bigPlayerSprites = AssetPool.getSpritesheet("assets/images/bigSpritesheet.png");
+    private static Spritesheet pipes = AssetPool.getSpritesheet("assets/images/img_1.png");
 
     /**
      *
@@ -383,5 +386,33 @@ public class Prefabs {
         goomba.addComponent(new GoombaAI());
 
         return goomba;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static GameObject generatePipe(Direction direction) {
+        int index = direction == Direction.Down ? 0 :
+                direction == Direction.Up ? 1:
+                        direction == Direction.Right ? 2:
+                                direction == Direction.Left ? 3: -1;
+//        assert index == -1 : "Invalid pipe direction: " + direction;
+
+        GameObject pipe = generateSpriteObject(pipes.getSprite(index), GameConstants.GRID_WIDTH * 2, GameConstants.GRID_HEIGHT * 2);
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Static);
+        rigidbody2D.setFixedRotation(true);
+        rigidbody2D.setContinuousCollision(false);
+        pipe.addComponent(rigidbody2D);
+
+        Box2DCollider box2DCollider = new Box2DCollider();
+        box2DCollider.setHalfSize(new Vector2f(GameConstants.GRID_WIDTH * 2, GameConstants.GRID_HEIGHT * 2));
+        pipe.addComponent(box2DCollider);
+        pipe.addComponent(new Pipe(direction));
+        pipe.addComponent(new Ground());
+
+        return pipe;
     }
 }
