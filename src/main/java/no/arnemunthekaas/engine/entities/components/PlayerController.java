@@ -9,6 +9,7 @@ import no.arnemunthekaas.engine.entities.components.physics2d.components.Pillbox
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.engine.events.listeners.KeyListener;
 import no.arnemunthekaas.scenes.LevelEditorSceneInitializer;
+import no.arnemunthekaas.scenes.LevelSceneInitializer;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
 import org.jbox2d.dynamics.contacts.Contact;
@@ -80,7 +81,7 @@ public class PlayerController extends Component {
                 this.rigidbody2D.setVelocity(this.velocity);
                 this.rigidbody2D.setAngularVelocity(0);
             } else if (!deadGoingUp && gameObject.transform.position.y <= deadMinHeight) {
-                Window.changeScene(new LevelEditorSceneInitializer());
+                Window.changeScene(new LevelSceneInitializer());
             }
             return;
         }
@@ -319,6 +320,14 @@ public class PlayerController extends Component {
     public void setPosition(Vector2f newPosition) {
         this.gameObject.transform.position.set(newPosition);
         this.rigidbody2D.setPosition(newPosition);
+    }
+
+    /**
+     * Check if player has won
+     * @return
+     */
+    public boolean hasWon() {
+        return false;
     }
 
 }

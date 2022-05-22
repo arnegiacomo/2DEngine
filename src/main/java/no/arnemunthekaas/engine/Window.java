@@ -10,10 +10,12 @@ import no.arnemunthekaas.engine.events.observers.Observer;
 import no.arnemunthekaas.engine.events.observers.events.Event;
 import no.arnemunthekaas.engine.events.observers.events.EventSystem;
 import no.arnemunthekaas.scenes.LevelEditorSceneInitializer;
+import no.arnemunthekaas.scenes.LevelSceneInitializer;
 import no.arnemunthekaas.scenes.Scene;
 import no.arnemunthekaas.scenes.SceneInitializer;
 import no.arnemunthekaas.utils.AssetPool;
 import no.arnemunthekaas.utils.GameConstants;
+import org.joml.Vector4f;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.openal.AL;
@@ -305,7 +307,8 @@ public class Window implements Observer {
 
             this.framebuffer.bind();
 
-            glClearColor(r, g, b, a);
+            Vector4f clearColor = getScene().getCamera().clearColor;
+            glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
             glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -351,7 +354,7 @@ public class Window implements Observer {
             case GameEnginePlay:
                 this.runtimePlaying = true;
                 currentScene.save();
-                Window.changeScene(new LevelEditorSceneInitializer());
+                Window.changeScene(new LevelSceneInitializer());
                 break;
             case GameEngineStop:
                 this.runtimePlaying = false;

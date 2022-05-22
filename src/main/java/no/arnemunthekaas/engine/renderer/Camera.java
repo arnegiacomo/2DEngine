@@ -4,9 +4,11 @@ import no.arnemunthekaas.utils.GameConstants;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class Camera {
 
+    public Vector4f clearColor = new Vector4f(1, 1, 1, 1);
     private Matrix4f projectionMat, viewMat, inverseProjectionMat, inverseViewMat;
     public Vector2f position;
 

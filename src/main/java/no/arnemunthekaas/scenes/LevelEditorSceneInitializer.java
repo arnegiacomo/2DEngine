@@ -10,7 +10,6 @@ import no.arnemunthekaas.engine.entities.components.animation.StateMachine;
 import no.arnemunthekaas.engine.entities.components.gizmos.GizmoSystem;
 import no.arnemunthekaas.engine.entities.Prefabs;
 import no.arnemunthekaas.engine.entities.components.physics2d.BodyType;
-import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider;
 import no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D;
 import no.arnemunthekaas.utils.AssetPool;

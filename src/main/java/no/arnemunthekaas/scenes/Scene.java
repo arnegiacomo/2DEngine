@@ -2,6 +2,7 @@ package no.arnemunthekaas.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import no.arnemunthekaas.engine.entities.components.PlayerController;
 import no.arnemunthekaas.engine.entities.components.physics2d.Physics2D;
 import no.arnemunthekaas.engine.renderer.Camera;
 import no.arnemunthekaas.engine.entities.GameObject;
@@ -279,5 +280,19 @@ public class Scene {
      */
     public Physics2D getPhysics() {
         return this.physics2D;
+    }
+
+    /**
+     * Returns first instance of a GameObject that contains a specific component
+     * @param clazz
+     * @return
+     */
+    public <T extends Component> GameObject getGameObjectWith(Class<T> clazz) {
+        for (GameObject gameObject : gameObjects) {
+            if (gameObject.getComponent(clazz) != null)
+                return  gameObject;
+        }
+
+        return null;
     }
 }
