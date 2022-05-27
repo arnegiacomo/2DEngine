@@ -23,6 +23,7 @@ public class Prefabs {
     private static Spritesheet playerSprites = AssetPool.getSpritesheet("assets/images/spritesheet.png");
     private static Spritesheet bigPlayerSprites = AssetPool.getSpritesheet("assets/images/bigSpritesheet.png");
     private static Spritesheet pipes = AssetPool.getSpritesheet("assets/images/img_1.png");
+    private static Spritesheet turtles = AssetPool.getSpritesheet("assets/images/turtle.png");
 
     /**
      *
@@ -414,5 +415,47 @@ public class Prefabs {
         pipe.addComponent(new Ground());
 
         return pipe;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateTurtle() {
+        GameObject turtle = generateSpriteObject(turtles.getSprite(0), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT * 1.5f);
+
+        AnimationState walk = new AnimationState();
+        walk.title = "walk";
+        float defaultFrameTime = 0.23f;
+        walk.addFrame(turtles.getSprite(0), defaultFrameTime);
+        walk.addFrame(turtles.getSprite(1), defaultFrameTime);
+        walk.setLoop(true);
+
+        AnimationState squashed = new AnimationState();
+        squashed.title = "TurtleShellSpin";
+        squashed.addFrame(turtles.getSprite(2), 0.1f);
+        squashed.setLoop(false);
+
+        StateMachine stateMachine = new StateMachine();
+        stateMachine.addState(walk);
+        stateMachine.addState(squashed);
+        stateMachine.setDefaultState(walk.title);
+        stateMachine.addTrigger(walk.title, squashed.title, "squashMe");
+        turtle.addComponent(stateMachine);
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Dynamic);
+        rigidbody2D.setMass(0.1f);
+        rigidbody2D.setFixedRotation(true);
+        turtle.addComponent(rigidbody2D);
+
+        CircleCollider circleCollider = new CircleCollider();
+        circleCollider.setRadius(0.13f);
+        circleCollider.setOffset(new Vector2f(0, -0.05f));
+        turtle.addComponent(circleCollider);
+
+        turtle.addComponent(new TurtleAI());
+
+        return turtle;
     }
 }

@@ -86,7 +86,7 @@ public class GoombaAI extends EnemyAI {
             goingRight = contactNormal.x < 0;
     }
 
-    private void stomp() {
+    public void stomp() {
         stomp(true);
     }
 
