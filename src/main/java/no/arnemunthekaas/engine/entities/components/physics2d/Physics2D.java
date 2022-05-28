@@ -143,9 +143,10 @@ public class Physics2D {
         Vector2f offset = box2DCollider.getOffset();
         Vector2f origin = new Vector2f(box2DCollider.getOrigin());
         shape.setAsBox(halfSize.x, halfSize.y, new Vec2(offset.x, offset.y), 0);
+
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.density = 1-0f; // TODO: implement customizable physics density?
+        fixtureDef.density = 1.0f; // TODO: implement customizable physics density?
         fixtureDef.friction = rigidbody2D.getFriction();
         fixtureDef.userData = box2DCollider.gameObject;
         fixtureDef.isSensor = rigidbody2D.isSensor();
@@ -186,7 +187,7 @@ public class Physics2D {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.density = 1-0f; // TODO: implement customizable physics density?
+        fixtureDef.density = 1.0f; // TODO: implement customizable physics density?
         fixtureDef.friction = rigidbody2D.getFriction();
         fixtureDef.userData = circleCollider.gameObject;
         fixtureDef.isSensor = rigidbody2D.isSensor();

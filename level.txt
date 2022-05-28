@@ -12969,226 +12969,6 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 6.125,
-            "y": 1.125
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "uid": 67
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 16.0,
-            "height": 16.0,
-            "texture": {
-              "filepath": "assets/images/spritesheet.png",
-              "width": 224,
-              "height": 32
-            },
-            "texCoords": [
-              {
-                "x": 0.071428575,
-                "y": 0.5
-              },
-              {
-                "x": 0.071428575,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 0.0,
-                "y": 0.5
-              }
-            ]
-          },
-          "uid": 68
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.animation.StateMachine",
-        "properties": {
-          "stateTransfers": [
-            [
-              {
-                "state": "Walk",
-                "trigger": "squashMe"
-              },
-              "Squashed"
-            ]
-          ],
-          "states": [
-            {
-              "title": "Walk",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16.0,
-                    "height": 16.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheet.png",
-                      "width": 224,
-                      "height": 32
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.071428575,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.0,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                },
-                {
-                  "sprite": {
-                    "width": 16.0,
-                    "height": 16.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheet.png",
-                      "width": 224,
-                      "height": 32
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.14285715,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.071428575,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                }
-              ],
-              "doesLoop": true
-            },
-            {
-              "title": "Squashed",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 16.0,
-                    "height": 16.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheet.png",
-                      "width": 224,
-                      "height": 32
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.21428572,
-                        "y": 0.5
-                      },
-                      {
-                        "x": 0.21428572,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.0
-                      },
-                      {
-                        "x": 0.14285715,
-                        "y": 0.5
-                      }
-                    ]
-                  },
-                  "frameTime": 0.1
-                }
-              ],
-              "doesLoop": false
-            }
-          ],
-          "defaultStateTitle": "Walk",
-          "uid": 69
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.1,
-          "bodyType": "Dynamic",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": true,
-          "continuousCollision": true,
-          "uid": 70
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.CircleCollider",
-        "properties": {
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "radius": 0.125,
-          "uid": 71
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.GoombaAI",
-        "properties": {
-          "uid": 72
-        }
-      }
-    ],
-    "doSerialization": true,
-    "dead": false
-  },
-  {
-    "uid": 110,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Transform",
-        "properties": {
-          "position": {
             "x": 1.875,
             "y": 2.625
           },
@@ -13296,7 +13076,7 @@
     "dead": false
   },
   {
-    "uid": 111,
+    "uid": 110,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13531,7 +13311,7 @@
     "dead": false
   },
   {
-    "uid": 112,
+    "uid": 111,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13540,6 +13320,241 @@
           "position": {
             "x": 2.125,
             "y": 1.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 115
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.23529412,
+                "y": 1.0
+              },
+              {
+                "x": 0.23529412,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.1764706,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.1764706,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 116
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.animation.StateMachine",
+        "properties": {
+          "stateTransfers": [
+            [
+              {
+                "state": "Question",
+                "trigger": "setInactive"
+              },
+              "Inactive"
+            ]
+          ],
+          "states": [
+            {
+              "title": "Question",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+                      "width": 408,
+                      "height": 288
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.23529412,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.23529412,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.1764706,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.1764706,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.57
+                },
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+                      "width": 408,
+                      "height": 288
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.29411766,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.29411766,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.23529412,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.23529412,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            },
+            {
+              "title": "Inactive",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 24.0,
+                    "height": 24.0,
+                    "texture": {
+                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+                      "width": 408,
+                      "height": 288
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.23529412,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.23529412,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.1764706,
+                        "y": 0.9166667
+                      },
+                      {
+                        "x": 0.1764706,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.1
+                }
+              ],
+              "doesLoop": false
+            }
+          ],
+          "defaultStateTitle": "Question",
+          "uid": 117
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.MoonBlock",
+        "properties": {
+          "blockType": "Heart",
+          "bopSpeed": 0.8,
+          "uid": 118
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 119
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 120
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 121
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 112,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.125,
+            "y": 2.625
           },
           "scale": {
             "x": 0.25,
@@ -13773,7 +13788,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 2.125,
+            "x": 2.875,
             "y": 2.625
           },
           "scale": {
@@ -13947,7 +13962,7 @@
       {
         "type": "no.arnemunthekaas.engine.entities.components.MoonBlock",
         "properties": {
-          "blockType": "Heart",
+          "blockType": "Potion",
           "bopSpeed": 0.8,
           "uid": 118
         }
@@ -14009,7 +14024,7 @@
         "properties": {
           "position": {
             "x": 2.875,
-            "y": 2.625
+            "y": 1.875
           },
           "scale": {
             "x": 0.25,
@@ -14243,241 +14258,6 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 2.875,
-            "y": 1.875
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "uid": 115
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.23529412,
-                "y": 1.0
-              },
-              {
-                "x": 0.23529412,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.1764706,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.1764706,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 116
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.animation.StateMachine",
-        "properties": {
-          "stateTransfers": [
-            [
-              {
-                "state": "Question",
-                "trigger": "setInactive"
-              },
-              "Inactive"
-            ]
-          ],
-          "states": [
-            {
-              "title": "Question",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 24.0,
-                    "height": 24.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-                      "width": 408,
-                      "height": 288
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.23529412,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.23529412,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.1764706,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.1764706,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.57
-                },
-                {
-                  "sprite": {
-                    "width": 24.0,
-                    "height": 24.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-                      "width": 408,
-                      "height": 288
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.29411766,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.29411766,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.23529412,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.23529412,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.23
-                }
-              ],
-              "doesLoop": true
-            },
-            {
-              "title": "Inactive",
-              "animationFrames": [
-                {
-                  "sprite": {
-                    "width": 24.0,
-                    "height": 24.0,
-                    "texture": {
-                      "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-                      "width": 408,
-                      "height": 288
-                    },
-                    "texCoords": [
-                      {
-                        "x": 0.23529412,
-                        "y": 1.0
-                      },
-                      {
-                        "x": 0.23529412,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.1764706,
-                        "y": 0.9166667
-                      },
-                      {
-                        "x": 0.1764706,
-                        "y": 1.0
-                      }
-                    ]
-                  },
-                  "frameTime": 0.1
-                }
-              ],
-              "doesLoop": false
-            }
-          ],
-          "defaultStateTitle": "Question",
-          "uid": 117
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.MoonBlock",
-        "properties": {
-          "blockType": "Potion",
-          "bopSpeed": 0.8,
-          "uid": 118
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "uid": 119
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
-        "properties": {
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 120
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Ground",
-        "properties": {
-          "uid": 121
-        }
-      }
-    ],
-    "doSerialization": true,
-    "dead": false
-  },
-  {
-    "uid": 116,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Transform",
-        "properties": {
-          "position": {
             "x": 3.875,
             "y": 1.875
           },
@@ -14706,7 +14486,7 @@
     "dead": false
   },
   {
-    "uid": 117,
+    "uid": 116,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14941,7 +14721,7 @@
     "dead": false
   },
   {
-    "uid": 118,
+    "uid": 117,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15176,7 +14956,7 @@
     "dead": false
   },
   {
-    "uid": 119,
+    "uid": 118,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15283,7 +15063,7 @@
     "dead": false
   },
   {
-    "uid": 120,
+    "uid": 119,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15346,7 +15126,7 @@
     "dead": false
   },
   {
-    "uid": 121,
+    "uid": 120,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15409,7 +15189,7 @@
     "dead": false
   },
   {
-    "uid": 122,
+    "uid": 121,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15472,7 +15252,7 @@
     "dead": false
   },
   {
-    "uid": 123,
+    "uid": 122,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15707,7 +15487,7 @@
     "dead": false
   },
   {
-    "uid": 124,
+    "uid": 123,
     "name": "pipe1",
     "components": [
       {
@@ -15823,7 +15603,7 @@
     "dead": false
   },
   {
-    "uid": 125,
+    "uid": 124,
     "name": "pipe2",
     "components": [
       {
@@ -15939,7 +15719,7 @@
     "dead": false
   },
   {
-    "uid": 126,
+    "uid": 125,
     "name": "pipe2",
     "components": [
       {
@@ -16055,7 +15835,7 @@
     "dead": false
   },
   {
-    "uid": 127,
+    "uid": 126,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16063,6 +15843,113 @@
         "properties": {
           "position": {
             "x": 6.875,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 20
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.05882353,
+                "y": 0.75
+              },
+              {
+                "x": 0.05882353,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.0,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 21
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 22
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 23
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 24
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 127,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 7.125,
             "y": 0.875
           },
           "scale": {
@@ -16169,7 +16056,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 7.125,
+            "x": 7.375,
             "y": 0.875
           },
           "scale": {
@@ -16276,7 +16163,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 7.375,
+            "x": 7.625,
             "y": 0.875
           },
           "scale": {
@@ -16383,7 +16270,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 7.625,
+            "x": 7.875,
             "y": 0.875
           },
           "scale": {
@@ -16490,7 +16377,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 7.875,
+            "x": 8.125,
             "y": 0.875
           },
           "scale": {
@@ -16597,7 +16484,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 8.125,
+            "x": 8.375,
             "y": 0.875
           },
           "scale": {
@@ -16704,7 +16591,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 8.375,
+            "x": 8.625,
             "y": 0.875
           },
           "scale": {
@@ -16811,7 +16698,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 8.625,
+            "x": 8.875,
             "y": 0.875
           },
           "scale": {
@@ -16918,7 +16805,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 8.875,
+            "x": 9.125,
             "y": 0.875
           },
           "scale": {
@@ -17025,7 +16912,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 9.125,
+            "x": 9.375,
             "y": 0.875
           },
           "scale": {
@@ -17132,7 +17019,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 9.375,
+            "x": 9.625,
             "y": 0.875
           },
           "scale": {
@@ -17239,113 +17126,6 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 9.625,
-            "y": 0.875
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "uid": 20
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.05882353,
-                "y": 0.75
-              },
-              {
-                "x": 0.05882353,
-                "y": 0.6666667
-              },
-              {
-                "x": 0.0,
-                "y": 0.6666667
-              },
-              {
-                "x": 0.0,
-                "y": 0.75
-              }
-            ]
-          },
-          "uid": 21
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "uid": 22
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
-        "properties": {
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 23
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Ground",
-        "properties": {
-          "uid": 24
-        }
-      }
-    ],
-    "doSerialization": true,
-    "dead": false
-  },
-  {
-    "uid": 139,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Transform",
-        "properties": {
-          "position": {
             "x": 6.875,
             "y": 0.625
           },
@@ -17446,7 +17226,7 @@
     "dead": false
   },
   {
-    "uid": 140,
+    "uid": 139,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17553,7 +17333,7 @@
     "dead": false
   },
   {
-    "uid": 141,
+    "uid": 140,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17660,7 +17440,7 @@
     "dead": false
   },
   {
-    "uid": 142,
+    "uid": 141,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17767,7 +17547,7 @@
     "dead": false
   },
   {
-    "uid": 143,
+    "uid": 142,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17874,7 +17654,7 @@
     "dead": false
   },
   {
-    "uid": 144,
+    "uid": 143,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17981,7 +17761,7 @@
     "dead": false
   },
   {
-    "uid": 145,
+    "uid": 144,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18088,7 +17868,7 @@
     "dead": false
   },
   {
-    "uid": 146,
+    "uid": 145,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18195,7 +17975,7 @@
     "dead": false
   },
   {
-    "uid": 147,
+    "uid": 146,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18302,7 +18082,7 @@
     "dead": false
   },
   {
-    "uid": 148,
+    "uid": 147,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18409,7 +18189,7 @@
     "dead": false
   },
   {
-    "uid": 149,
+    "uid": 148,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18516,7 +18296,7 @@
     "dead": false
   },
   {
-    "uid": 150,
+    "uid": 149,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18623,7 +18403,7 @@
     "dead": false
   },
   {
-    "uid": 151,
+    "uid": 150,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18631,6 +18411,113 @@
         "properties": {
           "position": {
             "x": 2.125,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 314
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.05882353,
+                "y": 1.0
+              },
+              {
+                "x": 0.05882353,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.0,
+                "y": 0.9166667
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 315
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 316
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 317
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 318
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 151,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
             "y": 0.875
           },
           "scale": {
@@ -18737,7 +18624,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 2.375,
+            "x": 2.625,
             "y": 0.875
           },
           "scale": {
@@ -18844,7 +18731,7 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 2.625,
+            "x": 2.875,
             "y": 0.875
           },
           "scale": {
@@ -18951,113 +18838,6 @@
         "type": "no.arnemunthekaas.engine.entities.components.Transform",
         "properties": {
           "position": {
-            "x": 2.875,
-            "y": 0.875
-          },
-          "scale": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "uid": 314
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 24.0,
-            "height": 24.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
-              "width": 408,
-              "height": 288
-            },
-            "texCoords": [
-              {
-                "x": 0.05882353,
-                "y": 1.0
-              },
-              {
-                "x": 0.05882353,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 0.9166667
-              },
-              {
-                "x": 0.0,
-                "y": 1.0
-              }
-            ]
-          },
-          "uid": 315
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.8,
-          "linearDamping": 0.9,
-          "mass": 0.0,
-          "bodyType": "Static",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": false,
-          "continuousCollision": true,
-          "uid": 316
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
-        "properties": {
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 317
-        }
-      },
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Ground",
-        "properties": {
-          "uid": 318
-        }
-      }
-    ],
-    "doSerialization": true,
-    "dead": false
-  },
-  {
-    "uid": 155,
-    "name": "Sprite_Object_Gen",
-    "components": [
-      {
-        "type": "no.arnemunthekaas.engine.entities.components.Transform",
-        "properties": {
-          "position": {
             "x": 2.125,
             "y": 0.625
           },
@@ -19158,7 +18938,7 @@
     "dead": false
   },
   {
-    "uid": 156,
+    "uid": 155,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19265,7 +19045,7 @@
     "dead": false
   },
   {
-    "uid": 157,
+    "uid": 156,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19372,7 +19152,7 @@
     "dead": false
   },
   {
-    "uid": 158,
+    "uid": 157,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19479,7 +19259,7 @@
     "dead": false
   },
   {
-    "uid": 159,
+    "uid": 158,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19700,7 +19480,547 @@
     "dead": false
   },
   {
+    "uid": 159,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 8.875,
+            "y": 1.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 353
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.2
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.2
+              }
+            ]
+          },
+          "uid": 354
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "uid": 355
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": -0.075,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.1,
+            "y": 0.2355
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 356
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Flagpole",
+        "properties": {
+          "isTop": false,
+          "uid": 357
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
     "uid": 160,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 8.875,
+            "y": 1.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 353
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.2
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.2
+              }
+            ]
+          },
+          "uid": 354
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "uid": 355
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": -0.075,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.1,
+            "y": 0.2355
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 356
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Flagpole",
+        "properties": {
+          "isTop": false,
+          "uid": 357
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 161,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 8.875,
+            "y": 1.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 353
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.2
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.2
+              }
+            ]
+          },
+          "uid": 354
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "uid": 355
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": -0.075,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.1,
+            "y": 0.2355
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 356
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Flagpole",
+        "properties": {
+          "isTop": false,
+          "uid": 357
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 162,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 8.875,
+            "y": 1.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 353
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 0.85714287,
+                "y": 0.2
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.0
+              },
+              {
+                "x": 0.71428573,
+                "y": 0.2
+              }
+            ]
+          },
+          "uid": 354
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "uid": 355
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": -0.075,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.1,
+            "y": 0.2355
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 356
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Flagpole",
+        "properties": {
+          "isTop": false,
+          "uid": 357
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 163,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 8.875,
+            "y": 2.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 365
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/items.png",
+              "width": 112,
+              "height": 80
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.8
+              },
+              {
+                "x": 0.85714287,
+                "y": 0.8
+              },
+              {
+                "x": 0.85714287,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 366
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": false,
+          "uid": 367
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": -0.075,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.1,
+            "y": 0.2355
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 368
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Flagpole",
+        "properties": {
+          "isTop": true,
+          "uid": 369
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 164,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19716,7 +20036,7 @@
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 327
+          "uid": 390
         }
       },
       {
@@ -19755,7 +20075,7 @@
               }
             ]
           },
-          "uid": 328
+          "uid": 391
         }
       },
       {
@@ -19875,7 +20195,7 @@
             }
           ],
           "defaultStateTitle": "walk",
-          "uid": 329
+          "uid": 392
         }
       },
       {
@@ -19895,7 +20215,7 @@
           "isSensor": false,
           "fixedRotation": true,
           "continuousCollision": true,
-          "uid": 330
+          "uid": 393
         }
       },
       {
@@ -19905,14 +20225,1405 @@
             "x": 0.0,
             "y": 0.0
           },
-          "radius": 0.125,
-          "uid": 331
+          "radius": 0.12,
+          "uid": 394
         }
       },
       {
         "type": "no.arnemunthekaas.engine.entities.components.GoombaAI",
         "properties": {
-          "uid": 332
+          "uid": 395
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 165,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 9.875,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 166,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 10.125,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 167,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 10.375,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 168,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 10.625,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 169,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 10.875,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 170,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 11.125,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 171,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 11.375,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 172,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 11.625,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 173,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 11.875,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 174,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 12.125,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 175,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 12.375,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 176,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 12.625,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
+        }
+      }
+    ],
+    "doSerialization": true,
+    "dead": false
+  },
+  {
+    "uid": 177,
+    "name": "Sprite_Object_Gen",
+    "components": [
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Transform",
+        "properties": {
+          "position": {
+            "x": 12.875,
+            "y": 0.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 416
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 24.0,
+            "height": 24.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/oryx_16bit_fantasy_tiles.png",
+              "width": 408,
+              "height": 288
+            },
+            "texCoords": [
+              {
+                "x": 0.9411765,
+                "y": 0.75
+              },
+              {
+                "x": 0.9411765,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.6666667
+              },
+              {
+                "x": 0.88235295,
+                "y": 0.75
+              }
+            ]
+          },
+          "uid": 417
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.8,
+          "linearDamping": 0.9,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": true,
+          "uid": 418
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.physics2d.components.Box2DCollider",
+        "properties": {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 419
+        }
+      },
+      {
+        "type": "no.arnemunthekaas.engine.entities.components.Ground",
+        "properties": {
+          "uid": 420
         }
       }
     ],

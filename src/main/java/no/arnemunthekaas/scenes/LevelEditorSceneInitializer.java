@@ -80,6 +80,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.addSpriteSheet("assets/images/turtle.png", new Spritesheet(AssetPool.getTexture("assets/images/turtle.png"),
                 16, 24, 4, 0));
 
+        AssetPool.addSpriteSheet("assets/images/items.png", new Spritesheet(AssetPool.getTexture("assets/images/items.png"),
+                16, 16, 41, 0));
+
         // Load Sounds
         AssetPool.addSound("assets/audio/Powerup6.ogg", false);
         AssetPool.addSound("assets/audio/button_2.ogg", false);
@@ -91,6 +94,8 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         AssetPool.addSound("assets/audio/assets_sounds_mario_die.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_kick.ogg", false);
         AssetPool.addSound("assets/audio/assets_sounds_pipe.ogg", false);
+        AssetPool.addSound("assets/audio/flagpole.ogg", false);
+        AssetPool.addSound("assets/audio/stage_clear.ogg", false);
 
         for(GameObject go : scene.getGameObjects()) {
             if(go.getComponent(SpriteRenderer.class) != null) {
@@ -117,6 +122,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/oryx_16bit_fantasy_tiles.png");
         Spritesheet pipes = AssetPool.getSpritesheet("assets/images/img_1.png");
         Spritesheet turtles = AssetPool.getSpritesheet("assets/images/turtle.png");
+        Spritesheet items2 = AssetPool.getSpritesheet("assets/images/items.png");
 
         ImGui.begin("Level Editor Components");
         levelEditorComponents.imgui();
@@ -264,6 +270,32 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.pushID(uid++);
                 if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
                     GameObject gameObject = Prefabs.generateTurtle();
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
+                // Flagpole
+
+                sprite = items2.getSprite(6);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generateFlagTop();
+                    levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
+                }
+                ImGui.popID();
+                ImGui.sameLine();
+
+                sprite = items2.getSprite(33);
+                id = sprite.getTexID();
+                texCoords = sprite.getTexCoords();
+
+                ImGui.pushID(uid++);
+                if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                    GameObject gameObject = Prefabs.generateFlagPole();
                     levelEditorComponents.getComponent(MouseControls.class).pickUpObject(gameObject);
                 }
                 ImGui.popID();

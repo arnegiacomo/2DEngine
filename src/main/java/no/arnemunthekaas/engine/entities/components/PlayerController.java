@@ -21,6 +21,27 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class PlayerController extends Component {
 
+    private transient boolean playWinAnimation;
+    private transient float timeToCastle = 4.5f;
+    private transient float walkTime = 2.2f;
+
+    /**
+     *
+     * @param flagpole
+     */
+    public void playWinAnimation(GameObject flagpole) {
+        if (!playWinAnimation) {
+            playWinAnimation = true;
+            velocity.set(0.0f, 0.0f);
+            acceleration.set(0.0f, 0.0f);
+            rigidbody2D.setVelocity(velocity);
+            rigidbody2D.setIsSensor();
+            rigidbody2D.setBodyType(BodyType.Static);
+            gameObject.transform.position.x = flagpole.transform.position.x;
+            AssetPool.getSound("assets/audio/flagpole.ogg").play();
+        }
+    }
+
     private enum PlayerState {
         Small,
         Big,
@@ -68,6 +89,34 @@ public class PlayerController extends Component {
 
     @Override
     public void update(float dt) {
+
+        if (playWinAnimation) {
+            checkOnGround();
+            if (!onGround) {
+                gameObject.transform.scale.x = -0.25f;
+                gameObject.transform.position.y -= dt;
+                stateMachine.trigger("stopRunning");
+                stateMachine.trigger("stopJumping");
+            } else {
+                if (this.walkTime > 0) {
+                    gameObject.transform.scale.x = 0.25f;
+                    gameObject.transform.position.x += dt;
+                    stateMachine.trigger("startRunning");
+                }
+                if (!AssetPool.getSound("assets/audio/stage_clear.ogg").isPlaying()) {
+                    AssetPool.getSound("assets/audio/stage_clear.ogg").play();
+                }
+                timeToCastle -= dt;
+                walkTime -= dt;
+
+                if (timeToCastle <= 0) {
+                    Window.changeScene(new LevelEditorSceneInitializer());
+                }
+            }
+
+            return;
+        }
+
         if (isDead) {
             if (this.gameObject.transform.position.y < deadMaxHeight && deadGoingUp) {
                 this.gameObject.transform.position.y += dt * walkSpeed / 2.0f;
@@ -226,7 +275,7 @@ public class PlayerController extends Component {
      * @return
      */
     public boolean isInvincible() {
-        return this.playerState == PlayerState.Invincible || invincibilityTimeLeft > 0;
+        return this.playerState == PlayerState.Invincible || invincibilityTimeLeft > 0 || playWinAnimation;
     }
 
 

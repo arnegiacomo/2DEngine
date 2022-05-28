@@ -24,6 +24,7 @@ public class Prefabs {
     private static Spritesheet bigPlayerSprites = AssetPool.getSpritesheet("assets/images/bigSpritesheet.png");
     private static Spritesheet pipes = AssetPool.getSpritesheet("assets/images/img_1.png");
     private static Spritesheet turtles = AssetPool.getSpritesheet("assets/images/turtle.png");
+    private static Spritesheet items2 = AssetPool.getSpritesheet("assets/images/items.png");
 
     /**
      *
@@ -381,7 +382,7 @@ public class Prefabs {
         goomba.addComponent(rigidbody2D);
 
         CircleCollider circleCollider = new CircleCollider();
-        circleCollider.setRadius(GameConstants.GRID_WIDTH / 2);
+        circleCollider.setRadius(0.12f);
         goomba.addComponent(circleCollider);
 
         goomba.addComponent(new GoombaAI());
@@ -457,5 +458,51 @@ public class Prefabs {
         turtle.addComponent(new TurtleAI());
 
         return turtle;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateFlagTop() {
+        GameObject flagTop = generateSpriteObject(items2.getSprite(6), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Dynamic);
+        rigidbody2D.setFixedRotation(true);
+        rigidbody2D.setContinuousCollision(false);
+        flagTop.addComponent(rigidbody2D);
+
+        Box2DCollider box2DCollider = new Box2DCollider();
+        box2DCollider.setHalfSize(new Vector2f(0.1f, 0.2355f));
+        box2DCollider.setOffset(new Vector2f(-0.075f, 0.0f));
+        flagTop.addComponent(box2DCollider);
+        flagTop.addComponent(new Flagpole(true));
+
+        return flagTop;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static GameObject generateFlagPole() {
+        GameObject flagTop = generateSpriteObject(items2.getSprite(33), GameConstants.GRID_WIDTH, GameConstants.GRID_HEIGHT);
+
+
+        Rigidbody2D rigidbody2D = new Rigidbody2D();
+        rigidbody2D.setBodyType(BodyType.Dynamic);
+        rigidbody2D.setFixedRotation(true);
+        rigidbody2D.setContinuousCollision(false);
+        flagTop.addComponent(rigidbody2D);
+
+        Box2DCollider box2DCollider = new Box2DCollider();
+        box2DCollider.setHalfSize(new Vector2f(0.1f, 0.2355f));
+        box2DCollider.setOffset(new Vector2f(-0.075f, 0.0f));
+        flagTop.addComponent(box2DCollider);
+        flagTop.addComponent(new Flagpole(false));
+
+        return flagTop;
     }
 }
